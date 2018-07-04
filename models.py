@@ -2,6 +2,7 @@ from otree.api import (
     models, widgets, BaseConstants, BaseSubsession, BaseGroup, BasePlayer,
     Currency as c, currency_range
 )
+import random
 
 
 author = 'Your name here'
@@ -18,11 +19,36 @@ class Constants(BaseConstants):
 
 
 class Subsession(BaseSubsession):
+    def creating_session(self):
+        self.group_randomly()
+        numBuyers = 0
+        for i in self.get_players():
+            print(numBuyers)
+
+            if(numBuyers < 1):
+                numBuyers += 1
+                i.buyer = True
+            else: 
+                i.buyer = False 
+
+            
+
+
+
+
+
+
+    
+            
+            
     pass
 
 
 class Group(BaseGroup):
     pass
+    
+
+    
 
 
 class Player(BasePlayer):
@@ -33,6 +59,9 @@ class Player(BasePlayer):
     noise = models.IntegerField()
     quality = models.IntegerField()
     oppCost = models.CurrencyField()
+    selling = models.BooleanField()
+
+
 
     
 
