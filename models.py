@@ -3,6 +3,7 @@ from otree.api import (
     Currency as c, currency_range
 )
 import random
+from . import config as config_py
 
 
 author = 'Your name here'
@@ -16,6 +17,8 @@ class Constants(BaseConstants):
     name_in_url = 'LeepsCRP'
     players_per_group = None
     num_rounds = 1
+    config = config_py.export_data()
+    num_rounds = len(config[0])
 
 
 class Subsession(BaseSubsession):
@@ -23,7 +26,6 @@ class Subsession(BaseSubsession):
         self.group_randomly()
         numBuyers = 0
         for i in self.get_players():
-            print(numBuyers)
 
             if(numBuyers < 1):
                 numBuyers += 1
@@ -31,35 +33,27 @@ class Subsession(BaseSubsession):
             else: 
                 i.buyer = False 
 
-            
-
-
-
-
-
-
-    
-            
-            
-    pass
 
 
 class Group(BaseGroup):
     pass
     
 
-    
+
+
 
 
 class Player(BasePlayer):
-    money = models.CurrencyField()
+    money = models.FloatField()
     buyer = models.BooleanField()
-    sellPrice = models.CurrencyField()
-    buyPrice = models.CurrencyField()
+    sellPrice = models.FloatField()
+    buyPrice = models.FloatField()
     noise = models.IntegerField()
-    quality = models.IntegerField()
-    oppCost = models.CurrencyField()
+    oppCost = models.FloatField()
     selling = models.BooleanField()
+    unitPrice = models.FloatField()
+    unitQuality = models.IntegerField()
+    qualityIncrease = models.CharField(choices=['No increase','increase bit', 'increase lot'], widget=widgets.RadioSelectHorizontal())
 
 
 
