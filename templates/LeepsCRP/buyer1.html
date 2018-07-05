@@ -2,11 +2,15 @@
 {% load otree static %}
 
 {% block title %}
-    Buyer
+    Buying
 {% endblock %}
-
+	
 {% block content %}
-
+	<h5>placeholder</h5>
+	<p>how much u wanna bid</p>
+	{% formfield player.buyPrice with label=""%}
+	<p>you can also do this increase stuff for a fee</p>
+	{% formfield player.benefitIncrease with label="" %}
     {% next_button %}
 
 {% endblock %}

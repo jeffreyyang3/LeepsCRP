@@ -16,17 +16,17 @@ class seller1(Page):
         variance = Constants.config[0][self.round_number - 1]["variance"]
         priceBase = Constants.config[0][self.round_number - 1]["priceBase"]
         qualityBase = Constants.config[0][self.round_number - 1]["qualityBase"]
-        self.player.unitPrice = random.randint(priceBase - variance,priceBase + variance)
+        noise = Constants.config[0][self.round_number - 1]["noise"]
+        varInt = random.randint(0,3)
+        addRandom = random.randint(1,100) # noise being used temporarily
+        self.player.unitPrice = random.randint(priceBase - noise,priceBase + noise)
+        self.player.priceCap = self.player.unitPrice * Constants.config[0][self.round_number - 1]["variance"][varInt] + addRandom
         self.player.unitQuality = qualityBase
-
-
-
-
 
         return {
             'unitPrice': self.player.unitPrice,
-            'unitQuality': self.player.unitQuality
-
+            'unitQuality': self.player.unitQuality,
+            'priceCap': self.player.priceCap,
         }
 
 class seller2(Page):
@@ -36,12 +36,28 @@ class seller2(Page):
         
 
 
+class waitForPrices(WaitPage):
+
+
+    def after_all_players_arrive(self):
+        pass
 
 
 
 class buyer1(Page):
+    form_model = 'player'
+    form_fields = ['buyPrice', 'benefitIncrease']
     def is_displayed(self):
         return self.player.buyer 
+
+    def vars_for_template(self):
+
+
+        return {
+            'money': self.player.money,
+
+        }
+
 
     
 
@@ -62,8 +78,9 @@ class Results(Page):
 
 page_sequence = [
     intro,
-    buyer1,
     seller1,
+    waitForPrices,
+    buyer1,
     seller2,
     ResultsWaitPage,
     Results
