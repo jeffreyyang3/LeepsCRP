@@ -25,6 +25,7 @@ class Subsession(BaseSubsession):
     def creating_session(self):
         self.group_randomly()
         numBuyers = 0
+
         for i in self.get_players():
             i.money = Constants.config[0][self.round_number - 1]["end"]
 
@@ -36,10 +37,9 @@ class Subsession(BaseSubsession):
 
 
 class Group(BaseGroup):
-    # String consisting of all offers made (that will eventually be converted into
-    # a list
-    offers = models.StringField()
-    pass
+    # String consisting of all offers made by sellers(that will eventually be
+    # converted into a list
+    offers = models.StringField(initial="")
     
 
 class Player(BasePlayer):
