@@ -6,12 +6,11 @@ import random
 from . import config as config_py
 
 
-author = 'Your name here'
+author = "Jeffrey Yang and Daniel Wang"
 
 doc = """
-Your app description
+CRP_2018
 """
-
 
 class Constants(BaseConstants):
     name_in_url = 'LeepsCRP'
@@ -36,31 +35,29 @@ class Subsession(BaseSubsession):
                 i.buyer = False
 
 
-
-
 class Group(BaseGroup):
+    # String consisting of all offers made (that will eventually be converted into
+    # a list
+    offers = models.StringField()
     pass
     
-
-
-
-
 
 class Player(BasePlayer):
     money = models.FloatField()
     buyer = models.BooleanField()
-    sellPrice = models.FloatField()
+
+    cost = models.IntegerField()
+    sold = models.BooleanField()
+    offer = models.FloatField()
+    profit = models.FloatField()
+
     buyPrice = models.FloatField()
+
     noise = models.IntegerField()
     priceCap = models.FloatField()
     oppCost = models.FloatField()
-    selling = models.BooleanField()
+    participate = models.BooleanField(choices=[[True, "Yes"], [False, "No"]], widget=widgets.RadioSelectHorizontal())
     unitPrice = models.FloatField()
     unitQuality = models.IntegerField()
     qualityIncrease = models.CharField(choices=['No increase','increase bit', 'increase lot'], widget=widgets.RadioSelectHorizontal())
     benefitIncrease = models.CharField(choices=['No increase','increase bit', 'increase lot'], widget=widgets.RadioSelectHorizontal())
-
-
-
-    
-

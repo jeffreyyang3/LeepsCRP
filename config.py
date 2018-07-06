@@ -3,13 +3,7 @@ import random
 data = [
 	[
 		{"priceBase": 200, "end": 4000, "variance": [1,3,8,12], "qualityBase": 100, "noise": 10, "allowedMarkup": 1.4}
-
-
 	]
-
-
-
-
 ]
 
 def shuffle(data):

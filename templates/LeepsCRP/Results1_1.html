@@ -1,0 +1,34 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Auction Results
+{% endblock %}
+
+{% block content %}
+    <table class="table">
+            <tr>
+                <th>Bidder ID</th>
+                <th>Cost</th>
+                <th>Max Offer (Cost + RAND + Variance)</th>
+                <th>Offers</th>
+                <th>Sold (8th lowest offers)</th>
+                <th>Profit (Offer - Cost)</th>
+            </tr>
+            {% for p in group.get_players %}
+            <tr>
+                <td>{{ p.id_in_group }}</td>
+                <td>{{ p.cost }}</td>
+                <td>{{ p.priceCap }}</td>
+                <td>{{ p.offer }}</td>
+                <td></td>
+                <td></td>
+
+            </tr>
+            {% endfor %}
+
+        </table>
+
+    {% next_button %}
+
+{% endblock %}
