@@ -21,8 +21,12 @@
                 <td>{{ p.cost }}</td>
                 <td>{{ p.priceCap }}</td>
                 <td>{{ p.offer }}</td>
-                <td></td>
-                <td></td>
+                {% if p.sold %}
+                    <td><p>YES</p></td>
+                {% else %}
+                    <td><p>No</p></td>
+                {% endif %}
+                <td>{{ p.profit }}</td>
 
             </tr>
             {% endfor %}

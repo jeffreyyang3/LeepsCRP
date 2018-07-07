@@ -7,6 +7,7 @@ from otree.api import Submission
 
 class PlayerBot(Bot):
     def play_round(self):
+
         """
         yield (pages.intro)
         yield Submission(pages.Seller1_1, {'participate': True, 'offer': 23}, check_html=False)

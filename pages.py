@@ -3,6 +3,7 @@ from ._builtin import Page, WaitPage
 from .models import Constants
 from random import *
 import random
+from operator import itemgetter
 
 class intro(Page):
     def before_next_page(self):
@@ -14,7 +15,6 @@ class intro(Page):
             # Initialization of default values
             p.sold = False
             p.profit = 0
-
 
             randomTerm = random.randint(-5, 5)
             # Note: For right now, variance value is set to 8!!
@@ -38,63 +38,72 @@ class Seller1_1(Page):
 
         # Add player's offer to the full string of offers
         if player.participate:
-            print("group offers before adding is: ")
-            print(group.offers)
-            group.offers += str(player.offer) + " "
+            player_offer_string = str(player.id_in_group) + "=" + str(player.offer)
 
-            print("group offers is now:")
-            print(group.offers)
+            # group.offers += str(player.offer) + " "
+            group.offers += player_offer_string + " "
 
-        pass
 
 class WaitForOffers(WaitPage):
     def after_all_players_arrive(self):
         group = self.group
 
-        print("list of all offers is: ")
-        print(group.offers)
-
         # Convert offer string into a list
         offer_list = group.offers.split(" ")
 
-        # Remove space in last space of array
+        # Remove last element of array which is an empty string
         if offer_list[-1] == "":
             del[offer_list[-1]]
 
-        print("Offer list is: ")
-        print(offer_list)
+        offer_dict = dict(s.split("=") for s in offer_list)
 
-        offer_list.sort()
-        print("Sorted offer list is:")
-        print(offer_list)
+        # List of dictionaries, each dictionary representing a player who made
+        # an offer
+        final_offers_list = []
+
+        # Create a new dictionary representing key info for each player that
+        # made an offer that will later be added to a list
+        for id, player_offer in offer_dict.items():
+            player_info = {}
+            player_info["id"] = int(id)
+            player_info["offer"] = float(player_offer)
+            final_offers_list.append(player_info)
+
+        # Sort list of dictionaries according to each dictionary's offer in
+        # increasing order
+        sorted_final_offers_list = sorted(final_offers_list, key=itemgetter("offer"))
+        print("Sorted offers list is: ")
+        print(sorted_final_offers_list)
 
         # NOTE: Only top 2 offers are taken(instead of 8) right now for
         # testing purposes
-        if len(offer_list) <= 2:
-            chosen_offers = offer_list[:]
+        if len(sorted_final_offers_list) <= 2:
+            chosen_offers = sorted_final_offers_list[:]
         else:
             # NOTE: Only top 2 offers are taken (instead of 8) right now for
             # testing purposes
-            chosen_offers = offer_list[:2]
+            chosen_offers = sorted_final_offers_list[:2]
 
         print("Chosen offers are: ")
         print(chosen_offers)
 
+        for player in chosen_offers:
+            for p in group.get_players():
+                if player["id"] == p.id_in_group:
+                    p.sold = True
+                    p.profit = p.offer - p.cost
+                    p.money = p.money - p.cost + p.offer
+
 
 class Buyer1_1(Page):
-    pass
-
     def vars_for_template(self):
         player = self.player
         group = self.group
 
 
-        # print("list of all offers is: ")
-        # print(group.offers)
-        print("player participates is: ", player.participate)
-
 class Results1_1(Page):
     pass
+
 
 class seller1(Page):
     form_model = 'player'
@@ -123,37 +132,29 @@ class seller1(Page):
             'priceCap': self.player.priceCap,
         }
 
+
 class seller2(Page):
     def is_displayed(self):
         return self.player.buyer == False
 
-        
-
 
 class waitForPrices(WaitPage):
-
-
     def after_all_players_arrive(self):
         pass
-
 
 
 class buyer1(Page):
     form_model = 'player'
     form_fields = ['buyPrice', 'benefitIncrease']
+
     def is_displayed(self):
         return self.player.buyer 
 
     def vars_for_template(self):
-
-
         return {
             'money': self.player.money,
 
         }
-
-
-    
 
 
 class MyPage(Page):
@@ -161,7 +162,6 @@ class MyPage(Page):
 
 
 class ResultsWaitPage(WaitPage):
-
     def after_all_players_arrive(self):
         pass
 
@@ -170,6 +170,6 @@ class Results(Page):
     pass
 
 
-page_sequence = [intro, Seller1_1, WaitForOffers, Buyer1_1, Results1_1, seller1, waitForPrices, buyer1, seller2, ResultsWaitPage,
-    Results
+page_sequence = [intro, Seller1_1, WaitForOffers, Buyer1_1, Results1_1, seller1,
+                 waitForPrices, buyer1, seller2, ResultsWaitPage, Results
 ]
