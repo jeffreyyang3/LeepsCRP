@@ -119,12 +119,19 @@ class seller1(Page):
         priceBase = config[0][self.round_number - 1]["priceBase"]
         qualityBase = config[0][self.round_number - 1]["qualityBase"]
         noise = config[0][self.round_number - 1]["noise"]
+        mode = config[0][self.round_number - 1]["mode"]
 
         varInt = random.randint(0,3)
-        addRandom = random.randint(1,100) # noise being used temporarily
+        addRandom = random.randint(-5,5) 
         self.player.unitPrice = random.randint(priceBase - noise, priceBase + noise)
-        self.player.priceCap = self.player.unitPrice * variance[varInt] + addRandom
-        self.player.unitQuality = qualityBase
+        if mode == 1:
+            self.player.priceCap = self.player.unitPrice + addRandom + 5
+        if mode == 2:
+            self.player.priceCap = self.player.unitPrice * variance[varInt] + addRandom
+        if mode == 3:
+            self.player.priceCap = self.player.unitPrice + addRandom + 15
+
+            
 
         return {
             'unitPrice': self.player.unitPrice,
@@ -170,6 +177,6 @@ class Results(Page):
     pass
 
 
-page_sequence = [intro, Seller1_1, WaitForOffers, Buyer1_1, Results1_1, seller1,
-                 waitForPrices, buyer1, seller2, ResultsWaitPage, Results
-]
+#page_sequence = [intro, Seller1_1, WaitForOffers, Buyer1_1, Results1_1, 
+ #                waitForPrices, buyer1, seller2, ResultsWaitPage, Results]
+page_sequence = [intro, Seller1_1, WaitForOffers, Buyer1_1, Results1_1]
