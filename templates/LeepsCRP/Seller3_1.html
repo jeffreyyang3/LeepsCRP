@@ -1,0 +1,30 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Seller
+{% endblock %}
+
+{% block content %}
+    <div>
+        <h5>Auction type: Reference Price</h5>
+
+        <hr/>
+
+        <p>
+            Your cost: {{ player.cost }}
+            <br/>
+            Reference price: {{ player.refPrice }}
+        </p>
+
+        <p>Do you want to participate?</p>
+
+        {% formfield player.participate with label="" %}
+
+        {% formfield player.offer label="Enter your Offer:" %}
+
+        {{ form.participate.errors }}
+    </div>
+
+    {% next_button %}
+{% endblock %}

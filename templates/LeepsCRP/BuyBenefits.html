@@ -1,0 +1,15 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Purchase Benefits
+{% endblock %}
+
+{% block content %}
+    <p>You have the option to buy additional benefits points. Please select one
+    of the choices below:</p>
+
+    {% formfield player.benefits_choice with label="" %}
+    {% next_button %}
+
+{% endblock %}

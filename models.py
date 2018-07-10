@@ -29,7 +29,7 @@ class Subsession(BaseSubsession):
         for i in self.get_players():
             i.money = Constants.config[0][self.round_number - 1]["end"]
 
-            if(numBuyers < 1):
+            if numBuyers < 1:
                 numBuyers += 1
                 i.buyer = True
             else:
@@ -46,6 +46,8 @@ class Player(BasePlayer):
     money = models.FloatField()
     buyer = models.BooleanField()
 
+    score = models.FloatField()
+
     cost = models.IntegerField()
     sold = models.BooleanField()
     offer = models.FloatField()
@@ -55,9 +57,30 @@ class Player(BasePlayer):
 
     noise = models.IntegerField()
     priceCap = models.FloatField()
+    refPrice = models.IntegerField()
+
     oppCost = models.FloatField()
     participate = models.BooleanField(choices=[[True, "Yes"], [False, "No"]], widget=widgets.RadioSelectHorizontal())
     unitPrice = models.FloatField()
     unitQuality = models.IntegerField()
+
+    benefits = models.IntegerField()
+    benefits_purchased = models.IntegerField()
+    benefits_choice = models.IntegerField(widget=widgets.RadioSelect)
+
     qualityIncrease = models.CharField(choices=['No increase','increase bit', 'increase lot'], widget=widgets.RadioSelectHorizontal())
     benefitIncrease = models.CharField(choices=['No increase','increase bit', 'increase lot'], widget=widgets.RadioSelectHorizontal())
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -6,7 +6,50 @@
 {% endblock %}
 
 {% block content %}
-<h4> complex auction game description</h4>
+    <h3>Instructions</h3>
+        <p>Welcome to the Experimental Economics Laboratory. This study has received
+        funding from various research foundations. Please pay careful attention to
+        the instructions as real money is at stake.</p>
+
+        <p>The session is expected to last about 1.5 hours. During the study, we
+        will use Experimental Currency Units (ECUs) and at the end of the experiment
+        all your earnings will be converted to US Dollars. The conversion from ECU
+        to US Dollars will be 3 ECUs to one Dollar. That is, you will receive $1 for
+        every 3ECUs you earn during the experiment. All earnings will be paid in cash,
+        and participants do not risk losing money. You are guaranteed a show up fee
+        of $7.</p>
+
+    <h3>General Procedure:</h3>
+        <p>You will be participating in several rounds of auctions. In each round,
+        you will be bidding against your fellow participants. The same set of
+        participants will be in each auction.</p>
+
+        <p>In a given auction, each bidder holds an object and aims to sell it to
+        the buyer (represented by a computer program). When each round starts, you
+        will privately observe your Cost of the object(how much making the object
+        would cost you).</p>
+
+        <p>If you sell the object to the buyer for a certain price, the difference
+        between the selling price and your cost represents your profit. Each bidder’s
+        cost will be randomly determined. Costs can take any integer value from 10
+        to 100, inclusive. All numbers are drawn with equal probability and
+        independently from other bidders’ cost and from draws in other rounds. The
+        other bidders participating in this auction have their own costs determined
+        in the same manner and each of them will learn only his/her cost.</p>
+
+        <p>There are 16 participants in each auction, each holding a single object
+        every round. The buyer always wants to purchase 8 objects in each auction.</p>
+
+        <p>You will compete in 3 different types of auctions. Each type of auction
+        will have 20 rounds.</p>
+
+        <p>You will be paid based on 6 randomly selected rounds, two for each type
+        of auction. </p>
+
+        <p>Throughout the instructions we will use the expression: RAND[-5,+5] to
+        denote a random integer between -5 to 5, inclusive. All numbers in the set
+        {-5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5} occur with equal chance.</p>
+
 
     {% next_button %}
 
