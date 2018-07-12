@@ -63,11 +63,9 @@ class BuyBenefits(Page):
 
         # print("Player's benefits are now:", player.benefits)
 
-        mode = config[0][self.round_number - 1]["mode"]
+  
 
-        if mode == 4:   # Auction 3: Reference Price 1
-            randomTerm = random.randint(-5, 5)
-            player.refPrice = player.cost + randomTerm
+        
 
 
 # Auction 1.1: Price Cap with Participation
@@ -199,8 +197,8 @@ class Seller3_1(Page):
 
         # Add player's offer to the full string of offers
         if player.participate:
-            # player.score = 100 + player.benefits_purchased - 50 * (player.offer / player.refPrice) - player.refPrice
-            player.score = (player.offer/player.refPrice) + (player.refPrice / 50)
+            player.score = 100 + player.benefits_purchased - 50 * (player.offer / player.refPrice) - player.refPrice
+
             print("Player's score is:", player.score)
 
             player_score_string = str(player.id_in_group) + "=" + str(player.score)
@@ -219,16 +217,21 @@ class WaitForOffers3_1(WaitPage):
 
         # print("Auction 3: Reference Price 1, Waiting for Offers")
 
-        return mode == 4
+        return mode == 4 or mode == 5
 
     def after_all_players_arrive(self):
         group = self.group
+        # Convert offer string into a list
+        score_list = group.offers.split(" ")
+
+                             
+                
+        
 
         for x in group.get_players():
             print("player score in dict beg is:", x.score)
 
-        # Convert offer string into a list
-        score_list = group.offers.split(" ")
+        
 
         # Remove last element of array which is an empty string
         if score_list[-1] == "":
@@ -300,78 +303,6 @@ class Results3_1(Page):
 
         return mode == 4
 
-
-"""
-class seller1(Page):
-    form_model = 'player'def after_all_players_arrive(self):
-    form_fields = ['offer', 'qualityIncrease']
-
-    def is_displayed(self):
-        return self.player.buyer == False
-
-    def vars_for_template(self):
-        config = Constants.config
-
-        variance = config[0][self.round_number - 1]["variance"]
-        priceBase = config[0][self.round_number - 1]["priceBase"]
-        qualityBase = config[0][self.round_number - 1]["qualityBase"]
-        noise = config[0][self.round_number - 1]["noise"]
-        mode = config[0][self.round_number - 1]["mode"]
-
-        varInt = random.randint(0, 5)
-        addRandom = random.randint(-5,5) 
-        self.player.unitPrice = random.randint(priceBase - noise, priceBase + noise)
-        if mode == 1:
-            self.player.priceCap = self.player.unitPrice + addRandom + 5
-        if mode == 2:
-            self.player.priceCap = self.player.unitPrice * variance[varInt] + addRandom
-        if mode == 3:
-            self.player.priceCap = self.player.unitPrice + addRandom + 15
-
-
-        return {
-            'unitPrice': self.player.unitPrice,
-            'unitQuality': self.player.unitQuality,
-            'priceCap': self.player.priceCap,
-        }
-
-
-class seller2(Page):
-    def is_displayed(self):
-        return self.player.buyer == False
-
-
-class waitForPrices(WaitPage):
-    def after_all_players_arrive(self):
-        pass
-
-
-class buyer1(Page):
-    form_model = 'player'
-    form_fields = ['buyPrice', 'benefitIncrease']
-
-    def is_displayed(self):
-        return self.player.buyer 
-
-    def vars_for_template(self):
-        return {
-            'money': self.player.money,
-
-        }
-
-
-class MyPage(Page):
-    pass
-
-
-class ResultsWaitPage(WaitPage):
-    def after_all_players_arrive(self):
-        pass
-
-
-class Results(Page):
-    pass
-"""
 
 #page_sequence = [intro, Seller1_1, WaitForOffers, Buyer1_1, Results1_1, 
  #                waitForPrices, buyer1, seller2, ResultsWaitPage, Results]

@@ -24,17 +24,42 @@ class Constants(BaseConstants):
 class Subsession(BaseSubsession):
     def creating_session(self):
         self.group_randomly()
-        numBuyers = 0
+ 
 
-        for i in self.get_players():
-            i.money = Constants.config[0][self.round_number - 1]["end"]
+        for p in self.get_players():
+            p.money = Constants.config[0][self.round_number - 1]["end"]
+            p.cost = random.randint(10, 100)
+            p.benefits = Constants.baseBenefits     # Default to 100
 
-            if numBuyers < 1:
-                numBuyers += 1
-                i.buyer = True
-            else:
-                i.buyer = False
+            # Initialization of default values
+            p.sold = False
+            p.profit = 0
 
+            # p.score = 0
+            mode = Constants.config[0][self.round_number - 1]["mode"]
+            randomTerm = random.randint(-5, 5)
+            if mode == 4:   # Auction 3: Reference Price 1
+                p.refPrice = p.cost + randomTerm
+            if mode == 3:
+                p.price = p.cost + randomTerm + 15
+            if mode == 2:
+                variance = [1,3,8,12]
+                p.priceCap = p.cost + random.choice(variance) + randomTerm
+            if mode == 1:
+                p.priceCap = p.cost + randomTerm + 5
+            if mode == 5:
+                p.estimatedCost = p.cost + randomTerm
+                
+                
+
+                
+
+
+                
+
+            
+            # Note: For right now, markup is set to 8!!
+            
 
 class Group(BaseGroup):
     # String consisting of all offers made by sellers(that will eventually be
@@ -49,6 +74,7 @@ class Player(BasePlayer):
     score = models.FloatField()
 
     cost = models.IntegerField()
+    estimatedCost = models.IntegerField()
     sold = models.BooleanField()
     offer = models.FloatField()
     profit = models.FloatField()
