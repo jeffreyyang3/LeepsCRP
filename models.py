@@ -3,6 +3,7 @@ from otree.api import (
     Currency as c, currency_range
 )
 import random
+import csv
 from . import config as config_py
 
 
@@ -24,11 +25,14 @@ class Constants(BaseConstants):
 class Subsession(BaseSubsession):
     def creating_session(self):
         self.group_randomly()
+        f = open("LeepsCRP/Draws4.csv")
+        drawsData = list(csv.DictReader(f))
+        
  
 
         for p in self.get_players():
             p.money = Constants.config[0][self.round_number - 1]["end"]
-            p.cost = random.randint(10, 100)
+            p.cost = int(drawsData[8 * (self.round_number - 1) + (p.id_in_group - 1)]["Cost"])
             p.benefits = Constants.baseBenefits     # Default to 100
 
             # Initialization of default values
@@ -49,6 +53,8 @@ class Subsession(BaseSubsession):
                 p.priceCap = p.cost + randomTerm + 5
             if mode == 5:
                 p.estimatedCost = p.cost + randomTerm
+
+        f.close()
                 
                 
 

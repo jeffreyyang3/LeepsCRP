@@ -6,25 +6,7 @@ import random
 from operator import itemgetter
 
 class intro(Page):
-    def is_displayed(self):
-        return True
-
-    def before_next_page(self):
-        # self.group.offers = ""
-
-        for p in self.group.get_players():
-            p.cost = random.randint(10, 100)
-            p.benefits = Constants.baseBenefits     # Default to 100
-
-            # Initialization of default values
-            p.sold = False
-            p.profit = 0
-
-            # p.score = 0
-
-            randomTerm = random.randint(-5, 5)
-            # Note: For right now, markup is set to 8!!
-            p.priceCap = p.cost + randomTerm + 8
+    pass
 
 
 class BuyBenefits(Page):
