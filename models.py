@@ -41,7 +41,10 @@ class Subsession(BaseSubsession):
 
             # p.score = 0
             mode = Constants.config[0][self.round_number - 1]["mode"]
-            randomTerm = random.randint(-5, 5)
+            cont = drawsData[8 * (self.round_number - 1) +
+                             (p.id_in_group - 1)]["randomInput"]
+            randomTerm = int(-5 + 10 * float(cont))
+   
             if mode == 4:   # Auction 3: Reference Price 1
                 p.refPrice = p.cost + randomTerm
             if mode == 3:
