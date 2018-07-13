@@ -25,7 +25,7 @@ class Constants(BaseConstants):
 class Subsession(BaseSubsession):
     def creating_session(self):
         self.group_randomly()
-        f = open("LeepsCRP/Draws4.csv")
+        f = open("LeepsCRP/draws/Draws4.csv") #hardcoded file name for now
         drawsData = list(csv.DictReader(f))
         
  
