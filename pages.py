@@ -6,7 +6,8 @@ import random
 from operator import itemgetter
 
 class intro(Page):
-    pass
+    def is_displayed(self):
+        return self.round_number == 1
 
 
 class BuyBenefits(Page):
@@ -27,27 +28,21 @@ class BuyBenefits(Page):
 
         player.benefits_purchased = 0
 
+        print("Mode:", config[0][self.round_number - 1]["mode"])
+
         # Add purchased benefits to total amount of player's money
         # Player decided to purchase 10 benefits points for 2/4 ECUs
         if player.benefits_choice == 1:
             player.money -= 2
             player.benefits_purchased = 10
-            # player.benefits += player.benefits_purchased
 
         elif player.benefits_choice == 2:
             player.money -= 6
             player.benefits_purchased = 20
-            # player.benefits += player.benefits_purchased
 
         player.benefits += player.benefits_purchased
         # And if player.choice equals 0, the player didn't purchase any
         # additional benefits
-
-        # print("Player's benefits are now:", player.benefits)
-
-  
-
-        
 
 
 # Auction 1.1: Price Cap with Participation
@@ -62,7 +57,6 @@ class Seller1_1(Page):
         config = Constants.config
         mode = config[0][self.round_number - 1]["mode"]
 
-        # print("Auction 1: Price Cap 1")
         return mode == 1
 
     def before_next_page(self):
@@ -81,7 +75,6 @@ class WaitForOffers(WaitPage):
         config = Constants.config
         mode = config[0][self.round_number - 1]["mode"]
 
-        # print("Auction 1: Price Cap 1, Waiting for Offers")
         return mode == 1
 
     def after_all_players_arrive(self):
@@ -139,7 +132,6 @@ class Buyer1_1(Page):
         config = Constants.config
         mode = config[0][self.round_number - 1]["mode"]
 
-        # print("Auction 1: Price Cap 1 Buyer Page")
         return mode == 1
 
     def vars_for_template(self):
@@ -151,8 +143,6 @@ class Results1_1(Page):
     def is_displayed(self):
         config = Constants.config
         mode = config[0][self.round_number - 1]["mode"]
-
-        # print("Auction 1: Price Cap 1")
 
         return mode == 1
 
@@ -166,16 +156,11 @@ class Seller3_1(Page):
         config = Constants.config
         mode = config[0][self.round_number - 1]["mode"]
 
-        # print("Auction 3: Reference Price 1")
-
         return mode == 4
 
     def before_next_page(self):
         player = self.player
         group = self.group
-
-        for y in group.get_players():
-            print("player score in bef next pg is before setting val is:", y.score)
 
         # Add player's offer to the full string of offers
         if player.participate:
@@ -187,17 +172,12 @@ class Seller3_1(Page):
             print("player_score_string is:", player_score_string)
 
             group.offers += player_score_string + " "
-            print("Player's score is right before exiting if statement:", player.score)
 
-        for x in group.get_players():
-            print("player score in bef next pg is:", x.score)
 
 class WaitForOffers3_1(WaitPage):
     def is_displayed(self):
         config = Constants.config
         mode = config[0][self.round_number - 1]["mode"]
-
-        # print("Auction 3: Reference Price 1, Waiting for Offers")
 
         return mode == 4 or mode == 5
 
@@ -205,15 +185,6 @@ class WaitForOffers3_1(WaitPage):
         group = self.group
         # Convert offer string into a list
         score_list = group.offers.split(" ")
-
-                             
-                
-        
-
-        for x in group.get_players():
-            print("player score in dict beg is:", x.score)
-
-        
 
         # Remove last element of array which is an empty string
         if score_list[-1] == "":
@@ -231,7 +202,6 @@ class WaitForOffers3_1(WaitPage):
             player_info = {}
             player_info["id"] = int(id)
             player_info["score"] = float(player_score)
-            print("Inside dictionary, player score is:", player_score)
             final_scores_list.append(player_info)
 
         # Sort list of dictionaries according to each dictionary's offer in
@@ -253,8 +223,6 @@ class WaitForOffers3_1(WaitPage):
         print("Chosen scores are: ")
         print(chosen_scores)
 
-        # print("Auction 3: Reference Price 1, Buyer Page")
-
         for player in chosen_scores:
             for p in group.get_players():
                 if player["id"] == p.id_in_group:
@@ -265,13 +233,12 @@ class WaitForOffers3_1(WaitPage):
     def vars_for_template(self):
         pass
 
+
 class Buyer3_1(Page):
     def is_displayed(self):
         config = Constants.config
         player = self.player
         mode = config[0][self.round_number - 1]["mode"]
-
-        # print("Auction 3: Reference Price 1, Buyer Page")
 
         return mode == 4
 
@@ -281,12 +248,7 @@ class Results3_1(Page):
         config = Constants.config
         mode = config[0][self.round_number - 1]["mode"]
 
-        # print("Auction 3: Reference Price 1, Results Page")
-
         return mode == 4
 
-
-#page_sequence = [intro, Seller1_1, WaitForOffers, Buyer1_1, Results1_1, 
- #                waitForPrices, buyer1, seller2, ResultsWaitPage, Results]
 page_sequence = [intro, BuyBenefits, Seller1_1, WaitForOffers, Buyer1_1, Results1_1,
                  Seller3_1, WaitForOffers3_1, Buyer3_1, Results3_1]

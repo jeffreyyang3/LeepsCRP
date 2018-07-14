@@ -27,8 +27,6 @@ class Subsession(BaseSubsession):
         self.group_randomly()
         f = open("LeepsCRP/draws/Draws4.csv") #hardcoded file name for now
         drawsData = list(csv.DictReader(f))
-        
- 
 
         for p in self.get_players():
             p.money = Constants.config[0][self.round_number - 1]["end"]
@@ -58,20 +56,10 @@ class Subsession(BaseSubsession):
                 p.estimatedCost = p.cost + randomTerm
 
         f.close()
-                
-                
 
-                
-
-
-                
-
-            
-            # Note: For right now, markup is set to 8!!
-            
 
 class Group(BaseGroup):
-    # String consisting of all offers made by sellers(that will eventually be
+    # String consisting of all offers made by sellers (that will eventually be
     # converted into a list
     offers = models.StringField(initial="")
     
@@ -105,17 +93,3 @@ class Player(BasePlayer):
 
     qualityIncrease = models.CharField(choices=['No increase','increase bit', 'increase lot'], widget=widgets.RadioSelectHorizontal())
     benefitIncrease = models.CharField(choices=['No increase','increase bit', 'increase lot'], widget=widgets.RadioSelectHorizontal())
-
-
-
-
-
-
-
-
-
-
-
-
-
-
