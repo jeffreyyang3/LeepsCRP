@@ -146,6 +146,103 @@ class Results1_1(Page):
 
         return mode == 1
 
+# Auction 2: Price Cap 2
+class Seller2_2(Page):
+    form_model = 'player'
+    form_fields = ['participate', 'offer']
+
+    def offer_max(self):
+        return self.player.priceCap
+
+    def is_displayed(self):
+        config = Constants.config
+        mode = config[0][self.round_number - 1]["mode"]
+
+        return mode == 3
+
+    def before_next_page(self):
+        player = self.player
+        group = self.group
+
+        # Add player's offer to the full string of offers
+        if player.participate:
+            player_offer_string = str(player.id_in_group) + "=" + str(
+                player.offer)
+
+            group.offers += player_offer_string + " "
+
+class WaitForOffers2_2(WaitPage):
+    def is_displayed(self):
+        config = Constants.config
+        mode = config[0][self.round_number - 1]["mode"]
+
+        return mode == 3
+
+    def after_all_players_arrive(self):
+        group = self.group
+
+        # Convert offer string into a list
+        offer_list = group.offers.split(" ")
+
+        # Remove last element of array which is an empty string
+        if offer_list[-1] == "":
+            del [offer_list[-1]]
+
+        offer_dict = dict(s.split("=") for s in offer_list)
+
+        # List of dictionaries, each dictionary representing a player who made
+        # an offer
+        final_offers_list = []
+
+        # Create a new dictionary representing key info for each player that
+        # made an offer that will later be added to a list
+        for id, player_offer in offer_dict.items():
+            player_info = {}
+            player_info["id"] = int(id)
+            player_info["offer"] = float(player_offer)
+            final_offers_list.append(player_info)
+
+        # Sort list of dictionaries according to each dictionary's offer in
+        # increasing order
+        sorted_final_offers_list = sorted(final_offers_list,
+                                          key=itemgetter("offer"))
+        print("Sorted offers list is: ")
+        print(sorted_final_offers_list)
+
+        # NOTE: Only top 2 offers are taken(instead of 8) right now for
+        # testing purposes
+        if len(sorted_final_offers_list) <= 2:
+            chosen_offers = sorted_final_offers_list[:]
+        else:
+            # NOTE: Only top 2 offers are taken (instead of 8) right now for
+            # testing purposes
+            chosen_offers = sorted_final_offers_list[:2]
+
+        print("Chosen offers are: ")
+        print(chosen_offers)
+
+        for player in chosen_offers:
+            for p in group.get_players():
+                if player["id"] == p.id_in_group:
+                    p.sold = True
+                    p.profit = p.offer - p.cost
+                    p.money = p.money - p.cost + p.offer
+
+
+class Buyer2_2(Page):
+    def is_displayed(self):
+        config = Constants.config
+        mode = config[0][self.round_number - 1]["mode"]
+
+        return mode == 3
+
+
+class Results2_2(Page):
+    def is_displayed(self):
+        config = Constants.config
+        mode = config[0][self.round_number - 1]["mode"]
+
+        return mode == 3
 
 # Auction 3: Reference Price 1
 class Seller3_1(Page):
@@ -251,4 +348,5 @@ class Results3_1(Page):
         return mode == 4
 
 page_sequence = [intro, BuyBenefits, Seller1_1, WaitForOffers, Buyer1_1, Results1_1,
+                 Seller2_2, WaitForOffers2_2, Buyer2_2, Results2_2,
                  Seller3_1, WaitForOffers3_1, Buyer3_1, Results3_1]

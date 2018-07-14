@@ -2,9 +2,12 @@ import random
 
 
 data = [
-	# 1 will be auction 1 price cap 1, 2 will be auction 1 participation
-	# 3 will be auc 2 price cap 2 and 4 will be auction 3 ref price 1
-	# 5 will be auc 4 ref price 2
+	# Mode Keys
+	#   1: Auction 1 Price Cap 1
+	#   2: Auction 1.1 Price Cap with Participation
+	# 	3: Auction 2 Price Cap 2
+	#   4: Auction 3 Reference Price 1
+	# 	5: Auction 4 Reference Price 2
 	[
 		{"priceBase": 200, "end": 200, "variance": [1, 3, 5, 8, 12, 15], "qualityBase": 100, "noise": 10, "allowedMarkup": 1.4, "mode": 4},
 		{"priceBase": 200, "end": 200, "variance": [1, 3, 5, 8, 12, 15], "qualityBase": 100, "noise": 10, "allowedMarkup": 1.4, "mode": 1},
