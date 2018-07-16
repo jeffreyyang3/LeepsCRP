@@ -108,6 +108,8 @@ class Player(BasePlayer):
     priceCap = models.FloatField()
     refPrice = models.IntegerField()
 
+    neighbor_avg_offer = models.FloatField()
+
     oppCost = models.FloatField()
     participate = models.BooleanField(choices=[[True, "Yes"], [False, "No"]], widget=widgets.RadioSelectHorizontal())
     unitPrice = models.FloatField()

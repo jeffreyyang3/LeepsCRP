@@ -5,6 +5,10 @@ from random import *
 import random
 from operator import itemgetter
 
+# Note: Much of the code below can be refactored. However, I think it's best to
+# do that when we're sure that the functionality for each auction format is
+# correct.
+
 class intro(Page):
     def is_displayed(self):
         return self.round_number == 1
@@ -261,6 +265,8 @@ class Seller3_1(Page):
 
         # Add player's offer to the full string of offers
         if player.participate:
+
+            # Is this score calculation correct?
             player.score = 100 + player.benefits_purchased - 50 * (player.offer / player.refPrice) - player.refPrice
 
             print("Player's score is:", player.score)
@@ -276,7 +282,7 @@ class WaitForOffers3_1(WaitPage):
         config = Constants.config
         mode = config[0][self.round_number - 1]["mode"]
 
-        return mode == 4 or mode == 5
+        return mode == 4
 
     def after_all_players_arrive(self):
         group = self.group
@@ -347,6 +353,124 @@ class Results3_1(Page):
 
         return mode == 4
 
+
+class Seller4_2(Page):
+    form_model = 'player'
+    form_fields = ['participate', 'offer']
+
+    def is_displayed(self):
+        config = Constants.config
+        mode = config[0][self.round_number - 1]["mode"]
+
+        return mode == 5
+
+    def before_next_page(self):
+        player = self.player
+        group = self.group
+
+        # Add player's offer to the full string of offers
+        if player.participate:
+            player_offer_string = str(player.id_in_group) + "=" + str(
+                player.offer)
+
+            group.offers += player_offer_string + " "
+
+
+class WaitForOffers4_2(WaitPage):
+    def is_displayed(self):
+        config = Constants.config
+        mode = config[0][self.round_number - 1]["mode"]
+
+        return mode == 5
+
+    def after_all_players_arrive(self):
+        group = self.group
+
+        # Convert offer string into a list
+        offer_list = group.offers.split(" ")
+
+        # Remove last element of array which is an empty string
+        if offer_list[-1] == "":
+            del [offer_list[-1]]
+
+        # In the dictionary, the player's ID is the key and the offer is the value
+        offer_dict = dict(s.split("=") for s in offer_list)
+        print("offer_dict is:" + str(offer_dict))
+
+
+        # List of dictionaries, each dictionary representing a player who made
+        # an offer
+        final_offers_list = []
+
+        # Create a new dictionary representing key info for each player that
+        # made an offer that will later be added to a list
+        for id, player_offer in offer_dict.items():
+            player_info = {}
+            player_info["id"] = int(id)
+            player_info["offer"] = float(player_offer)
+
+            currentPlayer = group.get_player_by_id(id)
+            player_info["est_cost"] = currentPlayer.estimatedCost
+
+            """for player in group.get_players():
+                if player.id_in_group == int(id):
+                    print("match!!")
+                    player_info["est_cost"] = player.estimatedCost
+            """
+
+            final_offers_list.append(player_info)
+
+        # Sort list of dictionaries according to each dictionary's offer in
+        # increasing order
+        print('final offers list is: ')
+        print(final_offers_list)
+
+        sorted_final_offers_list = sorted(final_offers_list,
+                                          key=itemgetter("est_cost"))
+
+        print("Sorted offers list is: ")
+        print(sorted_final_offers_list)
+
+        # Next task: figure out the assignment of the avg_neighbor_offer for
+        # each player
+
+        # NOTE: For testing purposes, neighbor's average offer will be the
+        # average offer of the *2* participating bidders that are closest to you
+        # in terms of estimated costs
+
+        for i in range(len(sorted_final_offers_list)):
+            pass
+
+
+class Buyer4_2(Page):
+    pass
+
+class Results4_2(Page):
+    pass
+
 page_sequence = [intro, BuyBenefits, Seller1_1, WaitForOffers, Buyer1_1, Results1_1,
                  Seller2_2, WaitForOffers2_2, Buyer2_2, Results2_2,
-                 Seller3_1, WaitForOffers3_1, Buyer3_1, Results3_1]
+                 Seller3_1, WaitForOffers3_1, Buyer3_1, Results3_1,
+                 Seller4_2, WaitForOffers4_2, Buyer4_2, Results4_2]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

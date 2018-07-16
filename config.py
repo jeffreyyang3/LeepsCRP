@@ -1,6 +1,7 @@
 import random
 
 
+"""
 data = [
 	# Mode Keys
 	#   1: Auction 1 Price Cap 1
@@ -12,9 +13,17 @@ data = [
 		{"priceBase": 200, "end": 200, "variance": [1, 3, 5, 8, 12, 15], "qualityBase": 100, "noise": 10, "allowedMarkup": 1.4, "mode": 4},
 		{"priceBase": 200, "end": 200, "variance": [1, 3, 5, 8, 12, 15], "qualityBase": 100, "noise": 10, "allowedMarkup": 1.4, "mode": 1},
 		{"priceBase": 200, "end": 200, "variance": [1, 3, 5, 8, 12, 15], "qualityBase": 100, "noise": 10, "allowedMarkup": 1.4, "mode": 3},
+		{"priceBase": 200, "end": 200, "variance": [1, 3, 5, 8, 12, 15], "qualityBase": 100, "noise": 10, "allowedMarkup": 1.4, "mode": 5}
+
 	]
 ]
+"""
 
+data = [
+	[
+		{"priceBase": 200, "end": 200, "variance": [1, 3, 5, 8, 12, 15], "qualityBase": 100, "noise": 10, "allowedMarkup": 1.4, "mode": 5}
+	]
+]
 
 def shuffle(data):
 	return [random.sample(data[0], k=len(data[0]))]
