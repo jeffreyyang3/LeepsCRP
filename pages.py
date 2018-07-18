@@ -438,8 +438,109 @@ class WaitForOffers4_2(WaitPage):
         # average offer of the *2* participating bidders that are closest to you
         # in terms of estimated costs
 
+        # How many neighbors's offers will be used to calc. average
+        max_neighbor_cnt = 2
+        # neighbors_counted = 0
+
         for i in range(len(sorted_final_offers_list)):
-            pass
+            neighbor_avg = 0
+            neighbors_counted = 0
+
+            player_dict = sorted_final_offers_list[i]
+            player_id = player_dict["id"]
+            currentPlayer = group.get_player_by_id(player_id)
+
+            # Case 1: First element in the list
+            if i == 0:
+                # Take the next 2 elements
+                neighbors = sorted_final_offers_list[1: 1 + max_neighbor_cnt]
+
+                # print("list slice for 1st element is: ", neighbors)
+
+                for neighbor_dict in neighbors:
+                    neighbor = group.get_player_by_id(neighbor_dict["id"])
+                    neighbor_avg += neighbor.offer
+
+                neighbor_avg /= max_neighbor_cnt
+
+            # Case 2: Last element in the list
+            elif i == len(sorted_final_offers_list) - 1:
+                # Take the 3rd to last and 2nd to last elements
+                neighbors = sorted_final_offers_list[
+                            (-1 * max_neighbor_cnt - 1): -1]
+
+                # print("list slice for last element is: ", neighbors)
+
+                for neighbor_dict in neighbors:
+                    neighbor = group.get_player_by_id(neighbor_dict["id"])
+                    neighbor_avg += neighbor.offer
+
+                neighbor_avg /= max_neighbor_cnt
+
+            else:
+                print("Somewhere in the middle of the list!")
+
+                left_neigh_index = i - 1
+                right_neigh_index = i + 1
+
+                while neighbors_counted < max_neighbor_cnt:
+                    # Check for when adding or subtracting to index, left_index
+                    # or right_index is out of bounds. This means the remainder of
+                    # the opposite end of the list should be taken into account
+
+                    print("left_neigh_index is:", left_neigh_index)
+                    print("right_neigh_index is:", right_neigh_index)
+
+                    if left_neigh_index < 0:
+                        remaining_neighbors = sorted_final_offers_list[right_neigh_index : (max_neighbor_cnt - neighbors_counted) + i + 1]
+
+                        for p in remaining_neighbors:
+                            next_neigh = group.get_player_by_id(p["id"])
+                            neighbor_avg += next_neigh.offer
+                            neighbors_counted += 1
+
+                        print("breaking out of loop!")
+                        break
+
+                    if right_neigh_index >= len(sorted_final_offers_list):
+                        remaining_neighbors = sorted_final_offers_list[left_neigh_index - (max_neighbor_cnt - neighbors_counted) + 1: (left_neigh_index + 1)]
+
+                        for p in remaining_neighbors:
+                            next_neigh = group.get_player_by_id(p["id"])
+                            neighbor_avg += next_neigh.offer
+                            neighbors_counted += 1
+
+                        print("breaking out of loop! #2")
+                        break
+
+                    left_neighbor = group.get_player_by_id(sorted_final_offers_list[left_neigh_index]["id"])
+                    right_neighbor = group.get_player_by_id(sorted_final_offers_list[right_neigh_index]["id"])
+
+                    # Difference in est_cost between current player being looked at
+                    # and his/her left neighbor in the list
+                    left_neigh_diff = abs(currentPlayer.estimatedCost - left_neighbor.estimatedCost)
+                    right_neigh_diff = abs(currentPlayer.estimatedCost - right_neighbor.estimatedCost)
+
+                    print("left diff is:", left_neigh_diff)
+                    print("right diff is:", right_neigh_diff)
+
+                    # Left neighbor has a closer estimated cost than the right
+                    # neighbor
+                    if left_neigh_diff <= right_neigh_diff:
+                        neighbor_avg += left_neighbor.offer
+                        left_neigh_index -= 1
+
+                    # Right neighbor has a closer estimated cost than the left
+                    # neighbor
+                    else:
+                        neighbor_avg += right_neighbor.offer
+                        right_neigh_index += 1
+
+                    neighbors_counted += 1
+
+                neighbor_avg /= max_neighbor_cnt
+
+            print("Player in pos", i, "in list has avg", neighbor_avg)
 
 
 class Buyer4_2(Page):
