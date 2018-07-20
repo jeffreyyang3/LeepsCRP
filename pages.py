@@ -29,10 +29,13 @@ class BuyBenefits(Page):
     def before_next_page(self):
         config = Constants.config
         player = self.player
+        group = self.group
 
         player.benefits_purchased = 0
 
         print("Mode:", config[0][self.round_number - 1]["mode"])
+
+        print("group.offers inside before_next_page is:", group.offers)
 
         # Add purchased benefits to total amount of player's money
         # Player decided to purchase 10 benefits points for 2/4 ECUs
@@ -82,6 +85,7 @@ class WaitForOffers(WaitPage):
         return mode == 1
 
     def after_all_players_arrive(self):
+        num_bidders_chosen = Constants.num_bidders_chosen
         group = self.group
 
         # Convert offer string into a list
@@ -111,14 +115,14 @@ class WaitForOffers(WaitPage):
         print("Sorted offers list is: ")
         print(sorted_final_offers_list)
 
-        # NOTE: Only top 2 offers are taken(instead of 8) right now for
-        # testing purposes
-        if len(sorted_final_offers_list) <= 2:
+        # NOTE: Only top num_bidders_chosen offers are taken(instead of 8) right
+        # now for testing purposes
+        if len(sorted_final_offers_list) <= num_bidders_chosen:
             chosen_offers = sorted_final_offers_list[:]
         else:
-            # NOTE: Only top 2 offers are taken (instead of 8) right now for
-            # testing purposes
-            chosen_offers = sorted_final_offers_list[:2]
+            # NOTE: Only top num_bidders_chosen offers are taken (instead of 8)
+            # right now for testing purposes
+            chosen_offers = sorted_final_offers_list[:num_bidders_chosen]
 
         print("Chosen offers are: ")
         print(chosen_offers)
@@ -183,6 +187,7 @@ class WaitForOffers2_2(WaitPage):
         return mode == 3
 
     def after_all_players_arrive(self):
+        num_bidders_chosen = Constants.num_bidders_chosen
         group = self.group
 
         # Convert offer string into a list
@@ -213,14 +218,14 @@ class WaitForOffers2_2(WaitPage):
         print("Sorted offers list is: ")
         print(sorted_final_offers_list)
 
-        # NOTE: Only top 2 offers are taken(instead of 8) right now for
+        # NOTE: Only top num_bidders_chosen offers are taken(instead of 8) right now for
         # testing purposes
-        if len(sorted_final_offers_list) <= 2:
+        if len(sorted_final_offers_list) <= num_bidders_chosen:
             chosen_offers = sorted_final_offers_list[:]
         else:
-            # NOTE: Only top 2 offers are taken (instead of 8) right now for
+            # NOTE: Only top num_bidders_chosen offers are taken (instead of 8) right now for
             # testing purposes
-            chosen_offers = sorted_final_offers_list[:2]
+            chosen_offers = sorted_final_offers_list[:num_bidders_chosen]
 
         print("Chosen offers are: ")
         print(chosen_offers)
@@ -285,6 +290,7 @@ class WaitForOffers3_1(WaitPage):
         return mode == 4
 
     def after_all_players_arrive(self):
+        num_bidders_chosen = Constants.num_bidders_chosen
         group = self.group
         # Convert offer string into a list
         score_list = group.offers.split(" ")
@@ -314,14 +320,14 @@ class WaitForOffers3_1(WaitPage):
         print("Sorted scores list is: ")
         print(sorted_final_scores_list)
 
-        # NOTE: Only lowest 2 scores are taken (instead of 8) right now for
+        # NOTE: Only lowest num_bidders_chosen scores are taken (instead of 8) right now for
         # testing purposes
-        if len(sorted_final_scores_list) <= 2:
+        if len(sorted_final_scores_list) <= num_bidders_chosen:
             chosen_scores = sorted_final_scores_list[:]
         else:
-            # NOTE: Only top 2 offers are taken (instead of 8) right now for
+            # NOTE: Only top num_bidders_chosen offers are taken (instead of 8) right now for
             # testing purposes
-            chosen_scores = sorted_final_scores_list[:2]
+            chosen_scores = sorted_final_scores_list[:num_bidders_chosen]
 
         print("Chosen scores are: ")
         print(chosen_scores)
@@ -370,10 +376,14 @@ class Seller4_2(Page):
 
         # Add player's offer to the full string of offers
         if player.participate:
+            print("player participating")
             player_offer_string = str(player.id_in_group) + "=" + str(
                 player.offer)
 
-            group.offers += player_offer_string + " "
+            print("player_offer_string for player", player.id_in_group, "is", player_offer_string)
+
+            group.offers += (player_offer_string + " ")
+            print("group.offers is now:", group.offers)
 
 
 class WaitForOffers4_2(WaitPage):
@@ -384,10 +394,14 @@ class WaitForOffers4_2(WaitPage):
         return mode == 5
 
     def after_all_players_arrive(self):
+        num_bidders_chosen = Constants.num_bidders_chosen
         group = self.group
+        player = self.player
 
         # Convert offer string into a list
         offer_list = group.offers.split(" ")
+        print('group.offers is:', group.offers)
+        print("offer list is:", offer_list)
 
         # Remove last element of array which is an empty string
         if offer_list[-1] == "":
@@ -411,12 +425,6 @@ class WaitForOffers4_2(WaitPage):
 
             currentPlayer = group.get_player_by_id(id)
             player_info["est_cost"] = currentPlayer.estimatedCost
-
-            """for player in group.get_players():
-                if player.id_in_group == int(id):
-                    print("match!!")
-                    player_info["est_cost"] = player.estimatedCost
-            """
 
             final_offers_list.append(player_info)
 
@@ -454,8 +462,6 @@ class WaitForOffers4_2(WaitPage):
             if i == 0:
                 # Take the next 2 elements
                 neighbors = sorted_final_offers_list[1: 1 + max_neighbor_cnt]
-
-                # print("list slice for 1st element is: ", neighbors)
 
                 for neighbor_dict in neighbors:
                     neighbor = group.get_player_by_id(neighbor_dict["id"])
@@ -540,7 +546,31 @@ class WaitForOffers4_2(WaitPage):
 
                 neighbor_avg /= max_neighbor_cnt
 
+            currentPlayer.refPrice = neighbor_avg
+            currentPlayer.neighbor_avg_offer = neighbor_avg
+
             print("Player in pos", i, "in list has avg", neighbor_avg)
+
+        # Set the scores for each player in the group
+        for s in sorted_final_offers_list:
+            temp = group.get_player_by_id(s["id"])
+            temp.score = 100 + temp.benefits_purchased - 25 * (temp.offer / temp.refPrice) - (temp.refPrice / 2)
+            s["score"] = temp.score
+
+        sorted_scores_list = sorted(sorted_final_offers_list, key=itemgetter("score"))
+
+        print("sorted final scores list:", sorted_scores_list)
+
+        # NOTE: Will only pick num_bidders_chosen lowest scores (for now) for testing purposes
+        chosen_offers = sorted_scores_list[:num_bidders_chosen]
+
+        print('chosen_offers is:', chosen_offers)
+
+        for player in chosen_offers:
+            temp = group.get_player_by_id(player["id"])
+            temp.sold = True
+            temp.profit = temp.offer - temp.cost
+            temp.money = temp.money - temp.profit
 
 
 class Buyer4_2(Page):

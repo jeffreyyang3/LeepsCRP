@@ -15,14 +15,15 @@ CRP_2018
 
 class Constants(BaseConstants):
     name_in_url = 'LeepsCRP'
-    # players_per_group = None
     players_per_group = 3
-
-
     num_rounds = 1
     config = config_py.export_data()
     num_rounds = len(config[0])
     baseBenefits = 100
+
+    # The buyer will purchase from the num_bidders_chosen bidders with the lowest
+    # scores
+    num_bidders_chosen = 2
 
 
 class Subsession(BaseSubsession):
@@ -88,6 +89,7 @@ class Group(BaseGroup):
     # String consisting of all offers made by sellers (that will eventually be
     # converted into a list
     offers = models.StringField(initial="")
+    # offers = models.StringField()
     
 
 class Player(BasePlayer):
