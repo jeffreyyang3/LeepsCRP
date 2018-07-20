@@ -5,7 +5,7 @@ from random import *
 import random
 from operator import itemgetter
 
-# Note: Much of the code below can be refactored. However, I think it's best to
+# Note: Much of the code below can be refactored. However, it'd be best to
 # do that when we're sure that the functionality for each auction format is
 # correct.
 
@@ -26,16 +26,14 @@ class BuyBenefits(Page):
 
         return choices
 
+
     def before_next_page(self):
         config = Constants.config
         player = self.player
-        group = self.group
 
         player.benefits_purchased = 0
 
         print("Mode:", config[0][self.round_number - 1]["mode"])
-
-        print("group.offers inside before_next_page is:", group.offers)
 
         # Add purchased benefits to total amount of player's money
         # Player decided to purchase 10 benefits points for 2/4 ECUs
@@ -48,8 +46,6 @@ class BuyBenefits(Page):
             player.benefits_purchased = 20
 
         player.benefits += player.benefits_purchased
-        # And if player.choice equals 0, the player didn't purchase any
-        # additional benefits
 
 
 # Auction 1.1: Price Cap with Participation
@@ -60,15 +56,17 @@ class Seller1_1(Page):
     def offer_max(self):
         return self.player.priceCap
 
+
     def is_displayed(self):
         config = Constants.config
         mode = config[0][self.round_number - 1]["mode"]
 
         return mode == 1
 
+
     def before_next_page(self):
-        player = self.player
         group = self.group
+        player = self.player
 
         # Add player's offer to the full string of offers
         if player.participate:
@@ -84,6 +82,7 @@ class WaitForOffers(WaitPage):
 
         return mode == 1
 
+
     def after_all_players_arrive(self):
         num_bidders_chosen = Constants.num_bidders_chosen
         group = self.group
@@ -91,7 +90,7 @@ class WaitForOffers(WaitPage):
         # Convert offer string into a list
         offer_list = group.offers.split(" ")
 
-        # Remove last element of array which is an empty string
+        # Remove last element of the list (an empty string)
         if offer_list[-1] == "":
             del[offer_list[-1]]
 
@@ -115,7 +114,7 @@ class WaitForOffers(WaitPage):
         print("Sorted offers list is: ")
         print(sorted_final_offers_list)
 
-        # NOTE: Only top num_bidders_chosen offers are taken(instead of 8) right
+        # NOTE: Only top num_bidders_chosen offers are taken (instead of 8) right
         # now for testing purposes
         if len(sorted_final_offers_list) <= num_bidders_chosen:
             chosen_offers = sorted_final_offers_list[:]
@@ -128,11 +127,10 @@ class WaitForOffers(WaitPage):
         print(chosen_offers)
 
         for player in chosen_offers:
-            for p in group.get_players():
-                if player["id"] == p.id_in_group:
-                    p.sold = True
-                    p.profit = p.offer - p.cost
-                    p.money = p.money - p.cost + p.offer
+            chosenPlayer = group.get_player_by_id(player["id"])
+            chosenPlayer.sold = True
+            chosenPlayer.profit = chosenPlayer.offer - chosenPlayer.cost
+            chosenPlayer.money = chosenPlayer.money + chosenPlayer.profit
 
 
 class Buyer1_1(Page):
@@ -142,10 +140,6 @@ class Buyer1_1(Page):
 
         return mode == 1
 
-    def vars_for_template(self):
-        player = self.player
-        group = self.group
-
 
 class Results1_1(Page):
     def is_displayed(self):
@@ -153,6 +147,7 @@ class Results1_1(Page):
         mode = config[0][self.round_number - 1]["mode"]
 
         return mode == 1
+
 
 # Auction 2: Price Cap 2
 class Seller2_2(Page):
@@ -162,11 +157,13 @@ class Seller2_2(Page):
     def offer_max(self):
         return self.player.priceCap
 
+
     def is_displayed(self):
         config = Constants.config
         mode = config[0][self.round_number - 1]["mode"]
 
         return mode == 3
+
 
     def before_next_page(self):
         player = self.player
@@ -179,12 +176,14 @@ class Seller2_2(Page):
 
             group.offers += player_offer_string + " "
 
+
 class WaitForOffers2_2(WaitPage):
     def is_displayed(self):
         config = Constants.config
         mode = config[0][self.round_number - 1]["mode"]
 
         return mode == 3
+
 
     def after_all_players_arrive(self):
         num_bidders_chosen = Constants.num_bidders_chosen
@@ -231,11 +230,10 @@ class WaitForOffers2_2(WaitPage):
         print(chosen_offers)
 
         for player in chosen_offers:
-            for p in group.get_players():
-                if player["id"] == p.id_in_group:
-                    p.sold = True
-                    p.profit = p.offer - p.cost
-                    p.money = p.money - p.cost + p.offer
+            chosenPlayer = group.get_player_by_id(player["id"])
+            chosenPlayer.sold = True
+            chosenPlayer.profit = chosenPlayer.offer - chosenPlayer.cost
+            chosenPlayer.money = chosenPlayer.money + chosenPlayer.profit
 
 
 class Buyer2_2(Page):
@@ -253,6 +251,7 @@ class Results2_2(Page):
 
         return mode == 3
 
+
 # Auction 3: Reference Price 1
 class Seller3_1(Page):
     form_model = 'player'
@@ -264,17 +263,14 @@ class Seller3_1(Page):
 
         return mode == 4
 
+
     def before_next_page(self):
         player = self.player
         group = self.group
 
         # Add player's offer to the full string of offers
         if player.participate:
-
-            # Is this score calculation correct?
-            player.score = 100 + player.benefits_purchased - 50 * (player.offer / player.refPrice) - player.refPrice
-
-            print("Player's score is:", player.score)
+            player.score = 100 + player.benefits_purchased - 25 * (player.offer / player.refPrice) - (player.refPrice / 2)
 
             player_score_string = str(player.id_in_group) + "=" + str(player.score)
             print("player_score_string is:", player_score_string)
@@ -289,9 +285,11 @@ class WaitForOffers3_1(WaitPage):
 
         return mode == 4
 
+
     def after_all_players_arrive(self):
         num_bidders_chosen = Constants.num_bidders_chosen
         group = self.group
+
         # Convert offer string into a list
         score_list = group.offers.split(" ")
 
@@ -333,20 +331,15 @@ class WaitForOffers3_1(WaitPage):
         print(chosen_scores)
 
         for player in chosen_scores:
-            for p in group.get_players():
-                if player["id"] == p.id_in_group:
-                    p.sold = True
-                    p.profit = p.offer - p.cost
-                    p.money = p.money - p.cost + p.offer
-
-    def vars_for_template(self):
-        pass
+            chosenPlayer = group.get_player_by_id(player["id"])
+            chosenPlayer.sold = True
+            chosenPlayer.profit = chosenPlayer.offer - chosenPlayer.cost
+            chosenPlayer.money = chosenPlayer.money + chosenPlayer.profit
 
 
 class Buyer3_1(Page):
     def is_displayed(self):
         config = Constants.config
-        player = self.player
         mode = config[0][self.round_number - 1]["mode"]
 
         return mode == 4
@@ -370,20 +363,20 @@ class Seller4_2(Page):
 
         return mode == 5
 
+
     def before_next_page(self):
         player = self.player
         group = self.group
 
         # Add player's offer to the full string of offers
         if player.participate:
-            print("player participating")
+            print("Player", player.id_in_group, "participating")
             player_offer_string = str(player.id_in_group) + "=" + str(
                 player.offer)
 
             print("player_offer_string for player", player.id_in_group, "is", player_offer_string)
 
             group.offers += (player_offer_string + " ")
-            print("group.offers is now:", group.offers)
 
 
 class WaitForOffers4_2(WaitPage):
@@ -393,10 +386,10 @@ class WaitForOffers4_2(WaitPage):
 
         return mode == 5
 
+
     def after_all_players_arrive(self):
         num_bidders_chosen = Constants.num_bidders_chosen
         group = self.group
-        player = self.player
 
         # Convert offer string into a list
         offer_list = group.offers.split(" ")
@@ -410,7 +403,6 @@ class WaitForOffers4_2(WaitPage):
         # In the dictionary, the player's ID is the key and the offer is the value
         offer_dict = dict(s.split("=") for s in offer_list)
         print("offer_dict is:" + str(offer_dict))
-
 
         # List of dictionaries, each dictionary representing a player who made
         # an offer
@@ -475,8 +467,6 @@ class WaitForOffers4_2(WaitPage):
                 neighbors = sorted_final_offers_list[
                             (-1 * max_neighbor_cnt - 1): -1]
 
-                # print("list slice for last element is: ", neighbors)
-
                 for neighbor_dict in neighbors:
                     neighbor = group.get_player_by_id(neighbor_dict["id"])
                     neighbor_avg += neighbor.offer
@@ -484,8 +474,6 @@ class WaitForOffers4_2(WaitPage):
                 neighbor_avg /= max_neighbor_cnt
 
             else:
-                print("Somewhere in the middle of the list!")
-
                 left_neigh_index = i - 1
                 right_neigh_index = i + 1
 
@@ -505,7 +493,6 @@ class WaitForOffers4_2(WaitPage):
                             neighbor_avg += next_neigh.offer
                             neighbors_counted += 1
 
-                        print("breaking out of loop!")
                         break
 
                     if right_neigh_index >= len(sorted_final_offers_list):
@@ -516,7 +503,6 @@ class WaitForOffers4_2(WaitPage):
                             neighbor_avg += next_neigh.offer
                             neighbors_counted += 1
 
-                        print("breaking out of loop! #2")
                         break
 
                     left_neighbor = group.get_player_by_id(sorted_final_offers_list[left_neigh_index]["id"])
@@ -527,8 +513,8 @@ class WaitForOffers4_2(WaitPage):
                     left_neigh_diff = abs(currentPlayer.estimatedCost - left_neighbor.estimatedCost)
                     right_neigh_diff = abs(currentPlayer.estimatedCost - right_neighbor.estimatedCost)
 
-                    print("left diff is:", left_neigh_diff)
-                    print("right diff is:", right_neigh_diff)
+                    print("Left diff is:", left_neigh_diff)
+                    print("Right diff is:", right_neigh_diff)
 
                     # Left neighbor has a closer estimated cost than the right
                     # neighbor
@@ -562,22 +548,37 @@ class WaitForOffers4_2(WaitPage):
         print("sorted final scores list:", sorted_scores_list)
 
         # NOTE: Will only pick num_bidders_chosen lowest scores (for now) for testing purposes
-        chosen_offers = sorted_scores_list[:num_bidders_chosen]
 
-        print('chosen_offers is:', chosen_offers)
+        if len(sorted_scores_list) <= num_bidders_chosen:
+            chosen_scores = sorted_scores_list[:]
+        else:
+            chosen_scores = sorted_scores_list[:num_bidders_chosen]
 
-        for player in chosen_offers:
-            temp = group.get_player_by_id(player["id"])
-            temp.sold = True
-            temp.profit = temp.offer - temp.cost
-            temp.money = temp.money - temp.profit
+        print('chosen_scores is:', chosen_scores)
+
+        for player in chosen_scores:
+            chosenPlayer = group.get_player_by_id(player["id"])
+            chosenPlayer.sold = True
+            chosenPlayer.profit = chosenPlayer.offer - chosenPlayer.cost
+            chosenPlayer.money = chosenPlayer.money + chosenPlayer.profit
 
 
 class Buyer4_2(Page):
-    pass
+    def is_displayed(self):
+        config = Constants.config
+        player = self.player
+        mode = config[0][self.round_number - 1]["mode"]
+
+        return mode == 5
+
 
 class Results4_2(Page):
-    pass
+    def is_displayed(self):
+        config = Constants.config
+        player = self.player
+        mode = config[0][self.round_number - 1]["mode"]
+
+        return mode == 5
 
 page_sequence = [intro, BuyBenefits, Seller1_1, WaitForOffers, Buyer1_1, Results1_1,
                  Seller2_2, WaitForOffers2_2, Buyer2_2, Results2_2,

@@ -73,7 +73,6 @@ class Subsession(BaseSubsession):
                 p.priceCap = p.cost + random.choice(markups) + randomTerm
 
             elif mode == 3:
-                # p.price = p.cost + randomTerm + 15
                 p.priceCap = p.cost + randomTerm + 15
 
             elif mode == 4:
@@ -89,13 +88,10 @@ class Group(BaseGroup):
     # String consisting of all offers made by sellers (that will eventually be
     # converted into a list
     offers = models.StringField(initial="")
-    # offers = models.StringField()
-    
+
 
 class Player(BasePlayer):
     money = models.FloatField()
-    buyer = models.BooleanField()
-
     score = models.FloatField()
 
     cost = models.IntegerField()
@@ -105,21 +101,13 @@ class Player(BasePlayer):
     profit = models.FloatField()
 
     buyPrice = models.FloatField()
-
-    noise = models.IntegerField()
     priceCap = models.FloatField()
     refPrice = models.IntegerField()
 
     neighbor_avg_offer = models.FloatField()
 
-    oppCost = models.FloatField()
-    participate = models.BooleanField(choices=[[True, "Yes"], [False, "No"]], widget=widgets.RadioSelectHorizontal())
-    unitPrice = models.FloatField()
-    unitQuality = models.IntegerField()
-
+    participate = models.BooleanField(choices=[[True, "Yes"], [False, "No"]],
+                                      widget=widgets.RadioSelectHorizontal())
     benefits = models.IntegerField()
     benefits_purchased = models.IntegerField()
     benefits_choice = models.IntegerField(widget=widgets.RadioSelect)
-
-    qualityIncrease = models.CharField(choices=['No increase','increase bit', 'increase lot'], widget=widgets.RadioSelectHorizontal())
-    benefitIncrease = models.CharField(choices=['No increase','increase bit', 'increase lot'], widget=widgets.RadioSelectHorizontal())
