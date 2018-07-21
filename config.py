@@ -1,19 +1,17 @@
 import random
 
-
-data = [
-	# Mode Keys
+# Mode Keys
 	#   1: Auction 1 Price Cap 1
 	#   2: Auction 1.1 Price Cap with Participation
 	# 	3: Auction 2 Price Cap 2
 	#   4: Auction 3 Reference Price 1
 	# 	5: Auction 4 Reference Price 2
+data = [
 	[
-		{"priceBase": 200, "end": 200, "variance": [1, 3, 5, 8, 12, 15], "qualityBase": 100, "noise": 10, "allowedMarkup": 1.4, "mode": 4},
-		{"priceBase": 200, "end": 200, "variance": [1, 3, 5, 8, 12, 15], "qualityBase": 100, "noise": 10, "allowedMarkup": 1.4, "mode": 1},
-		{"priceBase": 200, "end": 200, "variance": [1, 3, 5, 8, 12, 15], "qualityBase": 100, "noise": 10, "allowedMarkup": 1.4, "mode": 3},
-		{"priceBase": 200, "end": 200, "variance": [1, 3, 5, 8, 12, 15], "qualityBase": 100, "noise": 10, "allowedMarkup": 1.4, "mode": 5}
-
+		{"priceBase": 200, "end": 200, "variance": [1, 3, 5, 8, 12, 15], "mode": 4},
+		{"priceBase": 200, "end": 200, "variance": [1, 3, 5, 8, 12, 15], "mode": 1},
+		{"priceBase": 200, "end": 200, "variance": [1, 3, 5, 8, 12, 15], "mode": 3},
+		{"priceBase": 200, "end": 200, "variance": [1, 3, 5, 8, 12, 15], "mode": 5}
 	]
 ]
 
