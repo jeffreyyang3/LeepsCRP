@@ -5,8 +5,8 @@ from random import *
 import random
 from operator import itemgetter
 
-# Note: Much of the code below can be refactored. However, it'd be best to
-# do that when we're sure that the functionality for each auction format is
+# Note: Much of the code below can be refactored. However, we should
+# do that only when we're sure that the functionality for each auction format is
 # correct.
 
 class intro(Page):
@@ -29,8 +29,8 @@ class BuyBenefits(Page):
 
     def before_next_page(self):
         config = Constants.config
-        player = self.player
 
+        player = self.player
         player.benefits_purchased = 0
 
         print("Mode:", config[0][self.round_number - 1]["mode"])
@@ -71,7 +71,6 @@ class Seller1_1(Page):
         # Add player's offer to the full string of offers
         if player.participate:
             player_offer_string = str(player.id_in_group) + "=" + str(player.offer)
-
             group.offers += player_offer_string + " "
 
 
@@ -107,26 +106,38 @@ class WaitForOffers(WaitPage):
             player_info["id"] = int(id)
             player_info["offer"] = float(player_offer)
             final_offers_list.append(player_info)
+        print("Unsorted offers list is: ", final_offers_list)
 
-        # Sort list of dictionaries according to each dictionary's offer in
+        # Calculation/creation of scores list that includes each player's score
+        # final_offers_list should be deleted later on, should only have
+        # final_scores_list
+        final_scores_list = final_offers_list[:]
+
+        for player_dict in final_scores_list:
+            currPlayer = group.get_player_by_id(player_dict["id"])
+            currPlayer.score = 100 + currPlayer.benefits_purchased - currPlayer.offer
+            player_dict["score"] = currPlayer.score
+
+        # Sort list of dictionaries according to each player's score in
         # increasing order
-        sorted_final_offers_list = sorted(final_offers_list, key=itemgetter("offer"))
-        print("Sorted offers list is: ")
-        print(sorted_final_offers_list)
+        sorted_final_scores_list = sorted(final_scores_list,
+                                          key=itemgetter("score"))
+        print("Sorted scores list is: ")
+        print(sorted_final_scores_list)
 
-        # NOTE: Only top num_bidders_chosen offers are taken (instead of 8) right
-        # now for testing purposes
-        if len(sorted_final_offers_list) <= num_bidders_chosen:
-            chosen_offers = sorted_final_offers_list[:]
+        # NOTE: Only lowest num_bidders_chosen scores are taken (instead of 8)
+        # right now for testing purposes
+        if len(sorted_final_scores_list) <= num_bidders_chosen:
+            chosen_scores = sorted_final_scores_list[:]
         else:
             # NOTE: Only top num_bidders_chosen offers are taken (instead of 8)
             # right now for testing purposes
-            chosen_offers = sorted_final_offers_list[:num_bidders_chosen]
+            chosen_scores = sorted_final_scores_list[:num_bidders_chosen]
 
-        print("Chosen offers are: ")
-        print(chosen_offers)
+        print("Chosen scores are: ")
+        print(chosen_scores)
 
-        for player in chosen_offers:
+        for player in chosen_scores:
             chosenPlayer = group.get_player_by_id(player["id"])
             chosenPlayer.sold = True
             chosenPlayer.profit = chosenPlayer.offer - chosenPlayer.cost
@@ -210,26 +221,32 @@ class WaitForOffers2_2(WaitPage):
             player_info["offer"] = float(player_offer)
             final_offers_list.append(player_info)
 
-        # Sort list of dictionaries according to each dictionary's offer in
+        # Make a copy of final_offers_list
+        final_scores_list = final_offers_list[:]
+
+        for player_dict in final_scores_list:
+            currPlayer = group.get_player_by_id(player_dict["id"])
+            currPlayer.score = 100 + currPlayer.benefits_purchased - currPlayer.offer
+            player_dict["score"] = currPlayer.score
+
+        # Sort list of dictionaries according to each player's score in
         # increasing order
-        sorted_final_offers_list = sorted(final_offers_list,
-                                          key=itemgetter("offer"))
-        print("Sorted offers list is: ")
-        print(sorted_final_offers_list)
+        sorted_final_scores_list = sorted(final_offers_list,
+                                          key=itemgetter("score"))
+        print("Sorted scores list is: ")
+        print(sorted_final_scores_list)
 
-        # NOTE: Only top num_bidders_chosen offers are taken(instead of 8) right now for
+        # NOTE: Only lowest num_bidders_chosen scores are taken(instead of 8) right now for
         # testing purposes
-        if len(sorted_final_offers_list) <= num_bidders_chosen:
-            chosen_offers = sorted_final_offers_list[:]
+        if len(sorted_final_scores_list) <= num_bidders_chosen:
+            chosen_scores = sorted_final_scores_list[:]
         else:
-            # NOTE: Only top num_bidders_chosen offers are taken (instead of 8) right now for
-            # testing purposes
-            chosen_offers = sorted_final_offers_list[:num_bidders_chosen]
+            chosen_scores = sorted_final_scores_list[:num_bidders_chosen]
 
-        print("Chosen offers are: ")
-        print(chosen_offers)
+        print("Chosen scores are: ")
+        print(chosen_scores)
 
-        for player in chosen_offers:
+        for player in chosen_scores:
             chosenPlayer = group.get_player_by_id(player["id"])
             chosenPlayer.sold = True
             chosenPlayer.profit = chosenPlayer.offer - chosenPlayer.cost
@@ -271,11 +288,10 @@ class Seller3_1(Page):
         # Add player's offer to the full string of offers
         if player.participate:
             player.score = 100 + player.benefits_purchased - 25 * (player.offer / player.refPrice) - (player.refPrice / 2)
-
             player_score_string = str(player.id_in_group) + "=" + str(player.score)
-            print("player_score_string is:", player_score_string)
 
             group.offers += player_score_string + " "
+            print("player_score_string is:", player_score_string)
 
 
 class WaitForOffers3_1(WaitPage):
@@ -318,13 +334,11 @@ class WaitForOffers3_1(WaitPage):
         print("Sorted scores list is: ")
         print(sorted_final_scores_list)
 
-        # NOTE: Only lowest num_bidders_chosen scores are taken (instead of 8) right now for
-        # testing purposes
+        # NOTE: Only lowest num_bidders_chosen scores are taken (instead of 8)
+        # right now for testing purposes
         if len(sorted_final_scores_list) <= num_bidders_chosen:
             chosen_scores = sorted_final_scores_list[:]
         else:
-            # NOTE: Only top num_bidders_chosen offers are taken (instead of 8) right now for
-            # testing purposes
             chosen_scores = sorted_final_scores_list[:num_bidders_chosen]
 
         print("Chosen scores are: ")
@@ -400,7 +414,8 @@ class WaitForOffers4_2(WaitPage):
         if offer_list[-1] == "":
             del [offer_list[-1]]
 
-        # In the dictionary, the player's ID is the key and the offer is the value
+        # In the dictionary, the player's ID is the key and the offer is the
+        # value
         offer_dict = dict(s.split("=") for s in offer_list)
         print("offer_dict is:" + str(offer_dict))
 
@@ -508,8 +523,8 @@ class WaitForOffers4_2(WaitPage):
                     left_neighbor = group.get_player_by_id(sorted_final_offers_list[left_neigh_index]["id"])
                     right_neighbor = group.get_player_by_id(sorted_final_offers_list[right_neigh_index]["id"])
 
-                    # Difference in est_cost between current player being looked at
-                    # and his/her left neighbor in the list
+                    # Difference in est_cost between current player being looked
+                    # at and his/her left neighbor in the list
                     left_neigh_diff = abs(currentPlayer.estimatedCost - left_neighbor.estimatedCost)
                     right_neigh_diff = abs(currentPlayer.estimatedCost - right_neighbor.estimatedCost)
 
@@ -580,29 +595,8 @@ class Results4_2(Page):
 
         return mode == 5
 
-page_sequence = [intro, BuyBenefits, Seller1_1, WaitForOffers, Buyer1_1, Results1_1,
+page_sequence = [intro, BuyBenefits,
+                 Seller1_1, WaitForOffers, Buyer1_1,Results1_1,
                  Seller2_2, WaitForOffers2_2, Buyer2_2, Results2_2,
                  Seller3_1, WaitForOffers3_1, Buyer3_1, Results3_1,
                  Seller4_2, WaitForOffers4_2, Buyer4_2, Results4_2]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

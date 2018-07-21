@@ -69,7 +69,7 @@ class Subsession(BaseSubsession):
                 p.priceCap = p.cost + randomTerm + 5
 
             elif mode == 2:
-                markups = [1, 3, 8, 12]
+                markups = [1, 3, 5, 8, 12, 15]
                 p.priceCap = p.cost + random.choice(markups) + randomTerm
 
             elif mode == 3:
