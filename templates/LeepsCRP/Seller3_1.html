@@ -24,6 +24,10 @@
         {% formfield player.offer label="Enter your Offer:" %}
 
         {{ form.participate.errors }}
+        <p>You have the option to buy additional benefits points. Please select one
+        of the choices below:</p>
+
+        {% formfield player.benefits_choice with label="" %}
     </div>
 
     {% next_button %}

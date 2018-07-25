@@ -13,24 +13,15 @@ class intro(Page):
     def is_displayed(self):
         return self.round_number == 1
 
-
+'''
 class BuyBenefits(Page):
     form_model = 'player'
     form_fields = ['benefits_choice']
 
     def benefits_choice_choices(self):
-        config = Constants.config
-        price_10_pts = config[0][self.round_number - 1]["buy10pts"]
-
-        print("Price to buy 10 additional benefits points is:", price_10_pts)
-
-        if price_10_pts == 2:
-            choice_1 = "Purchase 10 additional benefits points for 2 ECUs"
-        else:  # price_10_pts = 4
-            choice_1 = "Purchase 10 additional benefits points for 4 ECUs"
+        choice_1 = "Purchase 10 additional benefits points for 2 ECUs"
         choice_2 = "Purchase 20 additional benefits points for 6 ECUs"
         choice_3 = "Purchase no additional benefits points"
-
         choices = [[1, choice_1], [2, choice_2], [0, choice_3]]
 
         return choices
@@ -42,20 +33,12 @@ class BuyBenefits(Page):
         player = self.player
         player.benefits_purchased = 0
 
-        price_10_pts = config[0][self.round_number - 1]["buy10pts"]
         print("Mode:", config[0][self.round_number - 1]["mode"])
 
         # Add purchased benefits to total amount of player's money
         # Player decided to purchase 10 benefits points for 2/4 ECUs
-
-        print("Player's money before subtraction of ECUs for purchase of" +
-              " benefits points is:", player.money)
-
         if player.benefits_choice == 1:
-            if price_10_pts == 2:
-                player.money -= 2
-            else:
-                player.money -= 4
+            player.money -= 2
             player.benefits_purchased = 10
 
         elif player.benefits_choice == 2:
@@ -63,15 +46,20 @@ class BuyBenefits(Page):
             player.benefits_purchased = 20
 
         player.benefits += player.benefits_purchased
-
-        print("Player's money after subtraction of ECUs for purchase of" +
-              " benefits points is:", player.money)
-
+'''
 
 # Auction 1.1: Price Cap with Participation
 class Seller1_1(Page):
     form_model = 'player'
-    form_fields = ['participate', 'offer']
+    form_fields = ['participate', 'offer', 'benefits_choice']
+
+    def benefits_choice_choices(self):
+        choice_1 = "Purchase 10 additional benefits points for 2 ECUs"
+        choice_2 = "Purchase 20 additional benefits points for 6 ECUs"
+        choice_3 = "Purchase no additional benefits points"
+        choices = [[1, choice_1], [2, choice_2], [0, choice_3]]
+
+        return choices
 
     def offer_max(self):
         return self.player.priceCap
@@ -92,6 +80,25 @@ class Seller1_1(Page):
         if player.participate:
             player_offer_string = str(player.id_in_group) + "=" + str(player.offer)
             group.offers += player_offer_string + " "
+
+        config = Constants.config
+
+        player = self.player
+        player.benefits_purchased = 0
+
+        print("Mode:", config[0][self.round_number - 1]["mode"])
+
+        # Add purchased benefits to total amount of player's money
+        # Player decided to purchase 10 benefits points for 2/4 ECUs
+        if player.benefits_choice == 1:
+            player.money -= 2
+            player.benefits_purchased = 10
+
+        elif player.benefits_choice == 2:
+            player.money -= 6
+            player.benefits_purchased = 20
+
+        player.benefits += player.benefits_purchased
 
 
 class WaitForOffers(WaitPage):
@@ -126,7 +133,6 @@ class WaitForOffers(WaitPage):
             player_info["id"] = int(id)
             player_info["offer"] = float(player_offer)
             final_offers_list.append(player_info)
-
         print("Unsorted offers list is: ", final_offers_list)
 
         # Calculation/creation of scores list that includes each player's score
@@ -136,7 +142,7 @@ class WaitForOffers(WaitPage):
 
         for player_dict in final_scores_list:
             currPlayer = group.get_player_by_id(player_dict["id"])
-            currPlayer.score = 100 + currPlayer.benefits_purchased- currPlayer.offer
+            currPlayer.score = 100 + currPlayer.benefits_purchased - currPlayer.offer
             player_dict["score"] = currPlayer.score
 
         # Sort list of dictionaries according to each player's score in
@@ -184,7 +190,15 @@ class Results1_1(Page):
 # Auction 2: Price Cap 2
 class Seller2_2(Page):
     form_model = 'player'
-    form_fields = ['participate', 'offer']
+    form_fields = ['participate', 'offer', 'benefits_choice']
+
+    def benefits_choice_choices(self):
+        choice_1 = "Purchase 10 additional benefits points for 2 ECUs"
+        choice_2 = "Purchase 20 additional benefits points for 6 ECUs"
+        choice_3 = "Purchase no additional benefits points"
+        choices = [[1, choice_1], [2, choice_2], [0, choice_3]]
+
+        return choices
 
     def offer_max(self):
         return self.player.priceCap
@@ -293,7 +307,15 @@ class Results2_2(Page):
 # Auction 3: Reference Price 1
 class Seller3_1(Page):
     form_model = 'player'
-    form_fields = ['participate', 'offer']
+    form_fields = ['participate', 'offer', 'benefits_choice']
+
+    def benefits_choice_choices(self):
+        choice_1 = "Purchase 10 additional benefits points for 2 ECUs"
+        choice_2 = "Purchase 20 additional benefits points for 6 ECUs"
+        choice_3 = "Purchase no additional benefits points"
+        choices = [[1, choice_1], [2, choice_2], [0, choice_3]]
+
+        return choices
 
     def is_displayed(self):
         config = Constants.config
@@ -314,6 +336,24 @@ class Seller3_1(Page):
             group.offers += player_score_string + " "
             print("player_score_string is:", player_score_string)
 
+        config = Constants.config
+
+        player = self.player
+        player.benefits_purchased = 0
+
+        print("Mode:", config[0][self.round_number - 1]["mode"])
+
+        # Add purchased benefits to total amount of player's money
+        # Player decided to purchase 10 benefits points for 2/4 ECUs
+        if player.benefits_choice == 1:
+            player.money -= 2
+            player.benefits_purchased = 10
+
+        elif player.benefits_choice == 2:
+            player.money -= 6
+            player.benefits_purchased = 20
+
+        player.benefits += player.benefits_purchased
 
 class WaitForOffers3_1(WaitPage):
     def is_displayed(self):
@@ -390,7 +430,15 @@ class Results3_1(Page):
 
 class Seller4_2(Page):
     form_model = 'player'
-    form_fields = ['participate', 'offer']
+    form_fields = ['participate', 'offer', 'benefits_choice']
+
+    def benefits_choice_choices(self):
+        choice_1 = "Purchase 10 additional benefits points for 2 ECUs"
+        choice_2 = "Purchase 20 additional benefits points for 6 ECUs"
+        choice_3 = "Purchase no additional benefits points"
+        choices = [[1, choice_1], [2, choice_2], [0, choice_3]]
+
+        return choices
 
     def is_displayed(self):
         config = Constants.config
@@ -412,6 +460,25 @@ class Seller4_2(Page):
             print("player_offer_string for player", player.id_in_group, "is", player_offer_string)
 
             group.offers += (player_offer_string + " ")
+        
+        config = Constants.config
+
+        player = self.player
+        player.benefits_purchased = 0
+
+        print("Mode:", config[0][self.round_number - 1]["mode"])
+
+        # Add purchased benefits to total amount of player's money
+        # Player decided to purchase 10 benefits points for 2/4 ECUs
+        if player.benefits_choice == 1:
+            player.money -= 2
+            player.benefits_purchased = 10
+
+        elif player.benefits_choice == 2:
+            player.money -= 6
+            player.benefits_purchased = 20
+
+        player.benefits += player.benefits_purchased
 
 
 class WaitForOffers4_2(WaitPage):
@@ -458,7 +525,7 @@ class WaitForOffers4_2(WaitPage):
 
         # Sort list of dictionaries according to each dictionary's offer in
         # increasing order
-        print('Final offers list is: ')
+        print('final offers list is: ')
         print(final_offers_list)
 
         sorted_final_offers_list = sorted(final_offers_list,
@@ -467,12 +534,16 @@ class WaitForOffers4_2(WaitPage):
         print("Sorted offers list is: ")
         print(sorted_final_offers_list)
 
+        # Next task: figure out the assignment of the avg_neighbor_offer for
+        # each player
+
         # NOTE: For testing purposes, neighbor's average offer will be the
         # average offer of the *2* participating bidders that are closest to you
         # in terms of estimated costs
 
         # How many neighbors's offers will be used to calc. average
         max_neighbor_cnt = 2
+        # neighbors_counted = 0
 
         for i in range(len(sorted_final_offers_list)):
             neighbor_avg = 0
@@ -542,10 +613,8 @@ class WaitForOffers4_2(WaitPage):
 
                     # Difference in est_cost between current player being looked
                     # at and his/her left neighbor in the list
-                    left_neigh_diff = abs(currentPlayer.estimatedCost
-                                          - left_neighbor.estimatedCost)
-                    right_neigh_diff = abs(currentPlayer.estimatedCost -
-                                           right_neighbor.estimatedCost)
+                    left_neigh_diff = abs(currentPlayer.estimatedCost - left_neighbor.estimatedCost)
+                    right_neigh_diff = abs(currentPlayer.estimatedCost - right_neighbor.estimatedCost)
 
                     print("Left diff is:", left_neigh_diff)
                     print("Right diff is:", right_neigh_diff)
@@ -600,6 +669,7 @@ class WaitForOffers4_2(WaitPage):
 class Buyer4_2(Page):
     def is_displayed(self):
         config = Constants.config
+        player = self.player
         mode = config[0][self.round_number - 1]["mode"]
 
         return mode == 5
@@ -608,12 +678,13 @@ class Buyer4_2(Page):
 class Results4_2(Page):
     def is_displayed(self):
         config = Constants.config
+        player = self.player
         mode = config[0][self.round_number - 1]["mode"]
 
         return mode == 5
 
-page_sequence = [intro, BuyBenefits,
-                 Seller1_1, WaitForOffers, Buyer1_1,Results1_1,
+page_sequence = [intro,
+                 Seller1_1, WaitForOffers, Buyer1_1, Results1_1,
                  Seller2_2, WaitForOffers2_2, Buyer2_2, Results2_2,
                  Seller3_1, WaitForOffers3_1, Buyer3_1, Results3_1,
                  Seller4_2, WaitForOffers4_2, Buyer4_2, Results4_2]
