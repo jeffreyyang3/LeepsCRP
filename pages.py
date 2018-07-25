@@ -73,17 +73,11 @@ class Seller1_1(Page):
 
 
     def before_next_page(self):
+        config = Constants.config
         group = self.group
         player = self.player
 
-        # Add player's offer to the full string of offers
-        if player.participate:
-            player_offer_string = str(player.id_in_group) + "=" + str(player.offer)
-            group.offers += player_offer_string + " "
-
-        config = Constants.config
-
-        player = self.player
+        # Determine benefits purchased by player
         player.benefits_purchased = 0
 
         print("Mode:", config[0][self.round_number - 1]["mode"])
@@ -99,6 +93,15 @@ class Seller1_1(Page):
             player.benefits_purchased = 20
 
         player.benefits += player.benefits_purchased
+
+        # Add player's offer to the full string of offers
+        if player.participate:
+            player_offer_string = str(player.id_in_group) + "=" + str(player.offer)
+            group.offers += player_offer_string + " "
+
+
+    def vars_for_template(self):
+        return {"score_formula": "100 + Benefits Purchased - Price Offered"}
 
 
 class WaitForOffers(WaitPage):
@@ -148,7 +151,7 @@ class WaitForOffers(WaitPage):
         # Sort list of dictionaries according to each player's score in
         # increasing order
         sorted_final_scores_list = sorted(final_scores_list,
-                                          key=itemgetter("score"))
+                                          key=itemgetter("score"), reverse=True)
         print("Sorted scores list is: ")
         print(sorted_final_scores_list)
 
@@ -212,8 +215,25 @@ class Seller2_2(Page):
 
 
     def before_next_page(self):
+        config = Constants.config
         player = self.player
         group = self.group
+
+        player.benefits_purchased = 0
+
+        print("Mode:", config[0][self.round_number - 1]["mode"])
+
+        # Add purchased benefits to total amount of player's money
+        # Player decided to purchase 10 benefits points for 2/4 ECUs
+        if player.benefits_choice == 1:
+            player.money -= 2
+            player.benefits_purchased = 10
+
+        elif player.benefits_choice == 2:
+            player.money -= 6
+            player.benefits_purchased = 20
+
+        player.benefits += player.benefits_purchased
 
         # Add player's offer to the full string of offers
         if player.participate:
@@ -221,6 +241,9 @@ class Seller2_2(Page):
                 player.offer)
 
             group.offers += player_offer_string + " "
+
+    def vars_for_template(self):
+        return {"score_formula": "100 + Benefits Purchased - Price Offered"}
 
 
 class WaitForOffers2_2(WaitPage):
@@ -267,7 +290,7 @@ class WaitForOffers2_2(WaitPage):
         # Sort list of dictionaries according to each player's score in
         # increasing order
         sorted_final_scores_list = sorted(final_offers_list,
-                                          key=itemgetter("score"))
+                                          key=itemgetter("score"), reverse=True)
         print("Sorted scores list is: ")
         print(sorted_final_scores_list)
 
@@ -325,20 +348,11 @@ class Seller3_1(Page):
 
 
     def before_next_page(self):
+        config = Constants.config
         player = self.player
         group = self.group
 
-        # Add player's offer to the full string of offers
-        if player.participate:
-            player.score = 100 + player.benefits_purchased - 25 * (player.offer / player.refPrice) - (player.refPrice / 2)
-            player_score_string = str(player.id_in_group) + "=" + str(player.score)
-
-            group.offers += player_score_string + " "
-            print("player_score_string is:", player_score_string)
-
-        config = Constants.config
-
-        player = self.player
+        # Determine benefits purchased by player
         player.benefits_purchased = 0
 
         print("Mode:", config[0][self.round_number - 1]["mode"])
@@ -354,6 +368,19 @@ class Seller3_1(Page):
             player.benefits_purchased = 20
 
         player.benefits += player.benefits_purchased
+
+        # Add player's offer to the full string of offers
+        if player.participate:
+            player.score = 100 + player.benefits_purchased - 25 * (player.offer / player.refPrice) - (player.refPrice / 2)
+            player_score_string = str(player.id_in_group) + "=" + str(player.score)
+
+            group.offers += player_score_string + " "
+            print("player_score_string is:", player_score_string)
+
+
+    def vars_for_template(self):
+        return {"score_formula": "100 + Benefits Purchased - 25 * " +
+                                 "(Price Offered / Reference Price) - (Reference Price / 2)"}
 
 class WaitForOffers3_1(WaitPage):
     def is_displayed(self):
@@ -391,7 +418,7 @@ class WaitForOffers3_1(WaitPage):
         # Sort list of dictionaries according to each dictionary's offer in
         # increasing order
         sorted_final_scores_list = sorted(final_scores_list,
-                                          key=itemgetter("score"))
+                                          key=itemgetter("score"), reverse=True)
         print("Sorted scores list is: ")
         print(sorted_final_scores_list)
 
@@ -448,22 +475,11 @@ class Seller4_2(Page):
 
 
     def before_next_page(self):
+        config = Constants.config
         player = self.player
         group = self.group
 
-        # Add player's offer to the full string of offers
-        if player.participate:
-            print("Player", player.id_in_group, "participating")
-            player_offer_string = str(player.id_in_group) + "=" + str(
-                player.offer)
-
-            print("player_offer_string for player", player.id_in_group, "is", player_offer_string)
-
-            group.offers += (player_offer_string + " ")
-        
-        config = Constants.config
-
-        player = self.player
+        # Determine benefits purchased from player
         player.benefits_purchased = 0
 
         print("Mode:", config[0][self.round_number - 1]["mode"])
@@ -480,6 +496,20 @@ class Seller4_2(Page):
 
         player.benefits += player.benefits_purchased
 
+        # Add player's offer to the full string of offers
+        if player.participate:
+            print("Player", player.id_in_group, "participating")
+            player_offer_string = str(player.id_in_group) + "=" + str(
+                player.offer)
+
+            print("player_offer_string for player", player.id_in_group, "is", player_offer_string)
+
+            group.offers += (player_offer_string + " ")
+
+
+    def vars_for_template(self):
+        return {"score_formula": "100 + Benefits Purchased - 25 * " +
+                                 "(Price Offered / Reference Price) - (Reference Price / 2)"}
 
 class WaitForOffers4_2(WaitPage):
     def is_displayed(self):
@@ -646,7 +676,8 @@ class WaitForOffers4_2(WaitPage):
             temp.score = 100 + temp.benefits_purchased - 25 * (temp.offer / temp.refPrice) - (temp.refPrice / 2)
             s["score"] = temp.score
 
-        sorted_scores_list = sorted(sorted_final_offers_list, key=itemgetter("score"))
+        sorted_scores_list = sorted(sorted_final_offers_list,
+                                    key=itemgetter("score"), reverse=True)
 
         print("sorted final scores list:", sorted_scores_list)
 
