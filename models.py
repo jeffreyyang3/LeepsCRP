@@ -6,7 +6,6 @@ import random
 import csv
 from . import config as config_py
 
-
 author = "Jeffrey Yang and Daniel Wang"
 
 doc = """
@@ -36,8 +35,6 @@ class Subsession(BaseSubsession):
 
         for p in self.get_players():
             p.money = Constants.config[0][self.round_number - 1]["end"]
-
-            # p.cost = int(drawsData[8 * (self.round_number - 1) + (p.id_in_group - 1)]["Cost"])
             p.cost = int(drawsData[players_per_group * (self.round_number - 1) +
                                                 (p.id_in_group - 1)]["Cost"])
             print("cost is:", p.cost)
@@ -49,9 +46,6 @@ class Subsession(BaseSubsession):
             p.profit = 0
 
             mode = Constants.config[0][self.round_number - 1]["mode"]
-
-            # cont = drawsData[8 * (self.round_number - 1) +
-                             # (p.id_in_group - 1)]["randomInput"]
             cont = drawsData[players_per_group * (self.round_number - 1) +
                                 (p.id_in_group - 1)]["randomInput"]
 
@@ -93,19 +87,15 @@ class Group(BaseGroup):
 class Player(BasePlayer):
     money = models.FloatField()
     score = models.FloatField()
-
     cost = models.IntegerField()
     estimatedCost = models.IntegerField()
     sold = models.BooleanField()
     offer = models.FloatField()
     profit = models.FloatField()
 
-    buyPrice = models.FloatField()
     priceCap = models.FloatField()
     refPrice = models.IntegerField()
-
     neighbor_avg_offer = models.FloatField()
-
     participate = models.BooleanField(choices=[[True, "Yes"], [False, "No"]],
                                       widget=widgets.RadioSelectHorizontal())
     benefits = models.IntegerField()

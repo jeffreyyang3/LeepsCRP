@@ -30,6 +30,7 @@ class BuyBenefits(Page):
             choice_1 = "Purchase 10 additional benefits points for 4 ECUs"
         choice_2 = "Purchase 20 additional benefits points for 6 ECUs"
         choice_3 = "Purchase no additional benefits points"
+
         choices = [[1, choice_1], [2, choice_2], [0, choice_3]]
 
         return choices
@@ -42,7 +43,6 @@ class BuyBenefits(Page):
         player.benefits_purchased = 0
 
         price_10_pts = config[0][self.round_number - 1]["buy10pts"]
-
         print("Mode:", config[0][self.round_number - 1]["mode"])
 
         # Add purchased benefits to total amount of player's money
@@ -126,6 +126,7 @@ class WaitForOffers(WaitPage):
             player_info["id"] = int(id)
             player_info["offer"] = float(player_offer)
             final_offers_list.append(player_info)
+
         print("Unsorted offers list is: ", final_offers_list)
 
         # Calculation/creation of scores list that includes each player's score
@@ -135,7 +136,7 @@ class WaitForOffers(WaitPage):
 
         for player_dict in final_scores_list:
             currPlayer = group.get_player_by_id(player_dict["id"])
-            currPlayer.score = 100 + currPlayer.benefits_purchased - currPlayer.offer
+            currPlayer.score = 100 + currPlayer.benefits_purchased- currPlayer.offer
             player_dict["score"] = currPlayer.score
 
         # Sort list of dictionaries according to each player's score in
@@ -457,7 +458,7 @@ class WaitForOffers4_2(WaitPage):
 
         # Sort list of dictionaries according to each dictionary's offer in
         # increasing order
-        print('final offers list is: ')
+        print('Final offers list is: ')
         print(final_offers_list)
 
         sorted_final_offers_list = sorted(final_offers_list,
@@ -466,16 +467,12 @@ class WaitForOffers4_2(WaitPage):
         print("Sorted offers list is: ")
         print(sorted_final_offers_list)
 
-        # Next task: figure out the assignment of the avg_neighbor_offer for
-        # each player
-
         # NOTE: For testing purposes, neighbor's average offer will be the
         # average offer of the *2* participating bidders that are closest to you
         # in terms of estimated costs
 
         # How many neighbors's offers will be used to calc. average
         max_neighbor_cnt = 2
-        # neighbors_counted = 0
 
         for i in range(len(sorted_final_offers_list)):
             neighbor_avg = 0
@@ -603,7 +600,6 @@ class WaitForOffers4_2(WaitPage):
 class Buyer4_2(Page):
     def is_displayed(self):
         config = Constants.config
-        player = self.player
         mode = config[0][self.round_number - 1]["mode"]
 
         return mode == 5
@@ -612,7 +608,6 @@ class Buyer4_2(Page):
 class Results4_2(Page):
     def is_displayed(self):
         config = Constants.config
-        player = self.player
         mode = config[0][self.round_number - 1]["mode"]
 
         return mode == 5
