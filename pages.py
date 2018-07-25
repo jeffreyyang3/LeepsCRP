@@ -19,7 +19,15 @@ class BuyBenefits(Page):
     form_fields = ['benefits_choice']
 
     def benefits_choice_choices(self):
-        choice_1 = "Purchase 10 additional benefits points for 2 ECUs"
+        config = Constants.config
+        price_10_pts = config[0][self.round_number - 1]["buy10pts"]
+
+        print("Price to buy 10 additional benefits points is:", price_10_pts)
+
+        if price_10_pts == 2:
+            choice_1 = "Purchase 10 additional benefits points for 2 ECUs"
+        else:  # price_10_pts = 4
+            choice_1 = "Purchase 10 additional benefits points for 4 ECUs"
         choice_2 = "Purchase 20 additional benefits points for 6 ECUs"
         choice_3 = "Purchase no additional benefits points"
         choices = [[1, choice_1], [2, choice_2], [0, choice_3]]
@@ -33,12 +41,21 @@ class BuyBenefits(Page):
         player = self.player
         player.benefits_purchased = 0
 
+        price_10_pts = config[0][self.round_number - 1]["buy10pts"]
+
         print("Mode:", config[0][self.round_number - 1]["mode"])
 
         # Add purchased benefits to total amount of player's money
         # Player decided to purchase 10 benefits points for 2/4 ECUs
+
+        print("Player's money before subtraction of ECUs for purchase of" +
+              " benefits points is:", player.money)
+
         if player.benefits_choice == 1:
-            player.money -= 2
+            if price_10_pts == 2:
+                player.money -= 2
+            else:
+                player.money -= 4
             player.benefits_purchased = 10
 
         elif player.benefits_choice == 2:
@@ -46,6 +63,9 @@ class BuyBenefits(Page):
             player.benefits_purchased = 20
 
         player.benefits += player.benefits_purchased
+
+        print("Player's money after subtraction of ECUs for purchase of" +
+              " benefits points is:", player.money)
 
 
 # Auction 1.1: Price Cap with Participation
@@ -525,8 +545,10 @@ class WaitForOffers4_2(WaitPage):
 
                     # Difference in est_cost between current player being looked
                     # at and his/her left neighbor in the list
-                    left_neigh_diff = abs(currentPlayer.estimatedCost - left_neighbor.estimatedCost)
-                    right_neigh_diff = abs(currentPlayer.estimatedCost - right_neighbor.estimatedCost)
+                    left_neigh_diff = abs(currentPlayer.estimatedCost
+                                          - left_neighbor.estimatedCost)
+                    right_neigh_diff = abs(currentPlayer.estimatedCost -
+                                           right_neighbor.estimatedCost)
 
                     print("Left diff is:", left_neigh_diff)
                     print("Right diff is:", right_neigh_diff)

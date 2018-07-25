@@ -2,8 +2,36 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c5c5bb30-34f2-47e8-af2f-fcabf4ee1245" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/../.idea/public_goodsv2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/public_goodsv2.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/LeepsCRP.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/LeepsCRP.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../config.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../models.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pages.py" beforeDir="false" afterPath="$PROJECT_DIR$/../pages.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../real_effort/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../real_effort/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../real_effort/.idea/public_goodsv2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../real_effort/.idea/public_goodsv2.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../real_effort/_builtin/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/../_builtin/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../real_effort/pages.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../real_effort/templates/real_effort/Authority2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../real_effort/templates/real_effort/AuthorityInfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/../real_effort/templates/real_effort/AuthorityInfo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../real_effort/templates/real_effort/TaxResults.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../real_effort/templates/real_effort/TranscribeResults.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../static/real_effort/paragraphs/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../static/real_effort/paragraphs/2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../templates/real_effort/Authority.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../templates/real_effort/Instructions.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../templates/real_effort/Introduction.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../templates/real_effort/Transcribe.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../templates/real_effort/Transcribe2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../templates/real_effort/part2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tests.py" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -13,15 +41,12 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="models.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="208">
-              <caret line="92" column="17" selection-start-line="92" selection-start-column="17" selection-end-line="92" selection-end-column="17" />
-              <folding>
-                <element signature="e#0#134#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="498">
+              <caret line="112" column="12" selection-start-line="112" selection-start-column="4" selection-end-line="112" selection-end-column="12" />
             </state>
           </provider>
         </entry>
@@ -29,8 +54,8 @@
       <file leaf-file-name="pages.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pages.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="414">
-              <caret line="597" column="9" selection-start-line="597" selection-start-column="9" selection-end-line="597" selection-end-column="9" />
+            <state relative-caret-position="267">
+              <caret line="45" column="61" selection-start-line="45" selection-start-column="61" selection-end-line="45" selection-end-column="61" />
               <folding>
                 <element signature="e#0#51#0" expanded="true" />
               </folding>
@@ -38,11 +63,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="config.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="tests.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tests.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <folding>
+                <element signature="e#0#51#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BuyBenefits.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/LeepsCRP/BuyBenefits.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="231">
+              <caret line="11" column="34" selection-start-line="11" selection-start-column="34" selection-end-line="11" selection-end-column="34" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="config.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="262">
-              <caret line="13" column="83" lean-forward="true" selection-start-line="13" selection-start-column="83" selection-end-line="13" selection-end-column="83" />
+            <state relative-caret-position="378">
+              <caret line="18" column="18" selection-start-line="18" selection-start-column="18" selection-end-line="18" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -58,16 +103,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>2</find>
-      <find>num_bidders_chosen</find>
-      <find>seller4_2</find>
-      <find>.offer =</find>
-      <find>offer</find>
-      <find>est</find>
-      <find>estimatedcost</find>
-      <find>neighbor_avg =</find>
-      <find>refprice=</find>
-      <find>3_1</find>
       <find>neighb</find>
       <find>.benefits</find>
       <find>.benefit</find>
@@ -88,6 +123,16 @@
       <find>allowedmarkup</find>
       <find>base</find>
       <find>qualitybase</find>
+      <find>print</find>
+      <find>comparecountries</find>
+      <find>checkvalid</find>
+      <find>defaultd</find>
+      <find>continue to</find>
+      <find>can't open</find>
+      <find>the most common</find>
+      <find>bur</find>
+      <find>exit()</find>
+      <find>benefits</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -117,16 +162,20 @@
         <option value="$PROJECT_DIR$/templates/LeepsCRP/Results4_2.html" />
         <option value="$PROJECT_DIR$/templates/LeepsCRP/Seller4_2.html" />
         <option value="$PROJECT_DIR$/models.py" />
-        <option value="$PROJECT_DIR$/pages.py" />
+        <option value="$USER_HOME$/DeAnza/CIS41A/module3exercise.py" />
+        <option value="$USER_HOME$/DeAnza/CIS41A/lab3.py" />
         <option value="$PROJECT_DIR$/config.py" />
+        <option value="$PROJECT_DIR$/pages.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
+    <option name="x" value="33" />
     <option name="y" value="23" />
-    <option name="width" value="1280" />
+    <option name="width" value="1247" />
     <option name="height" value="777" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
@@ -137,12 +186,25 @@
           <expand>
             <path>
               <item name="LeepsCRP" type="b2602c69:ProjectViewProjectNode" />
+              <item name="otree" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="LeepsCRP" type="b2602c69:ProjectViewProjectNode" />
+              <item name="otree" type="462c0819:PsiDirectoryNode" />
               <item name="LeepsCRP" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="LeepsCRP" type="b2602c69:ProjectViewProjectNode" />
+              <item name="otree" type="462c0819:PsiDirectoryNode" />
               <item name="LeepsCRP" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="LeepsCRP" type="b2602c69:ProjectViewProjectNode" />
+              <item name="otree" type="462c0819:PsiDirectoryNode" />
+              <item name="LeepsCRP" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="LeepsCRP" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -207,19 +269,19 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1280" height="777" extended-state="6" />
+    <frame x="33" y="23" width="1247" height="777" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.2015625" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1692061" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32859176" />
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Python Console" order="7" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32859176" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="8" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -228,55 +290,15 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="1" />
     </layout>
-    <layout-to-restore>
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32859176" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2015625" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Python Console" order="7" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Terminal" order="8" />
-      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info id="Favorites" order="2" side_tool="true" />
-    </layout-to-restore>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/config.py">
+    <entry file="file://$USER_HOME$/DeAnza/CIS41A/lab3.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/LeepsCRP/BuyBenefits.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/LeepsCRP/Buyer1_1.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="19" column="14" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/LeepsCRP/Seller1_1.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="441">
-          <caret line="21" column="56" lean-forward="true" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="56" />
+        <state relative-caret-position="1617">
+          <caret line="77" column="40" lean-forward="true" selection-start-line="77" selection-start-column="40" selection-end-line="77" selection-end-column="40" />
         </state>
       </provider>
     </entry>
@@ -291,9 +313,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2730">
           <caret line="135" column="28" selection-start-line="134" selection-end-line="135" selection-end-column="28" />
-          <folding>
-            <element signature="e#0#51#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -308,9 +327,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2016">
           <caret line="101" lean-forward="true" selection-start-line="101" selection-end-line="101" />
-          <folding>
-            <element signature="e#0#51#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -360,9 +376,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="273">
           <caret line="17" column="21" lean-forward="true" selection-start-line="17" selection-start-column="21" selection-end-line="17" selection-end-column="21" />
-          <folding>
-            <element signature="e#0#51#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -475,13 +488,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="13" column="26" selection-start-line="13" selection-start-column="26" selection-end-line="13" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/LeepsCRP/Seller3_1.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="381">
@@ -517,37 +523,71 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/LeepsCRP/BuyBenefits.html">
+    <entry file="file://$USER_HOME$/DeAnza/CIS41A/module3exercise.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+        <state relative-caret-position="21">
+          <caret line="338" column="40" selection-start-line="338" selection-start-column="40" selection-end-line="338" selection-end-column="40" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models.py">
+    <entry file="file://$USER_HOME$/DeAnza/CIS41A/lab3.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="92" column="17" selection-start-line="92" selection-start-column="17" selection-end-line="92" selection-end-column="17" />
-          <folding>
-            <element signature="e#0#134#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="191">
+          <caret line="163" column="27" selection-start-line="163" selection-start-column="27" selection-end-line="163" selection-end-column="27" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pages.py">
+    <entry file="file://$USER_HOME$/DeAnza/CIS41A/lab2.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="597" column="9" selection-start-line="597" selection-start-column="9" selection-end-line="597" selection-end-column="9" />
+        <state relative-caret-position="105">
+          <caret line="6" column="26" selection-start-line="6" selection-start-column="26" selection-end-line="6" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/DeAnza/CIS41A/lab1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="611">
+          <caret line="57" column="35" selection-start-line="57" selection-start-column="22" selection-end-line="57" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
           <folding>
             <element signature="e#0#51#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/pages.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="267">
+          <caret line="45" column="61" selection-start-line="45" selection-start-column="61" selection-end-line="45" selection-end-column="61" />
+          <folding>
+            <element signature="e#0#51#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/LeepsCRP/BuyBenefits.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="11" column="34" selection-start-line="11" selection-start-column="34" selection-end-line="11" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/config.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="262">
-          <caret line="13" column="83" lean-forward="true" selection-start-line="13" selection-start-column="83" selection-end-line="13" selection-end-column="83" />
+        <state relative-caret-position="378">
+          <caret line="18" column="18" selection-start-line="18" selection-start-column="18" selection-end-line="18" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="498">
+          <caret line="112" column="12" selection-start-line="112" selection-start-column="4" selection-end-line="112" selection-end-column="12" />
         </state>
       </provider>
     </entry>
