@@ -64,6 +64,12 @@ class Seller1_1(Page):
     def offer_max(self):
         return self.player.priceCap
 
+    def offer_min(self):
+        if self.player.priceCap >= self.player.cost:
+            return self.player.cost
+        else:
+            return self.player.priceCap
+
 
     def error_message(self, values):
         if not values["participate"]:
@@ -211,6 +217,12 @@ class Seller2_2(Page):
 
     def offer_max(self):
         return self.player.priceCap
+
+    def offer_min(self):
+        if self.player.priceCap >= self.player.cost:
+            return self.player.cost
+        else:
+            return self.player.priceCap    
 
     def error_message(self, values):
         if not values["participate"]:
