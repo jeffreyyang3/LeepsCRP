@@ -18,7 +18,7 @@ class Constants(BaseConstants):
     num_rounds = 1
     config = config_py.export_data()
     num_rounds = len(config[0])
-    baseBenefits = 100
+    baseBenefits = 150
 
     # The buyer will purchase from the num_bidders_chosen bidders with the lowest
     # scores

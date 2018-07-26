@@ -54,8 +54,8 @@ class Seller1_1(Page):
     form_fields = ['participate', 'offer', 'benefits_choice']
 
     def benefits_choice_choices(self):
-        choice_1 = "Purchase 10 additional benefits points for 2 ECUs"
-        choice_2 = "Purchase 20 additional benefits points for 6 ECUs"
+        choice_1 = "Purchase 15 additional benefits points for 2 ECUs"
+        choice_2 = "Purchase 30 additional benefits points for 6 ECUs"
         choice_3 = "Purchase no additional benefits points"
         choices = [[1, choice_1], [2, choice_2], [0, choice_3]]
 
@@ -92,11 +92,11 @@ class Seller1_1(Page):
         # Player decided to purchase 10 benefits points for 2/4 ECUs
         if player.benefits_choice == 1:
             player.money -= 2
-            player.benefits_purchased = 10
+            player.benefits_purchased = 15
 
         elif player.benefits_choice == 2:
             player.money -= 6
-            player.benefits_purchased = 20
+            player.benefits_purchased = 30
 
         player.benefits += player.benefits_purchased
 
@@ -107,7 +107,7 @@ class Seller1_1(Page):
 
 
     def vars_for_template(self):
-        return {"score_formula": "100 + Benefits Purchased - Price Offered"}
+        return {"score_formula": "150 + Benefits Purchased - Price Offered"}
 
 
 class WaitForOffers(WaitPage):
@@ -151,7 +151,7 @@ class WaitForOffers(WaitPage):
 
         for player_dict in final_scores_list:
             currPlayer = group.get_player_by_id(player_dict["id"])
-            currPlayer.score = 100 + currPlayer.benefits_purchased - currPlayer.offer
+            currPlayer.score = 150 + currPlayer.benefits_purchased - currPlayer.offer
             player_dict["score"] = currPlayer.score
 
         # Sort list of dictionaries according to each player's score in
@@ -202,8 +202,8 @@ class Seller2_2(Page):
     form_fields = ['participate', 'offer', 'benefits_choice']
 
     def benefits_choice_choices(self):
-        choice_1 = "Purchase 10 additional benefits points for 2 ECUs"
-        choice_2 = "Purchase 20 additional benefits points for 6 ECUs"
+        choice_1 = "Purchase 15 additional benefits points for 2 ECUs"
+        choice_2 = "Purchase 30 additional benefits points for 6 ECUs"
         choice_3 = "Purchase no additional benefits points"
         choices = [[1, choice_1], [2, choice_2], [0, choice_3]]
 
@@ -238,11 +238,11 @@ class Seller2_2(Page):
         # Player decided to purchase 10 benefits points for 2/4 ECUs
         if player.benefits_choice == 1:
             player.money -= 2
-            player.benefits_purchased = 10
+            player.benefits_purchased = 15
 
         elif player.benefits_choice == 2:
             player.money -= 6
-            player.benefits_purchased = 20
+            player.benefits_purchased = 30
 
         player.benefits += player.benefits_purchased
 
@@ -254,7 +254,7 @@ class Seller2_2(Page):
             group.offers += player_offer_string + " "
 
     def vars_for_template(self):
-        return {"score_formula": "100 + Benefits Purchased - Price Offered"}
+        return {"score_formula": "150 + Benefits Purchased - Price Offered"}
 
 
 class WaitForOffers2_2(WaitPage):
@@ -295,7 +295,7 @@ class WaitForOffers2_2(WaitPage):
 
         for player_dict in final_scores_list:
             currPlayer = group.get_player_by_id(player_dict["id"])
-            currPlayer.score = 100 + currPlayer.benefits_purchased - currPlayer.offer
+            currPlayer.score = 150 + currPlayer.benefits_purchased - currPlayer.offer
             player_dict["score"] = currPlayer.score
 
         # Sort list of dictionaries according to each player's score in
@@ -344,8 +344,8 @@ class Seller3_1(Page):
     form_fields = ['participate', 'offer', 'benefits_choice']
 
     def benefits_choice_choices(self):
-        choice_1 = "Purchase 10 additional benefits points for 2 ECUs"
-        choice_2 = "Purchase 20 additional benefits points for 6 ECUs"
+        choice_1 = "Purchase 15 additional benefits points for 2 ECUs"
+        choice_2 = "Purchase 30 additional benefits points for 6 ECUs"
         choice_3 = "Purchase no additional benefits points"
         choices = [[1, choice_1], [2, choice_2], [0, choice_3]]
 
@@ -378,17 +378,17 @@ class Seller3_1(Page):
         # Player decided to purchase 10 benefits points for 2/4 ECUs
         if player.benefits_choice == 1:
             player.money -= 2
-            player.benefits_purchased = 10
+            player.benefits_purchased = 15
 
         elif player.benefits_choice == 2:
             player.money -= 6
-            player.benefits_purchased = 20
+            player.benefits_purchased = 30
 
         player.benefits += player.benefits_purchased
 
         # Add player's offer to the full string of offers
         if player.participate:
-            player.score = 100 + player.benefits_purchased - 25 * (player.offer / player.refPrice) - (player.refPrice / 2)
+            player.score = 150 + player.benefits_purchased - 50 * (player.offer / player.refPrice) - (player.refPrice)
             player_score_string = str(player.id_in_group) + "=" + str(player.score)
 
             group.offers += player_score_string + " "
@@ -396,8 +396,8 @@ class Seller3_1(Page):
 
 
     def vars_for_template(self):
-        return {"score_formula": "100 + Benefits Purchased - 25 * " +
-                                 "(Price Offered / Reference Price) - (Reference Price / 2)"}
+        return {"score_formula": "150 + Benefits Purchased - 50 * " +
+                                 "(Price Offered / Reference Price) - Reference Price"}
 
 class WaitForOffers3_1(WaitPage):
     def is_displayed(self):
@@ -477,8 +477,8 @@ class Seller4_2(Page):
     form_fields = ['participate', 'offer', 'benefits_choice']
 
     def benefits_choice_choices(self):
-        choice_1 = "Purchase 10 additional benefits points for 2 ECUs"
-        choice_2 = "Purchase 20 additional benefits points for 6 ECUs"
+        choice_1 = "Purchase 15 additional benefits points for 2 ECUs"
+        choice_2 = "Purchase 30 additional benefits points for 6 ECUs"
         choice_3 = "Purchase no additional benefits points"
         choices = [[1, choice_1], [2, choice_2], [0, choice_3]]
 
@@ -512,11 +512,11 @@ class Seller4_2(Page):
         # Player decided to purchase 10 benefits points for 2/4 ECUs
         if player.benefits_choice == 1:
             player.money -= 2
-            player.benefits_purchased = 10
+            player.benefits_purchased = 15
 
         elif player.benefits_choice == 2:
             player.money -= 6
-            player.benefits_purchased = 20
+            player.benefits_purchased = 30
 
         player.benefits += player.benefits_purchased
 
@@ -532,8 +532,8 @@ class Seller4_2(Page):
 
 
     def vars_for_template(self):
-        return {"score_formula": "100 + Benefits Purchased - 25 * " +
-                                 "(Price Offered / Reference Price) - (Reference Price / 2)"}
+        return {"score_formula": "150 + Benefits Purchased - 50 * " +
+                                 "(Price Offered / Reference Price) - Reference Price"}
 
 class WaitForOffers4_2(WaitPage):
     def is_displayed(self):
@@ -697,7 +697,7 @@ class WaitForOffers4_2(WaitPage):
         # Set the scores for each player in the group
         for s in sorted_final_offers_list:
             temp = group.get_player_by_id(s["id"])
-            temp.score = 100 + temp.benefits_purchased - 25 * (temp.offer / temp.refPrice) - (temp.refPrice / 2)
+            temp.score = 150 + temp.benefits_purchased - 50 * (temp.offer / temp.refPrice) - (temp.refPrice)
             s["score"] = temp.score
 
         sorted_scores_list = sorted(sorted_final_offers_list,
