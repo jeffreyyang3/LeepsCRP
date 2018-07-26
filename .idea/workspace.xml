@@ -4,11 +4,9 @@
     <list default="true" id="c5c5bb30-34f2-47e8-af2f-fcabf4ee1245" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/../.idea/public_goodsv2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/public_goodsv2.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/LeepsCRP/Results1_1.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/LeepsCRP/Results1_1.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/LeepsCRP/Results2_2.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/LeepsCRP/Results2_2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/LeepsCRP/Results3_1.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/LeepsCRP/Results3_1.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/LeepsCRP/Results4_2.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/LeepsCRP/Results4_2.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/LeepsCRP/Seller1_1.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/LeepsCRP/Seller1_1.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/LeepsCRP/Seller2_2.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/LeepsCRP/Seller2_2.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/LeepsCRP/Seller3_1.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/LeepsCRP/Seller3_1.html" afterDir="false" />
@@ -46,11 +44,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="models.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/models.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="155">
+              <caret line="8" column="42" selection-start-line="8" selection-start-column="42" selection-end-line="8" selection-end-column="42" />
+              <folding>
+                <element signature="e#0#134#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="pages.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pages.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="208">
-              <caret line="679" column="73" selection-start-line="679" selection-start-column="61" selection-end-line="679" selection-end-column="73" />
+              <caret line="70" column="35" selection-start-line="70" selection-start-column="24" selection-end-line="70" selection-end-column="35" />
               <folding>
                 <element signature="e#0#51#0" expanded="true" />
               </folding>
@@ -58,23 +68,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Results1_1.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/templates/LeepsCRP/Results1_1.html">
+      <file leaf-file-name="config.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="23">
-              <caret line="14" column="37" selection-start-line="14" selection-start-column="37" selection-end-line="14" selection-end-column="37" />
+            <state relative-caret-position="374">
+              <caret line="18" selection-start-line="18" selection-end-line="18" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/models.py">
+      <file leaf-file-name="Seller2_2.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/LeepsCRP/Seller2_2.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-198">
-              <caret line="51" column="32" selection-start-line="51" selection-start-column="26" selection-end-line="51" selection-end-column="32" />
-              <folding>
-                <element signature="e#0#134#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="651">
+              <caret line="31" column="13" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -90,9 +97,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>.refprice</find>
-      <find>unitqu</find>
-      <find>unitquality</find>
       <find>oppcost</find>
       <find>unitprice</find>
       <find>buyer</find>
@@ -120,6 +124,9 @@
       <find>buyprice</find>
       <find>score_formu</find>
       <find>reverse=True</find>
+      <find>offer</find>
+      <find>participate</find>
+      <find>you must pa</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -143,25 +150,25 @@
         <option value="$PROJECT_DIR$/tests.py" />
         <option value="$USER_HOME$/DeAnza/CIS41A/module3exercise.py" />
         <option value="$USER_HOME$/DeAnza/CIS41A/lab3.py" />
-        <option value="$PROJECT_DIR$/config.py" />
         <option value="$USER_HOME$/DeAnza/CIS41A/module4exercise.py" />
         <option value="$USER_HOME$/DeAnza/CIS41A/person.py" />
-        <option value="$PROJECT_DIR$/models.py" />
         <option value="$PROJECT_DIR$/templates/LeepsCRP/BuyBenefits.html" />
-        <option value="$PROJECT_DIR$/templates/LeepsCRP/Seller1_1.html" />
-        <option value="$PROJECT_DIR$/templates/LeepsCRP/Seller2_2.html" />
-        <option value="$PROJECT_DIR$/templates/LeepsCRP/Seller3_1.html" />
-        <option value="$PROJECT_DIR$/templates/LeepsCRP/Seller4_2.html" />
-        <option value="$PROJECT_DIR$/pages.py" />
         <option value="$PROJECT_DIR$/templates/LeepsCRP/Results4_2.html" />
         <option value="$PROJECT_DIR$/templates/LeepsCRP/Results3_1.html" />
         <option value="$PROJECT_DIR$/templates/LeepsCRP/Results2_2.html" />
         <option value="$PROJECT_DIR$/templates/LeepsCRP/Results1_1.html" />
+        <option value="$PROJECT_DIR$/pages.py" />
+        <option value="$PROJECT_DIR$/config.py" />
+        <option value="$PROJECT_DIR$/templates/LeepsCRP/Seller1_1.html" />
+        <option value="$PROJECT_DIR$/templates/LeepsCRP/Seller4_2.html" />
+        <option value="$PROJECT_DIR$/templates/LeepsCRP/Seller3_1.html" />
+        <option value="$PROJECT_DIR$/templates/LeepsCRP/Seller2_2.html" />
+        <option value="$PROJECT_DIR$/models.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="69" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="588" />
     <option name="y" value="23" />
     <option name="width" value="1211" />
     <option name="height" value="777" />
@@ -260,10 +267,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="69" y="23" width="1211" height="777" extended-state="0" />
+    <frame x="0" y="23" width="1280" height="777" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17588769" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1859375" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="9" />
@@ -491,13 +498,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="18" column="18" selection-start-line="18" selection-start-column="18" selection-end-line="18" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tests.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="189">
@@ -529,54 +529,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-198">
-          <caret line="51" column="32" selection-start-line="51" selection-start-column="26" selection-end-line="51" selection-end-column="32" />
-          <folding>
-            <element signature="e#0#134#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/LeepsCRP/Seller3_1.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="381">
-          <caret line="19" column="11" selection-start-line="19" selection-start-column="11" selection-end-line="19" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/LeepsCRP/Seller4_2.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="36" selection-start-line="36" selection-end-line="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="679" column="73" selection-start-line="679" selection-start-column="61" selection-end-line="679" selection-end-column="73" />
-          <folding>
-            <element signature="e#0#51#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/LeepsCRP/Seller1_1.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="19" column="11" selection-start-line="19" selection-start-column="11" selection-end-line="19" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/LeepsCRP/Seller2_2.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="296">
-          <caret line="19" column="11" selection-start-line="19" selection-start-column="11" selection-end-line="19" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/LeepsCRP/Results4_2.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="214">
@@ -600,8 +552,63 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/LeepsCRP/Results1_1.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="23">
-          <caret line="14" column="37" selection-start-line="14" selection-start-column="37" selection-end-line="14" selection-end-column="37" />
+        <state relative-caret-position="129">
+          <caret line="8" column="25" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/LeepsCRP/Seller1_1.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="651">
+          <caret line="31" column="8" lean-forward="true" selection-start-line="31" selection-start-column="8" selection-end-line="31" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/LeepsCRP/Seller3_1.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="535">
+          <caret line="32" column="8" selection-start-line="32" selection-start-column="8" selection-end-line="32" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/LeepsCRP/Seller4_2.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="486">
+          <caret line="31" column="13" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/LeepsCRP/Seller2_2.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="651">
+          <caret line="31" column="13" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="18" selection-start-line="18" selection-end-line="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="70" column="35" selection-start-line="70" selection-start-column="24" selection-end-line="70" selection-end-column="35" />
+          <folding>
+            <element signature="e#0#51#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="8" column="42" selection-start-line="8" selection-start-column="42" selection-end-line="8" selection-end-column="42" />
+          <folding>
+            <element signature="e#0#134#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

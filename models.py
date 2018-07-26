@@ -6,7 +6,7 @@ import random
 import csv
 from . import config as config_py
 
-author = "Jeffrey Yang and Daniel Wang"
+author = "Jeffrey Yang , Allegra Martino, and Daniel Wang"
 
 doc = """
 CRP_2018
@@ -90,7 +90,7 @@ class Player(BasePlayer):
     cost = models.IntegerField()
     estimatedCost = models.IntegerField()
     sold = models.BooleanField()
-    offer = models.FloatField()
+    offer = models.FloatField(blank=True)
     profit = models.FloatField()
 
     priceCap = models.FloatField()

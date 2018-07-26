@@ -19,6 +19,8 @@
 
         <p>Score Formula: {{ score_formula }} </p>
 
+        <hr/>
+
         <p>Do you want to participate?</p>
 
         {% formfield player.participate with label="" %}
@@ -26,6 +28,9 @@
         {% formfield player.offer label="Enter your Offer:" %}
 
         {{ form.participate.errors }}
+
+        <hr/>
+
         <p>You have the option to buy additional benefits points. Please select one
         of the choices below:</p>
 

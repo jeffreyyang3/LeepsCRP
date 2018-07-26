@@ -65,6 +65,12 @@ class Seller1_1(Page):
         return self.player.priceCap
 
 
+    def error_message(self, values):
+        if not values["participate"]:
+            if not values["offer"] == None:
+                return "You must participate in the auction to place an offer."
+
+
     def is_displayed(self):
         config = Constants.config
         mode = config[0][self.round_number - 1]["mode"]
@@ -206,6 +212,11 @@ class Seller2_2(Page):
     def offer_max(self):
         return self.player.priceCap
 
+    def error_message(self, values):
+        if not values["participate"]:
+            if not values["offer"] == None:
+                return "You must participate in the auction to place an offer."
+
 
     def is_displayed(self):
         config = Constants.config
@@ -340,6 +351,12 @@ class Seller3_1(Page):
 
         return choices
 
+    def error_message(self, values):
+        if not values["participate"]:
+            if not values["offer"] == None:
+                return "You must participate in the auction to place an offer."
+
+
     def is_displayed(self):
         config = Constants.config
         mode = config[0][self.round_number - 1]["mode"]
@@ -466,6 +483,13 @@ class Seller4_2(Page):
         choices = [[1, choice_1], [2, choice_2], [0, choice_3]]
 
         return choices
+
+
+    def error_message(self, values):
+        if not values["participate"]:
+            if not values["offer"] == None:
+                return "You must participate in the auction to place an offer."
+
 
     def is_displayed(self):
         config = Constants.config

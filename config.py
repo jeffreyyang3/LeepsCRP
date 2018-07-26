@@ -6,6 +6,7 @@ import random
 	# 	3: Auction 2 Price Cap 2
 	#   4: Auction 3 Reference Price 1
 	# 	5: Auction 4 Reference Price 2
+
 data = [
 	[
 		{"priceBase": 200, "end": 200, "variance": [1, 3, 5, 8, 12, 15], "mode": 4, "buy10pts": 2},
