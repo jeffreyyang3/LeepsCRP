@@ -61,6 +61,8 @@ class Subsession(BaseSubsession):
 
             if mode == 1:
                 p.priceCap = p.cost + randomTerm + 5
+                p.markup = 5
+                p.epsilon_val = randomTerm
 
             elif mode == 2:
                 markups = [1, 3, 5, 8, 12, 15]
@@ -82,6 +84,7 @@ class Group(BaseGroup):
     # String consisting of all offers made by sellers (that will eventually be
     # converted into a list
     offers = models.StringField(initial="")
+    # markup = models.IntegerField
 
 
 class Player(BasePlayer):
@@ -93,7 +96,10 @@ class Player(BasePlayer):
     offer = models.FloatField(blank=True)
     profit = models.FloatField()
 
-    priceCap = models.FloatField()
+    markup = models.IntegerField()
+    epsilon_val = models.IntegerField()
+
+    priceCap = models.IntegerField()
     refPrice = models.IntegerField()
     neighbor_avg_offer = models.FloatField()
     participate = models.BooleanField(choices=[[True, "Yes"], [False, "No"]],

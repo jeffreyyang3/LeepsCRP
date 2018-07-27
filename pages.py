@@ -13,40 +13,6 @@ class intro(Page):
     def is_displayed(self):
         return self.round_number == 1
 
-'''
-class BuyBenefits(Page):
-    form_model = 'player'
-    form_fields = ['benefits_choice']
-
-    def benefits_choice_choices(self):
-        choice_1 = "Purchase 10 additional benefits points for 2 ECUs"
-        choice_2 = "Purchase 20 additional benefits points for 6 ECUs"
-        choice_3 = "Purchase no additional benefits points"
-        choices = [[1, choice_1], [2, choice_2], [0, choice_3]]
-
-        return choices
-
-
-    def before_next_page(self):
-        config = Constants.config
-
-        player = self.player
-        player.benefits_purchased = 0
-
-        print("Mode:", config[0][self.round_number - 1]["mode"])
-
-        # Add purchased benefits to total amount of player's money
-        # Player decided to purchase 10 benefits points for 2/4 ECUs
-        if player.benefits_choice == 1:
-            player.money -= 2
-            player.benefits_purchased = 10
-
-        elif player.benefits_choice == 2:
-            player.money -= 6
-            player.benefits_purchased = 20
-
-        player.benefits += player.benefits_purchased
-'''
 
 # Auction 1.1: Price Cap with Participation
 class Seller1_1(Page):
@@ -113,7 +79,20 @@ class Seller1_1(Page):
 
 
     def vars_for_template(self):
-        return {"score_formula": "150 + Benefits Purchased - Price Offered"}
+        player = self.player
+
+        print("group markup is:", self.player.markup)
+
+        print(player.cost)
+        print(player.epsilon_val)
+        print(player.markup)
+
+        player_cap_formula = str(player.cost) + " + (" + str(player.epsilon_val) \
+                             + ") + " + str(player.markup)
+
+        return {"score_formula": "150 + Benefits Purchased - Price Offered",
+                "general_cap_formula": "Cost + ε~U[-5, +5] + Markup",
+                "player_cap_formula": player_cap_formula}
 
 
 class WaitForOffers(WaitPage):
@@ -717,7 +696,8 @@ class WaitForOffers4_2(WaitPage):
 
         print("sorted final scores list:", sorted_scores_list)
 
-        # NOTE: Will only pick num_bidders_chosen lowest scores (for now) for testing purposes
+        # NOTE: Will only pick num_bidders_chosen lowest scores (for now) for
+        # testing purposes
 
         if len(sorted_scores_list) <= num_bidders_chosen:
             chosen_scores = sorted_scores_list[:]
