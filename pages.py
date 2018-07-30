@@ -590,6 +590,7 @@ class WaitForOffers4_2(WaitPage):
         max_neighbor_cnt = 2
         # neighbors_counted = 0
 
+        # This loop produces a ZeroDivisionError if exactly one participant
         for i in range(len(sorted_final_offers_list)):
             neighbor_avg = 0
             neighbors_counted = 0
