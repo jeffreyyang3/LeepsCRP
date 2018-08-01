@@ -23,8 +23,8 @@
                 <td>{{ p.cost }}</td>
                 <td>{{ p.priceCap }}</td>
                 <td>{{ p.offer }}</td>
-                <td>(Max)</td>
-                <td>(#)</td>
+                <td>{{ p.max_accepted_offer }}</td>
+                <td>{{ p.numParticipants }}</td>
             {% if p.sold %}
                 <td><p>Yes</p></td>
             {% else %}

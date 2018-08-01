@@ -87,6 +87,8 @@ class Group(BaseGroup):
     # converted into a list
     offers = models.StringField(initial="")
     # markup = models.IntegerField
+    # numParticipants = models.IntegerField()
+
 
 
 class Player(BasePlayer):
@@ -109,3 +111,27 @@ class Player(BasePlayer):
     benefits = models.IntegerField()
     benefits_purchased = models.IntegerField()
     benefits_choice = models.IntegerField(widget=widgets.RadioSelect)
+
+    # total number of participants in a given round
+    numParticipants = models.IntegerField()
+
+    # max accepted offer for a given round
+    max_accepted_offer = models.IntegerField()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

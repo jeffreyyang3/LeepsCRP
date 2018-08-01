@@ -130,15 +130,23 @@ class WaitForOffers(WaitPage):
             final_offers_list.append(player_info)
         print("Unsorted offers list is: ", final_offers_list)
 
+
         # Calculation/creation of scores list that includes each player's score
         # final_offers_list should be deleted later on, should only have
         # final_scores_list
         final_scores_list = final_offers_list[:]
 
+        """
+        # Set the numParticipants var for each player in the round
+        for player in group.get_players():
+            player.numParticipants = len(final_scores_list)
+        """
+
         for player_dict in final_scores_list:
             currPlayer = group.get_player_by_id(player_dict["id"])
             currPlayer.score = 150 + currPlayer.benefits_purchased - currPlayer.offer
             player_dict["score"] = currPlayer.score
+            # currPlayer.numParticipants = len(final_scores_list)
 
         # Sort list of dictionaries according to each player's score in
         # increasing order
@@ -159,11 +167,24 @@ class WaitForOffers(WaitPage):
         print("Chosen scores are: ")
         print(chosen_scores)
 
+        max_offer = 0
+
         for player in chosen_scores:
             chosenPlayer = group.get_player_by_id(player["id"])
+
+            if chosenPlayer.offer > max_offer:
+                max_offer = chosenPlayer.offer
+
             chosenPlayer.sold = True
             chosenPlayer.profit = chosenPlayer.offer - chosenPlayer.cost
             chosenPlayer.money = chosenPlayer.money + chosenPlayer.profit
+
+        # Set the numParticipants var and max_accepted_offer
+        # for each player in the round
+        for player in group.get_players():
+            player.numParticipants = len(final_scores_list)
+            player.max_accepted_offer = max_offer
+
 
 
 class Buyer1_1(Page):
@@ -306,10 +327,17 @@ class WaitForOffers2_2(WaitPage):
         # Make a copy of final_offers_list
         final_scores_list = final_offers_list[:]
 
+        """
+        # Set the numParticipants var for each player in the round
+        for player in group.get_players():
+            player.numParticipants = len(final_scores_list)
+        """
+
         for player_dict in final_scores_list:
             currPlayer = group.get_player_by_id(player_dict["id"])
             currPlayer.score = 150 + currPlayer.benefits_purchased - currPlayer.offer
             player_dict["score"] = currPlayer.score
+            # currPlayer.numParticipants = len(final_scores_list)
 
         # Sort list of dictionaries according to each player's score in
         # increasing order
@@ -328,11 +356,23 @@ class WaitForOffers2_2(WaitPage):
         print("Chosen scores are: ")
         print(chosen_scores)
 
+        max_offer = 0
+
         for player in chosen_scores:
             chosenPlayer = group.get_player_by_id(player["id"])
+
+            if chosenPlayer.offer > max_offer:
+                max_offer = chosenPlayer.offer
+
             chosenPlayer.sold = True
             chosenPlayer.profit = chosenPlayer.offer - chosenPlayer.cost
             chosenPlayer.money = chosenPlayer.money + chosenPlayer.profit
+
+        # Set the numParticipants var and max_accepted_offer
+        # for each player in the round
+        for player in group.get_players():
+            player.numParticipants = len(final_scores_list)
+            player.max_accepted_offer = max_offer
 
 
 class Buyer2_2(Page):
@@ -446,6 +486,20 @@ class WaitForOffers3_1(WaitPage):
             player_info["score"] = float(player_score)
             final_scores_list.append(player_info)
 
+
+        """
+        # Set the numParticipants var for each player in the round
+        for player_dict in final_scores_list:
+            currPlayer = group.get_player_by_id(player_dict["id"])
+            currPlayer.numParticipants = len(final_scores_list)
+        """
+
+        """
+        # Set the numParticipants var for each player in the round
+        for player in group.get_players():
+            player.numParticipants = len(final_scores_list)
+        """
+
         # Sort list of dictionaries according to each dictionary's offer in
         # increasing order
         sorted_final_scores_list = sorted(final_scores_list,
@@ -463,11 +517,24 @@ class WaitForOffers3_1(WaitPage):
         print("Chosen scores are: ")
         print(chosen_scores)
 
+        max_offer = 0
+
         for player in chosen_scores:
             chosenPlayer = group.get_player_by_id(player["id"])
+
+            if chosenPlayer.offer > max_offer:
+                max_offer = chosenPlayer.offer
+
             chosenPlayer.sold = True
             chosenPlayer.profit = chosenPlayer.offer - chosenPlayer.cost
             chosenPlayer.money = chosenPlayer.money + chosenPlayer.profit
+
+        
+        # Set the numParticipants var and max_accepted_offer
+        # for each player in the round
+        for player in group.get_players():
+            player.numParticipants = len(final_scores_list)
+            player.max_accepted_offer = max_offer
 
 
 class Buyer3_1(Page):
@@ -614,6 +681,12 @@ class WaitForOffers4_2(WaitPage):
         max_neighbor_cnt = 2
         # neighbors_counted = 0
 
+        """
+        # Set the numParticipants var for each player in the round
+        for player in group.get_players():
+            player.numParticipants = len(sorted_final_offers_list)
+        """
+
         # This loop produces a ZeroDivisionError if exactly one participant
         for i in range(len(sorted_final_offers_list)):
             neighbor_avg = 0
@@ -622,6 +695,8 @@ class WaitForOffers4_2(WaitPage):
             player_dict = sorted_final_offers_list[i]
             player_id = player_dict["id"]
             currentPlayer = group.get_player_by_id(player_id)
+
+            # currentPlayer.numParticipants = len(sorted_final_offers_list)
 
             # Case 1: First element in the list
             if i == 0:
@@ -731,11 +806,24 @@ class WaitForOffers4_2(WaitPage):
 
         print('chosen_scores is:', chosen_scores)
 
+        max_offer = 0
+
         for player in chosen_scores:
             chosenPlayer = group.get_player_by_id(player["id"])
+
+            if chosenPlayer.offer > max_offer:
+                max_offer = chosenPlayer.offer
+                
             chosenPlayer.sold = True
             chosenPlayer.profit = chosenPlayer.offer - chosenPlayer.cost
             chosenPlayer.money = chosenPlayer.money + chosenPlayer.profit
+
+
+        # Set the numParticipants var and max_accepted_offer
+        # for each player in the round
+        for player in group.get_players():
+            player.numParticipants = len(sorted_final_offers_list)
+            player.max_accepted_offer = max_offer
 
 
 class Buyer4_2(Page):
