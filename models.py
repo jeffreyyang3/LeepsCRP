@@ -70,6 +70,8 @@ class Subsession(BaseSubsession):
 
             elif mode == 3:
                 p.priceCap = p.cost + randomTerm + 15
+                p.markup = 15
+                p.epsilon_val = randomTerm
 
             elif mode == 4:
                 p.refPrice = p.cost + randomTerm

@@ -1,0 +1,38 @@
+{% load otree static %}
+
+{% block title %}
+    Your Round History
+{% endblock %}
+
+{% block content %}
+
+    <table class="table">
+        <tr>
+            <th>Round</th>
+            <th>Cost</th>
+            <th>Price Cap</th>
+            <th>Offer</th>
+            <th>Maximum Accepted Offer</th>
+            <th>Number of Participants</th>
+            <th>Sold?</th>
+            <th>Profit</th>
+        </tr>
+        {% for p in player.in_all_rounds %}
+            <tr>
+                <td>{{ p.round_number }}</td>
+                <td>{{ p.cost }}</td>
+                <td>{{ p.priceCap }}</td>
+                <td>{{ p.offer }}</td>
+                <td>(Max)</td>
+                <td>(#)</td>
+            {% if p.sold %}
+                <td><p>Yes</p></td>
+            {% else %}
+                <td><p>No</p></td>
+            {% endif %}
+                <td>{{ p.profit }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+{% endblock %}

@@ -20,7 +20,8 @@ class Seller1_1(Page):
     form_fields = ['participate', 'offer', 'benefits_choice']
 
     def benefits_choice_choices(self):
-        choice_1 = "Purchase 15 additional benefits points for 2 ECUs"
+        config = Constants.config
+        choice_1 = "Purchase 15 additional benefits points for "+str(config[0][self.round_number - 1]["buy15pts"])+" ECUs"
         choice_2 = "Purchase 30 additional benefits points for 6 ECUs"
         choice_3 = "Purchase no additional benefits points"
         choices = [[1, choice_1], [2, choice_2], [0, choice_3]]
@@ -63,7 +64,7 @@ class Seller1_1(Page):
         # Add purchased benefits to total amount of player's money
         # Player decided to purchase 10 benefits points for 2/4 ECUs
         if player.benefits_choice == 1:
-            player.money -= 2
+            player.money -= Constants.config[0][self.round_number - 1]["buy15pts"]
             player.benefits_purchased = 15
 
         elif player.benefits_choice == 2:
@@ -180,6 +181,13 @@ class Results1_1(Page):
 
         return mode == 1
 
+class Table1_1(Page):
+    form_model = 'player'
+    form_fields = ['cost', 'offer', 'participate']
+
+    def vars_for_template(self):
+        return {'player_in_all_rounds': self.player.in_all_rounds()}
+
 
 # Auction 2: Price Cap 2
 class Seller2_2(Page):
@@ -187,7 +195,8 @@ class Seller2_2(Page):
     form_fields = ['participate', 'offer', 'benefits_choice']
 
     def benefits_choice_choices(self):
-        choice_1 = "Purchase 15 additional benefits points for 2 ECUs"
+        config = Constants.config
+        choice_1 = "Purchase 15 additional benefits points for "+str(config[0][self.round_number - 1]["buy15pts"])+" ECUs"
         choice_2 = "Purchase 30 additional benefits points for 6 ECUs"
         choice_3 = "Purchase no additional benefits points"
         choices = [[1, choice_1], [2, choice_2], [0, choice_3]]
@@ -228,7 +237,7 @@ class Seller2_2(Page):
         # Add purchased benefits to total amount of player's money
         # Player decided to purchase 10 benefits points for 2/4 ECUs
         if player.benefits_choice == 1:
-            player.money -= 2
+            player.money -= Constants.config[0][self.round_number - 1]["buy15pts"]
             player.benefits_purchased = 15
 
         elif player.benefits_choice == 2:
@@ -245,7 +254,20 @@ class Seller2_2(Page):
             group.offers += player_offer_string + " "
 
     def vars_for_template(self):
-        return {"score_formula": "150 + Benefits Purchased - Price Offered"}
+        player = self.player
+
+        print("group markup is:", self.player.markup)
+
+        print(player.cost)
+        print(player.epsilon_val)
+        print(player.markup)
+
+        player_cap_formula = str(player.cost) + " + (" + str(player.epsilon_val) \
+                             + ") + " + str(player.markup)
+
+        return {"score_formula": "150 + Benefits Purchased - Price Offered",
+                "general_cap_formula": "Cost + ε~U[-5, +5] + Markup",
+                "player_cap_formula": player_cap_formula}
 
 
 class WaitForOffers2_2(WaitPage):
@@ -335,7 +357,8 @@ class Seller3_1(Page):
     form_fields = ['participate', 'offer', 'benefits_choice']
 
     def benefits_choice_choices(self):
-        choice_1 = "Purchase 15 additional benefits points for 2 ECUs"
+        config = Constants.config
+        choice_1 = "Purchase 15 additional benefits points for "+str(config[0][self.round_number - 1]["buy15pts"])+" ECUs"
         choice_2 = "Purchase 30 additional benefits points for 6 ECUs"
         choice_3 = "Purchase no additional benefits points"
         choices = [[1, choice_1], [2, choice_2], [0, choice_3]]
@@ -368,7 +391,7 @@ class Seller3_1(Page):
         # Add purchased benefits to total amount of player's money
         # Player decided to purchase 10 benefits points for 2/4 ECUs
         if player.benefits_choice == 1:
-            player.money -= 2
+            player.money -= Constants.config[0][self.round_number - 1]["buy15pts"]
             player.benefits_purchased = 15
 
         elif player.benefits_choice == 2:
@@ -468,7 +491,8 @@ class Seller4_2(Page):
     form_fields = ['participate', 'offer', 'benefits_choice']
 
     def benefits_choice_choices(self):
-        choice_1 = "Purchase 15 additional benefits points for 2 ECUs"
+        config = Constants.config
+        choice_1 = "Purchase 15 additional benefits points for "+str(config[0][self.round_number - 1]["buy15pts"])+" ECUs"
         choice_2 = "Purchase 30 additional benefits points for 6 ECUs"
         choice_3 = "Purchase no additional benefits points"
         choices = [[1, choice_1], [2, choice_2], [0, choice_3]]
@@ -502,7 +526,7 @@ class Seller4_2(Page):
         # Add purchased benefits to total amount of player's money
         # Player decided to purchase 10 benefits points for 2/4 ECUs
         if player.benefits_choice == 1:
-            player.money -= 2
+            player.money -= Constants.config[0][self.round_number - 1]["buy15pts"]
             player.benefits_purchased = 15
 
         elif player.benefits_choice == 2:

@@ -22,7 +22,7 @@
                 <td>{{ p.priceCap }}</td>
                 <td>{{ p.offer }}</td>
                 {% if p.sold %}
-                    <td><p>YES</p></td>
+                    <td><p>Yes</p></td>
                 {% else %}
                     <td><p>No</p></td>
                 {% endif %}
@@ -33,6 +33,8 @@
 
         </table>
 
+    {% include 'LeepsCRP/Table1_1.html' %}
     {% next_button %}
+
 
 {% endblock %}
