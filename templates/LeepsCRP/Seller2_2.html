@@ -6,41 +6,48 @@
 {% endblock %}
 
 {% block content %}
-    <div>
-        <h5>Auction type: Price Cap</h5>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <h5>Auction type: Price Cap</h5>
 
-        <hr/>
+            <hr/>
 
-        <p>
-            Your cost: {{ player.cost }}
-            <br/>
-            Price cap: {{ player.priceCap }}
-        </p>
+            <p>
+                Your cost: {{ player.cost }}
+                <br/>
+                Price cap: {{ player.priceCap }}
+            </p>
 
-        <p>Price Cap Formula: {{ general_cap_formula }}
-            <br/>
-            Price Cap: {{ player_cap_formula }}
-        </p>
-        
-        <p>Score Formula: {{ score_formula }} </p>
+            <p>Price Cap Formula: {{ general_cap_formula }}
+                <br/>
+                Price Cap: {{ player_cap_formula }}
+            </p>
+            
+            <p>Score Formula: {{ score_formula }} </p>
 
-        <hr/>
+            <hr/>
 
-        <p>Do you want to participate?</p>
+            <p>Do you want to participate?</p>
 
-        {% formfield player.participate with label="" %}
+            {% formfield player.participate with label="" %}
 
-        {% formfield player.offer label="Enter your Offer:" %}
+            {% formfield player.offer label="Enter your Offer:" %}
 
-        {{ form.participate.errors }}
+            {{ form.participate.errors }}
 
-        <hr/>
+            <hr/>
 
-        <p>You have the option to buy additional benefits points. Please select one
-        of the choices below:</p>
+            <p>You have the option to buy additional benefits points. Please select one
+            of the choices below:</p>
 
-        {% formfield player.benefits_choice with label="" %}
+            {% formfield player.benefits_choice with label="" %}
+        </div>
+        <div class="col-md-6">
+            {% include 'LeepsCRP/Table1_1.html' %}       
+        </div>
     </div>
+</div>
 
     {% next_button %}
 {% endblock %}

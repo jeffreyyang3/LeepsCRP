@@ -6,38 +6,46 @@
 {% endblock %}
 
 {% block content %}
-    <table class="table">
-            <tr>
-                <th>Bidder ID</th>
-                <th>Cost</th>
-                <th>Est. Cost (Cost + RND) Sorted by</th>
-                <th>Offers</th>
-                <th>Average offer of 4 closest bidders</th>
-                <th>Scores</th>
-                <th>Sold (8th highest Scores)</th>
-                <th>Profit (Offer - Cost)</th>
+<div class="container">
+    <div class="row">
+        <div class="col-md-5">
+                <table class="table">
+                        <tr>
+                            <th>Bidder ID</th>
+                            <th>Cost</th>
+                            <th>Est. Cost (Cost + RND) Sorted by</th>
+                            <th>Offers</th>
+                            <th>Average offer of 4 closest bidders</th>
+                            <th>Scores</th>
+                            <th>Sold (8th highest Scores)</th>
+                            <th>Profit (Offer - Cost)</th>
 
-            </tr>
-            {% for p in group.get_players %}
-            <tr>
-                <td>{{ p.id_in_group }}</td>
-                <td>{{ p.cost }}</td>
-                <td>{{ p.estimatedCost }}</td>
-                <td>{{ p.offer }}</td>
-                <td>{{ p.neighbor_avg_offer }}</td>
-                <td>{{ p.score }}</td>
-                {% if p.sold %}
-                    <td><p>YES</p></td>
-                {% else %}
-                    <td><p>No</p></td>
-                {% endif %}
-                <td>{{ p.profit }}</td>
+                        </tr>
+                        {% for p in group.get_players %}
+                        <tr>
+                            <td>{{ p.id_in_group }}</td>
+                            <td>{{ p.cost }}</td>
+                            <td>{{ p.estimatedCost }}</td>
+                            <td>{{ p.offer }}</td>
+                            <td>{{ p.neighbor_avg_offer }}</td>
+                            <td>{{ p.score }}</td>
+                            {% if p.sold %}
+                                <td><p>YES</p></td>
+                            {% else %}
+                                <td><p>No</p></td>
+                            {% endif %}
+                            <td>{{ p.profit }}</td>
 
-            </tr>
-            {% endfor %}
+                        </tr>
+                        {% endfor %}
 
-        </table>
-    {% include 'LeepsCRP/Table1_1.html' %}
+                    </table>
+        </div>
+        <div class="col-md-5 col-md-offset-2">
+            {% include 'LeepsCRP/Table1_1.html' %}       
+        </div>
+    </div>
+</div>
     {% next_button %}
 
 {% endblock %}

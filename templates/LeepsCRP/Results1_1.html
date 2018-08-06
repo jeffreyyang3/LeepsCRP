@@ -1,40 +1,46 @@
 {% extends "global/Page.html" %}
 {% load otree static %}
 
-{% block title %}
-    Auction Results
-{% endblock %}
-
 {% block content %}
-    <table class="table">
-            <tr>
-                <th>Bidder ID</th>
-                <th>Cost</th>
-                <th>Max Offer (Cost + RAND + Variance)</th>
-                <th>Offers</th>
-                <th>Sold (8th highest offers)</th>
-                <th>Profit (Offer - Cost)</th>
-            </tr>
-            {% for p in group.get_players %}
-            <tr>
-                <td>{{ p.id_in_group }}</td>
-                <td>{{ p.cost }}</td>
-                <td>{{ p.priceCap }}</td>
-                <td>{{ p.offer }}</td>
-                {% if p.sold %}
-                    <td><p>YES</p></td>
-                {% else %}
-                    <td><p>No</p></td>
-                {% endif %}
-                <td>{{ p.profit }}</td>
+<div class="container">
+    <div class="row">
+        <div class="col-md-5">
+            {% block title %}
+                Auction Results
+            {% endblock %}
+            <table class="table">
+                    <tr>
+                        <th>Bidder ID</th>
+                        <th>Cost</th>
+                        <th>Max Offer (Cost + RAND + Variance)</th>
+                        <th>Offers</th>
+                        <th>Sold (8th highest offers)</th>
+                        <th>Profit (Offer - Cost)</th>
+                    </tr>
+                    {% for p in group.get_players %}
+                    <tr>
+                        <td>{{ p.id_in_group }}</td>
+                        <td>{{ p.cost }}</td>
+                        <td>{{ p.priceCap }}</td>
+                        <td>{{ p.offer }}</td>
+                        {% if p.sold %}
+                            <td><p>YES</p></td>
+                        {% else %}
+                            <td><p>No</p></td>
+                        {% endif %}
+                        <td>{{ p.profit }}</td>
 
-            </tr>
-            {% endfor %}
+                    </tr>
+                    {% endfor %}
 
-        </table>
+                </table>
+        </div>
 
-{% include 'LeepsCRP/Table1_1.html' %}
+        <div class="col-md-5 col-md-offset-2">
+            {% include 'LeepsCRP/Table1_1.html' %}
+
+        </div>
+    </div>    
     {% next_button %}
-
-
+</div>
 {% endblock %}

@@ -6,21 +6,30 @@
 {% endblock %}
 
 {% block content %}
-    {% if player.participate %}
-        {% if player.sold %}
-            <p>Congratulations, your object has been bought for {{ player.offer }} ECUS.</p>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+                {% if player.participate %}
+                    {% if player.sold %}
+                        <p>Congratulations, your object has been bought for {{ player.offer }} ECUS.</p>
 
-            <p>You now have {{ player.money }} ECUs.</p>
-        {% else %}
-            <p>Sorry, your object was not bought for {{ player.offer }} ECUs by the buyer.</p>
+                        <p>You now have {{ player.money }} ECUs.</p>
+                    {% else %}
+                        <p>Sorry, your object was not bought for {{ player.offer }} ECUs by the buyer.</p>
 
-            <p>You still have {{ player.money }} ECUs</p>
-        {% endif %}
-    {% else %}
-        <p>You did not participate in this auction.</p>
-        <p>You still have {{ player.money }} ECUs.</p>
+                        <p>You still have {{ player.money }} ECUs</p>
+                    {% endif %}
+                {% else %}
+                    <p>You did not participate in this auction.</p>
+                    <p>You still have {{ player.money }} ECUs.</p>
 
-    {% endif %}
+                {% endif %}
+        </div>
+        <div class="col-md-6">
+            {% include 'LeepsCRP/Table1_1.html' %}  
+        </div>
+    </div>
+</div>
     {% next_button %}
 
 {% endblock %}

@@ -6,6 +6,9 @@
 {% endblock %}
 
 {% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
     {% if player.participate %}
         {% if player.sold %}
             <p>Congratulations, your object has been bought for {{ player.offer }} ECUS.</p>
@@ -21,6 +24,12 @@
         <p>You still have {{ player.money }} ECUs.</p>
 
     {% endif %}
+        </div>
+        <div class="col-md-6">
+            {% include 'LeepsCRP/Table1_1.html' %}
+        </div>
+    </div>
+</div>   
     {% next_button %}
 
 {% endblock %}
