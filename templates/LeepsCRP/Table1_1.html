@@ -17,22 +17,42 @@
             <th>Sold?</th>
             <th>Profit</th>
         </tr>
-        {% for p in player.in_all_rounds %}
-            <tr>
-                <td>{{ p.round_number }}</td>
-                <td>{{ p.cost }}</td>
-                <td>{{ p.priceCap }}</td>
-                <td>{{ p.offer }}</td>
-                <td>{{ p.max_accepted_offer }}</td>
-                <td>{{ p.numParticipants }}</td>
-            {% if p.sold %}
-                <td><p>Yes</p></td>
-            {% else %}
-                <td><p>No</p></td>
-            {% endif %}
-                <td>{{ p.profit }}</td>
-            </tr>
-        {% endfor %}
+
+        {% if player.showCurrRound %}
+            {% for p in player.in_all_rounds %}
+                <tr>
+                    <td>{{ p.round_number }}</td>
+                    <td>{{ p.cost }}</td>
+                    <td>{{ p.priceCap }}</td>
+                    <td>{{ p.offer }}</td>
+                    <td>{{ p.max_accepted_offer }}</td>
+                    <td>{{ p.numParticipants }}</td>
+                {% if p.sold %}
+                    <td><p>Yes</p></td>
+                {% else %}
+                    <td><p>No</p></td>
+                {% endif %}
+                    <td>{{ p.profit }}</td>
+                </tr>
+            {% endfor %}
+        {% else %}
+            {% for p in player.in_previous_rounds %}
+                <tr>
+                    <td>{{ p.round_number }}</td>
+                    <td>{{ p.cost }}</td>
+                    <td>{{ p.priceCap }}</td>
+                    <td>{{ p.offer }}</td>
+                    <td>{{ p.max_accepted_offer }}</td>
+                    <td>{{ p.numParticipants }}</td>
+                {% if p.sold %}
+                    <td><p>Yes</p></td>
+                {% else %}
+                    <td><p>No</p></td>
+                {% endif %}
+                    <td>{{ p.profit }}</td>
+                </tr>
+            {% endfor %}
+        {% endif %}
     </table>
 
 {% endblock %}

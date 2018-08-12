@@ -184,6 +184,8 @@ class WaitForOffers(WaitPage):
         for player in group.get_players():
             player.numParticipants = len(final_scores_list)
             player.max_accepted_offer = max_offer
+            player.showCurrRound = True
+
 
 
 

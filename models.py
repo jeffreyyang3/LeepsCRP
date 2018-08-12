@@ -41,9 +41,12 @@ class Subsession(BaseSubsession):
 
             p.benefits = Constants.baseBenefits     # Default to 100
 
+
+
             # Initialization of default values
             p.sold = False
             p.profit = 0
+            p.showCurrRound = False
 
             mode = Constants.config[0][self.round_number - 1]["mode"]
             cont = drawsData[players_per_group * (self.round_number - 1) +
@@ -88,6 +91,8 @@ class Group(BaseGroup):
     offers = models.StringField(initial="")
     # markup = models.IntegerField
     # numParticipants = models.IntegerField()
+    # showCurrRound = models.BooleanField() # indicate whether the current round
+                                          # should be shown in the history table
 
 
 
@@ -97,7 +102,7 @@ class Player(BasePlayer):
     cost = models.IntegerField()
     estimatedCost = models.IntegerField()
     sold = models.BooleanField()
-    offer = models.FloatField(blank=True)
+    offer = models.IntegerField(blank=True)
     profit = models.FloatField()
 
     markup = models.IntegerField()
@@ -117,6 +122,9 @@ class Player(BasePlayer):
 
     # max accepted offer for a given round
     max_accepted_offer = models.IntegerField()
+
+    showCurrRound = models.BooleanField()  # indicate whether the current round
+    # should be shown in the history table
 
 
 
