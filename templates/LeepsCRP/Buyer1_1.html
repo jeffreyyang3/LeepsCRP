@@ -2,16 +2,16 @@
 {% load otree static %}
 
 {% block title %}
-    <div style="margin-left:-20%">
+    <div style="margin-left:-25%">
         Auction Results
     </div>
 {% endblock %}
 
 {% block content %}
 
-<div class="container" style="margin-left:-20%">
+<div class="container" style="margin-left:-25%">
     <div class="row">
-        <div class="col-md-7">
+        <div class="col-md-8">
     {% if player.participate %}
         {% if player.sold %}
             <p>Congratulations, your object has been bought for {{ player.offer }} ECUS.</p>
@@ -28,11 +28,14 @@
 
     {% endif %}
         </div>
-        <div class="col-md-5">
+        <div class="col-md-4">
             {% include 'LeepsCRP/Table1_1.html' %}
         </div>
     </div>
 </div>   
-    {% next_button %}
+
+<div style="margin-left:-25%">
+    <button class="otree-btn-next btn btn-primary next-button otree-next-button">Next</button>
+</div>
 
 {% endblock %}

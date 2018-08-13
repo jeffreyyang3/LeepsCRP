@@ -41,7 +41,9 @@ class Seller1_1(Page):
     def error_message(self, values):
         if not values["participate"]:
             if not values["offer"] == None:
-                return "You must participate in the auction to place an offer."
+                return "You must participate in the auction to place an offer."\
+                        + " In order to not participate, you must leave the " \
+                          "offer box blank."
 
 
     def is_displayed(self):
@@ -126,7 +128,7 @@ class WaitForOffers(WaitPage):
         for id, player_offer in offer_dict.items():
             player_info = {}
             player_info["id"] = int(id)
-            player_info["offer"] = float(player_offer)
+            player_info["offer"] = int(player_offer)
             final_offers_list.append(player_info)
         print("Unsorted offers list is: ", final_offers_list)
 
@@ -238,7 +240,10 @@ class Seller2_2(Page):
     def error_message(self, values):
         if not values["participate"]:
             if not values["offer"] == None:
-                return "You must participate in the auction to place an offer."
+                return "You must participate in the auction to place an offer."\
+                        + " In order to not participate, you must leave the " \
+                          "offer box blank."
+
 
 
     def is_displayed(self):
@@ -323,7 +328,7 @@ class WaitForOffers2_2(WaitPage):
         for id, player_offer in offer_dict.items():
             player_info = {}
             player_info["id"] = int(id)
-            player_info["offer"] = float(player_offer)
+            player_info["offer"] = int(player_offer)
             final_offers_list.append(player_info)
 
         # Make a copy of final_offers_list
@@ -375,6 +380,7 @@ class WaitForOffers2_2(WaitPage):
         for player in group.get_players():
             player.numParticipants = len(final_scores_list)
             player.max_accepted_offer = max_offer
+            player.showCurrRound = True
 
 
 class Buyer2_2(Page):
@@ -410,7 +416,9 @@ class Seller3_1(Page):
     def error_message(self, values):
         if not values["participate"]:
             if not values["offer"] == None:
-                return "You must participate in the auction to place an offer."
+                return "You must participate in the auction to place an offer."\
+                        + " In order to not participate, you must leave the " \
+                          "offer box blank."
 
 
     def is_displayed(self):
@@ -429,6 +437,7 @@ class Seller3_1(Page):
         player.benefits_purchased = 0
 
         print("Mode:", config[0][self.round_number - 1]["mode"])
+        print("Inside 3_1: reference price is: " + str(player.refPrice))
 
         # Add purchased benefits to total amount of player's money
         # Player decided to purchase 10 benefits points for 2/4 ECUs
@@ -444,6 +453,7 @@ class Seller3_1(Page):
 
         # Add player's offer to the full string of offers
         if player.participate:
+            print("Inside 3_1 if: reference price is: " + str(player.refPrice))
             player.score = 150 + player.benefits_purchased - 50 * (player.offer / player.refPrice) - (player.refPrice)
             player_score_string = str(player.id_in_group) + "=" + str(player.score)
 
@@ -537,6 +547,7 @@ class WaitForOffers3_1(WaitPage):
         for player in group.get_players():
             player.numParticipants = len(final_scores_list)
             player.max_accepted_offer = max_offer
+            player.showCurrRound = True
 
 
 class Buyer3_1(Page):
@@ -572,7 +583,9 @@ class Seller4_2(Page):
     def error_message(self, values):
         if not values["participate"]:
             if not values["offer"] == None:
-                return "You must participate in the auction to place an offer."
+                return "You must participate in the auction to place an offer."\
+                        + " In order to not participate, you must leave the " \
+                          "offer box blank."
 
 
     def is_displayed(self):
@@ -654,7 +667,7 @@ class WaitForOffers4_2(WaitPage):
         for id, player_offer in offer_dict.items():
             player_info = {}
             player_info["id"] = int(id)
-            player_info["offer"] = float(player_offer)
+            player_info["offer"] = int(player_offer)
 
             currentPlayer = group.get_player_by_id(id)
             player_info["est_cost"] = currentPlayer.estimatedCost
@@ -826,6 +839,7 @@ class WaitForOffers4_2(WaitPage):
         for player in group.get_players():
             player.numParticipants = len(sorted_final_offers_list)
             player.max_accepted_offer = max_offer
+            player.showCurrRound = True
 
 
 class Buyer4_2(Page):
@@ -845,8 +859,15 @@ class Results4_2(Page):
 
         return mode == 5
 
+"""
 page_sequence = [intro,
                  Seller1_1, WaitForOffers, Buyer1_1, Results1_1,
                  Seller2_2, WaitForOffers2_2, Buyer2_2, Results2_2,
                  Seller3_1, WaitForOffers3_1, Buyer3_1, Results3_1,
                  Seller4_2, WaitForOffers4_2, Buyer4_2, Results4_2]
+"""
+page_sequence = [intro,
+                 Seller1_1, WaitForOffers, Buyer1_1,
+                 Seller2_2, WaitForOffers2_2, Buyer2_2,
+                 Seller3_1, WaitForOffers3_1, Buyer3_1,
+                 Seller4_2, WaitForOffers4_2, Buyer4_2]

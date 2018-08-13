@@ -41,8 +41,6 @@ class Subsession(BaseSubsession):
 
             p.benefits = Constants.baseBenefits     # Default to 100
 
-
-
             # Initialization of default values
             p.sold = False
             p.profit = 0
@@ -64,23 +62,28 @@ class Subsession(BaseSubsession):
 
             if mode == 1:
                 p.priceCap = p.cost + randomTerm + 5
+                p.refPrice = None
                 p.markup = 5
                 p.epsilon_val = randomTerm
 
             elif mode == 2:
                 markups = [1, 3, 5, 8, 12, 15]
                 p.priceCap = p.cost + random.choice(markups) + randomTerm
+                p.refPrice = None
 
             elif mode == 3:
                 p.priceCap = p.cost + randomTerm + 15
+                p.refPrice = None
                 p.markup = 15
                 p.epsilon_val = randomTerm
 
             elif mode == 4:
                 p.refPrice = p.cost + randomTerm
+                p.priceCap = None
 
             elif mode == 5:
                 p.estimatedCost = p.cost + randomTerm
+                p.priceCap = None
 
         f.close()
 

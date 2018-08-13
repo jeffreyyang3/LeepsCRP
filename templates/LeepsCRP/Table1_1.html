@@ -10,7 +10,11 @@
         <tr>
             <th>Round</th>
             <th>Cost</th>
-            <th>Price Cap or Reference Price</th>
+            {% if player.priceCap != None %}
+                <th>Price Cap</th>
+            {% else %}
+                <th>Reference Price</th>
+            {% endif %}
             <th>Offer</th>
             <th>Maximum Accepted Offer</th>
             <th>Number of Participants</th>
@@ -23,7 +27,11 @@
                 <tr>
                     <td>{{ p.round_number }}</td>
                     <td>{{ p.cost }}</td>
-                    <td>{{ p.priceCap }}</td>
+                    {% if p.priceCap != None %}
+                        <td>{{ p.priceCap }}</td>
+                    {% else %}
+                        <td>{{ p.refPrice }}</td>
+                    {% endif %}
                     <td>{{ p.offer }}</td>
                     <td>{{ p.max_accepted_offer }}</td>
                     <td>{{ p.numParticipants }}</td>
@@ -40,7 +48,11 @@
                 <tr>
                     <td>{{ p.round_number }}</td>
                     <td>{{ p.cost }}</td>
-                    <td>{{ p.priceCap }}</td>
+                    {% if p.priceCap != None %}
+                        <td>{{ p.priceCap }}</td>
+                    {% else %}
+                        <td>{{ p.refPrice }}</td>
+                    {% endif %}
                     <td>{{ p.offer }}</td>
                     <td>{{ p.max_accepted_offer }}</td>
                     <td>{{ p.numParticipants }}</td>
