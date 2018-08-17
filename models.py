@@ -6,7 +6,7 @@ import random
 import csv
 from . import config as config_py
 
-author = "Jeffrey Yang , Allegra Martino, and Daniel Wang"
+author = "Jeffrey Yang, Allegra Martino, and Daniel Wang"
 
 doc = """
 CRP_2018
@@ -29,6 +29,8 @@ class Subsession(BaseSubsession):
     def creating_session(self):
         self.group_randomly()
         f = open("LeepsCRP/draws/Draws4.csv") # hardcoded file name for now
+
+        # f = open("LeepsCRP/draws/DrawsTest.csv")
         drawsData = list(csv.DictReader(f))
 
         players_per_group = Constants.players_per_group

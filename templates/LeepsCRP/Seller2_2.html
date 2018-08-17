@@ -2,13 +2,15 @@
 {% load otree static %}
 
 {% block title %}
-    Seller
+     <div style="margin-left:-25%">
+        Seller
+    </div>
 {% endblock %}
 
 {% block content %}
-<div class="container">
+<div class="container" style="margin-left:-25%">
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-8">
             <h5>Auction type: Price Cap</h5>
 
             <hr/>
@@ -28,6 +30,13 @@
 
             <hr/>
 
+            {% if player.priceCap < player.cost %}
+                <p style="border:4px; border-style:solid; border-color:#FF0000; padding: 1em;">WARNING: Since your price cap is less than your cost,
+                the only number of ECUs you can offer is your price cap.
+                If you do decide to participate and the buyer
+                purchases your object, you will lose ECUs.</p>
+            {% endif %}
+
             <p>Do you want to participate?</p>
 
             {% formfield player.participate with label="" %}
@@ -43,11 +52,13 @@
 
             {% formfield player.benefits_choice with label="" %}
         </div>
-        <div class="col-md-6">
+        <div class="col-md-4">
             {% include 'LeepsCRP/Table1_1.html' %}       
         </div>
     </div>
 </div>
 
-    {% next_button %}
+<div style="margin-left:-25%">
+    <button class="otree-btn-next btn btn-primary next-button otree-next-button">Next</button>
+</div>
 {% endblock %}

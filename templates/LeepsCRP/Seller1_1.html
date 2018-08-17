@@ -29,6 +29,14 @@
 
                 <hr/>
 
+                {% if player.priceCap < player.cost %}
+                    <p style="border:4px; border-style:solid; border-color:#FF0000; padding: 1em;">WARNING: Since your price cap is less than your cost,
+                    the only number of ECUs you can offer is your price cap.
+                    If you do decide to participate and the buyer
+                    purchases your object, you will lose ECUs.</p>
+                {% endif %}
+
+
                 <p>Do you want to participate?</p>
 
                 {% formfield player.participate with label="" %}
