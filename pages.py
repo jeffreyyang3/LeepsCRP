@@ -44,6 +44,10 @@ class Seller1_1(Page):
                 return "You must participate in the auction to place an offer."\
                         + " In order to not participate, you must leave the " \
                           "offer box blank."
+        else:
+            if values["offer"] == None:
+                return "If you wish to participate in the auction, you must " \
+                       "place an offer."
 
 
     def is_displayed(self):
@@ -243,6 +247,10 @@ class Seller2_2(Page):
                 return "You must participate in the auction to place an offer."\
                         + " In order to not participate, you must leave the " \
                           "offer box blank."
+        else:
+            if values["offer"] == None:
+                return "If you wish to participate in the auction, you must " \
+                       "place an offer."
 
 
 
@@ -419,6 +427,10 @@ class Seller3_1(Page):
                 return "You must participate in the auction to place an offer."\
                         + " In order to not participate, you must leave the " \
                           "offer box blank."
+        else:
+            if values["offer"] == None:
+                return "If you wish to participate in the auction, you must " \
+                       "place an offer."
 
 
     def is_displayed(self):
@@ -586,6 +598,10 @@ class Seller4_2(Page):
                 return "You must participate in the auction to place an offer."\
                         + " In order to not participate, you must leave the " \
                           "offer box blank."
+        else:
+            if values["offer"] == None:
+                return "If you wish to participate in the auction, you must " \
+                       "place an offer."
 
 
     def is_displayed(self):

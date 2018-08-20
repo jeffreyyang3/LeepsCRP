@@ -7,7 +7,7 @@ import random
 	#   4: Auction 3 Reference Price 1
 	# 	5: Auction 4 Reference Price 2
 
-"""
+
 data = [
 	[
 		{"priceBase": 200, "end": 200, "variance": [1, 3, 5, 8, 12, 15], "mode": 4, "buy15pts": 2},
@@ -18,13 +18,15 @@ data = [
 
 	]
 ]
-"""
 
+
+"""
 data = [
 	[
 		{"priceBase": 200, "end": 200, "variance": [1, 3, 5, 8, 12, 15], "mode": 4, "buy15pts": 2},
 	]
 ]
+"""
 
 def shuffle(data):
 	return [random.sample(data[0], k=len(data[0]))]

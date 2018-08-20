@@ -30,6 +30,8 @@ class Subsession(BaseSubsession):
         self.group_randomly()
         f = open("LeepsCRP/draws/Draws4.csv") # hardcoded file name for now
 
+        # Uncomment the below line to get test cases for when the price cap <
+        # cost
         # f = open("LeepsCRP/draws/DrawsTest.csv")
         drawsData = list(csv.DictReader(f))
 
@@ -54,6 +56,10 @@ class Subsession(BaseSubsession):
 
             # Generates a random int randomTerm, -5 < randomTerm < 5
             randomTerm = int(-5 + 10 * float(cont))
+
+            # Uncomment the below line to get test cases for when the price cap <
+            # cost
+            # randomTerm = int(-10 + 10 * float(cont))
 
             # Mode Keys
             #   1: Auction 1 Price Cap 1
