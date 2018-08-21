@@ -2,13 +2,15 @@
 {% load otree static %}
 
 {% block title %}
-    Seller
+    <div style="margin-left:-25%">
+        Seller
+    </div>
 {% endblock %}
 
 {% block content %}
-<div class="container">
+<div class="container" style="margin-left:-25%">
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-8">
             <h5>Auction type: Reference Price</h5>
 
             <hr/>
@@ -38,11 +40,13 @@
 
             {% formfield player.benefits_choice with label="" %}
         </div>
-        <div class="col-md-6">
+        <div class="col-md-4">
             {% include 'LeepsCRP/Table1_1.html' %}       
         </div>
     </div>
 </div>
 
-    {% next_button %}
+    <div style="margin-left:-25%">
+        <button class="otree-btn-next btn btn-primary next-button otree-next-button">Next</button>
+    </div>
 {% endblock %}

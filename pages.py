@@ -21,7 +21,8 @@ class Seller1_1(Page):
 
     def benefits_choice_choices(self):
         config = Constants.config
-        choice_1 = "Purchase 15 additional benefits points for "+str(config[0][self.round_number - 1]["buy15pts"])+" ECUs"
+        choice_1 = "Purchase 15 additional benefits points for " +\
+                   str(config[0][self.round_number - 1]["buy15pts"])+" ECUs"
         choice_2 = "Purchase 30 additional benefits points for 6 ECUs"
         choice_3 = "Purchase no additional benefits points"
         choices = [[1, choice_1], [2, choice_2], [0, choice_3]]
@@ -39,6 +40,8 @@ class Seller1_1(Page):
 
 
     def error_message(self, values):
+        print("offer is: " + str(values["offer"]))
+
         if not values["participate"]:
             if not values["offer"] == None:
                 return "You must participate in the auction to place an offer."\
@@ -89,6 +92,8 @@ class Seller1_1(Page):
         player = self.player
 
         print("group markup is:", self.player.markup)
+
+        print("player's showcurrround is: " + str(self.player.showCurrRound))
 
         print(player.cost)
         print(player.epsilon_val)
@@ -174,12 +179,16 @@ class WaitForOffers(WaitPage):
         print(chosen_scores)
 
         max_offer = 0
+        min_score = 100000
 
         for player in chosen_scores:
             chosenPlayer = group.get_player_by_id(player["id"])
 
             if chosenPlayer.offer > max_offer:
                 max_offer = chosenPlayer.offer
+
+            if chosenPlayer.score < min_score:
+                min_score = chosenPlayer.score
 
             chosenPlayer.sold = True
             chosenPlayer.profit = chosenPlayer.offer - chosenPlayer.cost
@@ -190,6 +199,7 @@ class WaitForOffers(WaitPage):
         for player in group.get_players():
             player.numParticipants = len(final_scores_list)
             player.max_accepted_offer = max_offer
+            player.min_accepted_score = round(min_score, 2)
             player.showCurrRound = True
 
 
@@ -215,6 +225,8 @@ class Table1_1(Page):
     form_fields = ['cost', 'offer', 'participate']
 
     def vars_for_template(self):
+
+
         return {'player_in_all_rounds': self.player.in_all_rounds()}
 
 
@@ -294,6 +306,8 @@ class Seller2_2(Page):
 
         print("group markup is:", self.player.markup)
 
+        print("player's showcurrround is: " + str(self.player.showCurrRound))
+
         print(player.cost)
         print(player.epsilon_val)
         print(player.markup)
@@ -372,12 +386,17 @@ class WaitForOffers2_2(WaitPage):
         print(chosen_scores)
 
         max_offer = 0
+        min_score = 100000
+
 
         for player in chosen_scores:
             chosenPlayer = group.get_player_by_id(player["id"])
 
             if chosenPlayer.offer > max_offer:
                 max_offer = chosenPlayer.offer
+
+            if chosenPlayer.score < min_score:
+                min_score = chosenPlayer.score
 
             chosenPlayer.sold = True
             chosenPlayer.profit = chosenPlayer.offer - chosenPlayer.cost
@@ -388,6 +407,7 @@ class WaitForOffers2_2(WaitPage):
         for player in group.get_players():
             player.numParticipants = len(final_scores_list)
             player.max_accepted_offer = max_offer
+            player.min_accepted_score = round(min_score, 2)
             player.showCurrRound = True
 
 
@@ -474,6 +494,8 @@ class Seller3_1(Page):
 
 
     def vars_for_template(self):
+        print("player's showcurrround is: " + str(self.player.showCurrRound))
+
         return {"score_formula": "150 + Benefits Purchased - 50 * " +
                                  "(Price Offered / Reference Price) - Reference Price"}
 
@@ -542,12 +564,16 @@ class WaitForOffers3_1(WaitPage):
         print(chosen_scores)
 
         max_offer = 0
+        min_score = 100000
 
         for player in chosen_scores:
             chosenPlayer = group.get_player_by_id(player["id"])
 
             if chosenPlayer.offer > max_offer:
                 max_offer = chosenPlayer.offer
+
+            if chosenPlayer.score < min_score:
+                min_score = chosenPlayer.score
 
             chosenPlayer.sold = True
             chosenPlayer.profit = chosenPlayer.offer - chosenPlayer.cost
@@ -559,6 +585,7 @@ class WaitForOffers3_1(WaitPage):
         for player in group.get_players():
             player.numParticipants = len(final_scores_list)
             player.max_accepted_offer = max_offer
+            player.min_accepted_score = round(min_score, 2)
             player.showCurrRound = True
 
 
@@ -645,6 +672,8 @@ class Seller4_2(Page):
 
 
     def vars_for_template(self):
+        print("player's showcurrround is: " + str(self.player.showCurrRound))
+
         return {"score_formula": "150 + Benefits Purchased - 50 * " +
                                  "(Price Offered / Reference Price) - Reference Price"}
 
@@ -838,12 +867,16 @@ class WaitForOffers4_2(WaitPage):
         print('chosen_scores is:', chosen_scores)
 
         max_offer = 0
+        min_score = 100000
 
         for player in chosen_scores:
             chosenPlayer = group.get_player_by_id(player["id"])
 
             if chosenPlayer.offer > max_offer:
                 max_offer = chosenPlayer.offer
+
+            if chosenPlayer.score < min_score:
+                min_score = chosenPlayer.score
                 
             chosenPlayer.sold = True
             chosenPlayer.profit = chosenPlayer.offer - chosenPlayer.cost
@@ -855,6 +888,7 @@ class WaitForOffers4_2(WaitPage):
         for player in group.get_players():
             player.numParticipants = len(sorted_final_offers_list)
             player.max_accepted_offer = max_offer
+            player.min_accepted_score = round(min_score, 2)
             player.showCurrRound = True
 
 

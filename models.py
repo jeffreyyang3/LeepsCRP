@@ -114,7 +114,7 @@ class Player(BasePlayer):
     estimatedCost = models.IntegerField()
     sold = models.BooleanField()
     offer = models.IntegerField(blank=True)
-    profit = models.FloatField()
+    profit = models.IntegerField()
 
     markup = models.IntegerField()
     epsilon_val = models.IntegerField()
@@ -133,6 +133,7 @@ class Player(BasePlayer):
 
     # max accepted offer for a given round
     max_accepted_offer = models.IntegerField()
+    min_accepted_score = models.FloatField()
 
     showCurrRound = models.BooleanField()  # indicate whether the current round
     # should be shown in the history table

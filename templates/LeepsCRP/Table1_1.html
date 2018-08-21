@@ -16,7 +16,7 @@
                 <th>Reference Price</th>
             {% endif %}
             <th>Offer</th>
-            <th>Max. Accepted Offer</th>
+            <th>Min. Accepted Score</th>
             <th>Num. Participants</th>
             <th>Sold?</th>
             <th>Profit</th>
@@ -33,7 +33,7 @@
                         <td>{{ p.refPrice }}</td>
                     {% endif %}
                     <td>{{ p.offer }}</td>
-                    <td>{{ p.max_accepted_offer }}</td>
+                    <td>{{ p.min_accepted_score }}</td>
                     <td>{{ p.numParticipants }}</td>
                 {% if p.sold %}
                     <td><p>Yes</p></td>
@@ -54,7 +54,7 @@
                         <td>{{ p.refPrice }}</td>
                     {% endif %}
                     <td>{{ p.offer }}</td>
-                    <td>{{ p.max_accepted_offer }}</td>
+                    <td>{{ p.min_accepted_score }}</td>
                     <td>{{ p.numParticipants }}</td>
                 {% if p.sold %}
                     <td><p>Yes</p></td>
