@@ -48,6 +48,7 @@
 
                 {{ form.offer.errors }}
                 {{ form.participate.errors }}
+                {{ form.benefits_choice.errors }}
 
                 <hr/>
         </div>
@@ -77,7 +78,7 @@
                         score += (15 - 50 * (offer / refPrice));
                     }
 
-                    else if (document.getElementById('choice1').checked) {
+                    else if (document.getElementById('choice2').checked) {
                         score += (30 - 50 * (offer / refPrice));
                     }
 
