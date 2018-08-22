@@ -27,73 +27,80 @@
 
                 <p>Do you want to participate?</p>
 
-                {% formfield player.participate with label="" %}
 
-                {% formfield player.offer label="Enter your Offer:" %}
+                <form name="myForm">
+                    <input type="radio" name="participate" id="yes_participate" value="True">Yes
+                    <input type="radio" name="participate" id="no_participate" value="False">No<br>
 
+                    <p>Enter your offer:</p><br>
+                    <input type="number" name="offer" id="inputted_offer" step="1">
+
+                    <hr/>
+
+                    <p>You have the option to buy additional benefits points. Please select one
+                     of the choices below:</p><br/>
+
+
+                    <input type="radio" name="benefits_choice" id ="choice1" value="1">Purchase 15 additional benefits points for x/y ECUs<br>
+                    <input type="radio" name="benefits_choice" id="choice2" value="2">Purchase 30 additional benefits points for 6 ECUs<br>
+                    <input type="radio" name="benefits_choice" id="choice3" value="3">Purchase no additional benefits points<br>
+                </form>
+
+                {{ form.offer.errors }}
                 {{ form.participate.errors }}
 
-
-                {% block scripts %}
-
-                </p>
-
-                {% endblock %}
-
                 <hr/>
-
-                <p>You have the option to buy additional benefits points. Please select one
-                of the choices below:</p>
-
-                {% formfield player.benefits_choice with label="" %}
-
-                <p>
-                    <form onsubmit="calculate_score({{ player.offer }}, {{ player.refPrice }}, {{ player.benefits_purchased }})">
-                        <fieldset>
-                        <legend>Preview score:</legend>
-                        Test an offer:<br>
-                        <input type="number" name="test_offer" value="" id="score_id"><br>
-                        Buy benefits?<br>
-                        <input type="radio" name="test_benefits" value=15 id="ben_id_15">15<br>
-                        <input type="radio" name="test_benefits" value=30 id="ben_id_30">30<br>
-                        <input type="radio" name="test_benefits" value=0 id="ben_id_0" checked>None<br>
-                        <label type="number" id="preview_id" value=""></label><br>
-                        <button type= "button" id="score_btn" name="calc_score" class="btn btn-primary btn-large" onclick="calculate_score()">
-                        Preview Score
-                        </button>
-                        </fieldset>
-                    </form>
-
-                <script>
-                    function calculate_score(x,y,z) {
-                        var x = document.getElementById("score_id").value
-                        var y = {{ player.refPrice }}
-
-                        if (document.getElementById("ben_id_15").checked) {
-                            var z = document.getElementById("ben_id_15").value
-                        }
-                        else if (document.getElementById("ben_id_30").checked) {
-                            var z = document.getElementById("ben_id_30").value
-                        }
-                        else if (document.getElementById("ben_id_0").checked) {
-                            var z = document.getElementById("ben_id_0").value
-                        }
-
-                        var base_ben = parseInt(150)
-                        var scale = parseInt(50)
-                        var frac = parseInt(x)/parseInt(y)
-
-                        var score = base_ben + parseInt(z) - parseInt(y) - scale*frac
-                        document.getElementById("preview_id").textContent = score
-                    }
-                </script>
-            </p>
-
-            </div>
-            <div class="col-md-4">
-                {% include 'LeepsCRP/Table1_1.html' %}
-            </div>
         </div>
+
+        <script>
+            function getScore(refPrice) {
+                var offer = document.getElementById('inputted_offer').value;
+                var validInput = true;
+
+                if (offer == "") {
+                    validInput = false;
+                    alert('You must enter a valid offer to preview your score.');
+                }
+
+                else if (!(document.getElementById('choice1').checked ||
+                           document.getElementById('choice2').checked ||
+                           document.getElementById('choice3').checked)) {
+                                validInput = false;
+                                alert("You must decide how many additional benefits" +
+                                  " points you want to purchase to preview your score.");
+                }
+
+                if (validInput) {
+                    var score = 150 - refPrice;
+
+                    if (document.getElementById('choice1').checked) {
+                        score += (15 - 50 * (offer / refPrice));
+                    }
+
+                    else if (document.getElementById('choice1').checked) {
+                        score += (30 - 50 * (offer / refPrice));
+                    }
+
+                    else {
+                        score += (0 - 50 * (offer / refPrice));
+                    }
+
+                    displayScore = score.toFixed(2);
+                    alert("Your score is " + displayScore + ".");
+                }
+
+
+            }
+        </script>
+
+        <div class="col-md-4">
+            {% include 'LeepsCRP/Table1_1.html' %}
+        </div>
+    </div>
+</div>
+
+    <div style="margin-left:-25%">
+        <button type="button" onclick="return getScore({{ player.refPrice }})">Preview Score
     </div>
 
     <div style="margin-left:-25%">

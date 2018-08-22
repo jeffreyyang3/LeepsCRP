@@ -203,8 +203,6 @@ class WaitForOffers(WaitPage):
             player.showCurrRound = True
 
 
-
-
 class Buyer1_1(Page):
     def is_displayed(self):
         config = Constants.config
@@ -220,13 +218,12 @@ class Results1_1(Page):
 
         return mode == 1
 
+
 class Table1_1(Page):
     form_model = 'player'
     form_fields = ['cost', 'offer', 'participate']
 
     def vars_for_template(self):
-
-
         return {'player_in_all_rounds': self.player.in_all_rounds()}
 
 
@@ -244,14 +241,17 @@ class Seller2_2(Page):
 
         return choices
 
+
     def offer_max(self):
         return self.player.priceCap
+
 
     def offer_min(self):
         if self.player.priceCap >= self.player.cost:
             return self.player.cost
         else:
             return self.player.priceCap    
+
 
     def error_message(self, values):
         if not values["participate"]:
@@ -263,7 +263,6 @@ class Seller2_2(Page):
             if values["offer"] == None:
                 return "If you wish to participate in the auction, you must " \
                        "place an offer."
-
 
 
     def is_displayed(self):
@@ -301,12 +300,11 @@ class Seller2_2(Page):
 
             group.offers += player_offer_string + " "
 
+
     def vars_for_template(self):
         player = self.player
 
         print("group markup is:", self.player.markup)
-
-        print("player's showcurrround is: " + str(self.player.showCurrRound))
 
         print(player.cost)
         print(player.epsilon_val)
@@ -440,6 +438,7 @@ class Seller3_1(Page):
         choices = [[1, choice_1], [2, choice_2], [0, choice_3]]
 
         return choices
+
 
     def error_message(self, values):
         if not values["participate"]:
@@ -909,13 +908,6 @@ class Results4_2(Page):
 
         return mode == 5
 
-"""
-page_sequence = [intro,
-                 Seller1_1, WaitForOffers, Buyer1_1, Results1_1,
-                 Seller2_2, WaitForOffers2_2, Buyer2_2, Results2_2,
-                 Seller3_1, WaitForOffers3_1, Buyer3_1, Results3_1,
-                 Seller4_2, WaitForOffers4_2, Buyer4_2, Results4_2]
-"""
 page_sequence = [intro,
                  Seller1_1, WaitForOffers, Buyer1_1,
                  Seller2_2, WaitForOffers2_2, Buyer2_2,
