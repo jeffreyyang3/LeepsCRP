@@ -25,7 +25,7 @@ class Seller1_1(Page):
                    str(config[0][self.round_number - 1]["buy15pts"])+" ECUs"
         choice_2 = "Purchase 30 additional benefits points for 6 ECUs"
         choice_3 = "Purchase no additional benefits points"
-        choices = [[1, choice_1], [2, choice_2], [0, choice_3]]
+        choices = [[1, choice_1], [2, choice_2], [3, choice_3]]
 
         return choices
 
@@ -93,7 +93,7 @@ class Seller1_1(Page):
 
         print("group markup is:", self.player.markup)
 
-        print("player's showcurrround is: " + str(self.player.showCurrRound))
+        # print("player's showcurrround is: " + str(self.player.showCurrRound))
 
         print(player.cost)
         print(player.epsilon_val)
@@ -237,7 +237,7 @@ class Seller2_2(Page):
         choice_1 = "Purchase 15 additional benefits points for "+str(config[0][self.round_number - 1]["buy15pts"])+" ECUs"
         choice_2 = "Purchase 30 additional benefits points for 6 ECUs"
         choice_3 = "Purchase no additional benefits points"
-        choices = [[1, choice_1], [2, choice_2], [0, choice_3]]
+        choices = [[1, choice_1], [2, choice_2], [3, choice_3]]
 
         return choices
 
@@ -435,7 +435,7 @@ class Seller3_1(Page):
         choice_1 = "Purchase 15 additional benefits points for "+str(config[0][self.round_number - 1]["buy15pts"])+" ECUs"
         choice_2 = "Purchase 30 additional benefits points for 6 ECUs"
         choice_3 = "Purchase no additional benefits points"
-        choices = [[1, choice_1], [2, choice_2], [0, choice_3]]
+        choices = [[1, choice_1], [2, choice_2], [3, choice_3]]
 
         return choices
 
@@ -493,7 +493,7 @@ class Seller3_1(Page):
 
 
     def vars_for_template(self):
-        print("player's showcurrround is: " + str(self.player.showCurrRound))
+        # print("player's showcurrround is: " + str(self.player.showCurrRound))
 
         return {"score_formula": "150 + Benefits Purchased - 50 * " +
                                  "(Price Offered / Reference Price) - Reference Price"}
@@ -613,7 +613,7 @@ class Seller4_2(Page):
         choice_1 = "Purchase 15 additional benefits points for "+str(config[0][self.round_number - 1]["buy15pts"])+" ECUs"
         choice_2 = "Purchase 30 additional benefits points for 6 ECUs"
         choice_3 = "Purchase no additional benefits points"
-        choices = [[1, choice_1], [2, choice_2], [0, choice_3]]
+        choices = [[1, choice_1], [2, choice_2], [3, choice_3]]
 
         return choices
 
@@ -671,7 +671,7 @@ class Seller4_2(Page):
 
 
     def vars_for_template(self):
-        print("player's showcurrround is: " + str(self.player.showCurrRound))
+        # print("player's showcurrround is: " + str(self.player.showCurrRound))
 
         return {"score_formula": "150 + Benefits Purchased - 50 * " +
                                  "(Price Offered / Reference Price) - Reference Price"}

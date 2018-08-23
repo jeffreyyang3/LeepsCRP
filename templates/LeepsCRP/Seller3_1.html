@@ -1,14 +1,15 @@
-{% extends "global/Page.html" %}
+{% extends "LeepsCRP/Page.html" %}
 {% load otree static %}
 
 {% block title %}
-    <div style="margin-left:-25%">
+    <div id="shiftleft">
         Seller
     </div>
 {% endblock %}
 
 {% block content %}
-    <div class="container" style="margin-left:-25%">
+
+    <div class="container" id="shiftleft">
         <div class="row">
             <div class="col-md-8">
                 <h5>Auction type: Reference Price</h5>
@@ -25,89 +26,66 @@
 
                 <hr/>
 
-                <p>Do you want to participate?</p>
-
-
-                <form name="myForm">
-                    <input type="radio" name="participate" id="yes_participate" value="True">Yes
-                    <input type="radio" name="participate" id="no_participate" value="False">No<br>
-
-                    <p>Enter your offer:</p><br>
-                    <input type="number" name="offer" id="inputted_offer" step="1">
-
-                    <hr/>
-
-                    <p>You have the option to buy additional benefits points. Please select one
-                     of the choices below:</p><br/>
-
-
-                    <input type="radio" name="benefits_choice" id ="choice1" value="1">Purchase 15 additional benefits points for x/y ECUs<br>
-                    <input type="radio" name="benefits_choice" id="choice2" value="2">Purchase 30 additional benefits points for 6 ECUs<br>
-                    <input type="radio" name="benefits_choice" id="choice3" value="3">Purchase no additional benefits points<br>
-                </form>
+                {% include 'LeepsCRP/Form.html' %}
 
                 {{ form.offer.errors }}
                 {{ form.participate.errors }}
                 {{ form.benefits_choice.errors }}
 
                 <hr/>
+            </div>
+
+            <div class="col-md-4">
+                {% include 'LeepsCRP/Table1_1.html' %}
+            </div>
         </div>
 
-        <script>
-            function getScore(refPrice) {
-                var offer = document.getElementById('inputted_offer').value;
-                var validInput = true;
 
-                if (offer == "") {
-                    validInput = false;
-                    alert('You must enter a valid offer to preview your score.');
-                }
-
-                else if (!(document.getElementById('choice1').checked ||
-                           document.getElementById('choice2').checked ||
-                           document.getElementById('choice3').checked)) {
-                                validInput = false;
-                                alert("You must decide how many additional benefits" +
-                                  " points you want to purchase to preview your score.");
-                }
-
-                if (validInput) {
-                    var score = 150 - refPrice;
-
-                    if (document.getElementById('choice1').checked) {
-                        score += (15 - 50 * (offer / refPrice));
-                    }
-
-                    else if (document.getElementById('choice2').checked) {
-                        score += (30 - 50 * (offer / refPrice));
-                    }
-
-                    else {
-                        score += (0 - 50 * (offer / refPrice));
-                    }
-
-                    displayScore = score.toFixed(2);
-                    alert("Your score is " + displayScore + ".");
-                }
-
-
-            }
-        </script>
-
-        <div class="col-md-4">
-            {% include 'LeepsCRP/Table1_1.html' %}
-        </div>
-    </div>
-</div>
-
-    <div style="margin-left:-25%">
-        <button type="button" onclick="return getScore({{ player.refPrice }})">Preview Score
-    </div>
-
-    <div style="margin-left:-25%">
+        <button type="button" onclick="return getScore({{ player.refPrice }})">Preview Score</button><br>
         <button class="otree-btn-next btn btn-primary next-button otree-next-button">Next</button>
     </div>
-
-
-
 {% endblock %}
+
+{% block scripts %}
+    <script>
+        function getScore(refPrice) {
+            var offer = document.getElementById('inputted_offer').value;
+            var validInput = true;
+
+            if (offer == "") {
+                validInput = false;
+                alert('You must enter a valid offer to preview your score.');
+            }
+
+            else if (!(document.getElementById('choice1').checked ||
+                       document.getElementById('choice2').checked ||
+                       document.getElementById('choice3').checked)) {
+                            validInput = false;
+                            alert("You must decide how many additional benefits" +
+                              " points you want to purchase to preview your score.");
+            }
+
+            if (validInput) {
+                var score = 150 - refPrice;
+
+                if (document.getElementById('choice1').checked) {
+                    score += (15 - 50 * (offer / refPrice));
+                }
+
+                else if (document.getElementById('choice2').checked) {
+                    score += (30 - 50 * (offer / refPrice));
+                }
+
+                else {
+                    score += (0 - 50 * (offer / refPrice));
+                }
+
+                displayScore = score.toFixed(2);
+                alert("Your score is " + displayScore + ".");
+            }
+        }
+    </script>
+{% endblock %}
+
+
+

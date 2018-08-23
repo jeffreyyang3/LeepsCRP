@@ -1,14 +1,14 @@
-{% extends "global/Page.html" %}
+{% extends "LeepsCRP/Page.html" %}
 {% load otree static %}
 
 {% block title %}
-    <div style="margin-left:-25%">
+    <div id="shiftleft">
         Seller
     </div>
 {% endblock %}
 
 {% block content %}
-<div class="container" style="margin-left:-25%">
+<div class="container" id="shiftleft">
     <div class="row">
         <div class="col-md-8">
             <h5>Auction type: Reference Price</h5>
@@ -25,28 +25,20 @@
 
             <hr/>
 
-            <p>Do you want to participate?</p>
+            {% include 'LeepsCRP/Form.html' %}
 
-            {% formfield player.participate with label="" %}
-
-            {% formfield player.offer label="Enter your Offer:" %}
-
+            {{ form.offer.errors }}
             {{ form.participate.errors }}
+            {{ form.benefits_choice.errors }}
 
-            <hr/>
-
-            <p>You have the option to buy additional benefits points. Please select one
-            of the choices below:</p>
-
-            {% formfield player.benefits_choice with label="" %}
         </div>
+
         <div class="col-md-4">
             {% include 'LeepsCRP/Table1_1.html' %}       
         </div>
     </div>
-</div>
 
-    <div style="margin-left:-25%">
-        <button class="otree-btn-next btn btn-primary next-button otree-next-button">Next</button>
-    </div>
+    <button class="otree-btn-next btn btn-primary next-button otree-next-button">Next</button>
+
+</div>
 {% endblock %}
