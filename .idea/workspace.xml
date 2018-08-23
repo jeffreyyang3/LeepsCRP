@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c5c5bb30-34f2-47e8-af2f-fcabf4ee1245" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/LeepsCRP/Seller1_1.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/LeepsCRP/Seller1_1.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/LeepsCRP/Seller3_1.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/LeepsCRP/Seller3_1.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/LeepsCRP/Seller4_2.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/LeepsCRP/Seller4_2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/models.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -18,11 +13,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="models.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2684">
-              <caret line="128" column="19" selection-start-line="128" selection-start-column="4" selection-end-line="128" selection-end-column="19" />
+            <state relative-caret-position="481">
+              <caret line="112" lean-forward="true" selection-start-line="112" selection-end-line="112" />
+              <folding>
+                <element signature="e#0#134#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -30,8 +28,8 @@
       <file leaf-file-name="pages.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pages.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-894">
-              <caret line="851" lean-forward="true" selection-start-line="851" selection-end-line="851" />
+            <state relative-caret-position="264">
+              <caret line="12" column="12" selection-start-line="12" selection-end-line="13" />
               <folding>
                 <element signature="e#0#51#0" expanded="true" />
               </folding>
@@ -39,7 +37,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Seller3_1.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Seller3_1.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/LeepsCRP/Seller3_1.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="220">
@@ -63,8 +61,8 @@
       <file leaf-file-name="Page.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/LeepsCRP/Page.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="250">
-              <caret line="14" column="24" lean-forward="true" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
+            <state relative-caret-position="351">
+              <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
             </state>
           </provider>
         </entry>
@@ -72,8 +70,8 @@
       <file leaf-file-name="BuyerMessage.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/LeepsCRP/BuyerMessage.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="352">
-              <caret line="16" column="89" selection-start-line="16" selection-start-column="84" selection-end-line="16" selection-end-column="89" />
+            <state relative-caret-position="198">
+              <caret line="9" column="26" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -81,7 +79,7 @@
       <file leaf-file-name="config.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="616">
+            <state relative-caret-position="310">
               <caret line="28" column="82" selection-start-line="28" selection-start-column="82" selection-end-line="28" selection-end-column="82" />
             </state>
           </provider>
@@ -98,7 +96,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>offerinfo</find>
       <find>participate</find>
       <find>profit</find>
       <find>seller</find>
@@ -125,8 +122,9 @@
       <find>== 2</find>
       <find>mode == 2</find>
       <find>buy</find>
-      <find>seller4_2</find>
       <find>benefits_choice</find>
+      <find>seller4_2</find>
+      <find>draws</find>
       <find>buyer</find>
     </findStrings>
   </component>
@@ -174,7 +172,6 @@
         <option value="$PROJECT_DIR$/templates/LeepsCRP/Buyer3_1.html" />
         <option value="$PROJECT_DIR$/templates/LeepsCRP/Buyer4_2.html" />
         <option value="$PROJECT_DIR$/templates/LeepsCRP/BuyerMessage.html" />
-        <option value="$PROJECT_DIR$/models.py" />
         <option value="$PROJECT_DIR$/templates/LeepsCRP/Table1_1.html" />
         <option value="$PROJECT_DIR$/pages.py" />
         <option value="$PROJECT_DIR$/templates/LeepsCRP/Form.html" />
@@ -183,6 +180,7 @@
         <option value="$PROJECT_DIR$/templates/LeepsCRP/Seller1_1.html" />
         <option value="$PROJECT_DIR$/templates/LeepsCRP/Seller4_2.html" />
         <option value="$PROJECT_DIR$/templates/LeepsCRP/Seller3_1.html" />
+        <option value="$PROJECT_DIR$/models.py" />
       </list>
     </option>
   </component>
@@ -203,6 +201,11 @@
             <path>
               <item name="LeepsCRP" type="b2602c69:ProjectViewProjectNode" />
               <item name="LeepsCRP" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="LeepsCRP" type="b2602c69:ProjectViewProjectNode" />
+              <item name="LeepsCRP" type="462c0819:PsiDirectoryNode" />
+              <item name="draws" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="LeepsCRP" type="b2602c69:ProjectViewProjectNode" />
@@ -674,37 +677,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pages.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-894">
-          <caret line="851" lean-forward="true" selection-start-line="851" selection-end-line="851" />
-          <folding>
-            <element signature="e#0#51#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2684">
-          <caret line="128" column="19" selection-start-line="128" selection-start-column="4" selection-end-line="128" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="616">
-          <caret line="28" column="82" selection-start-line="28" selection-start-column="82" selection-end-line="28" selection-end-column="82" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/LeepsCRP/Page.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="14" column="24" lean-forward="true" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/LeepsCRP/Seller4_2.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
@@ -712,10 +684,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/LeepsCRP/BuyerMessage.html">
+    <entry file="file://$PROJECT_DIR$/config.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="16" column="89" selection-start-line="16" selection-start-column="84" selection-end-line="16" selection-end-column="89" />
+        <state relative-caret-position="310">
+          <caret line="28" column="82" selection-start-line="28" selection-start-column="82" selection-end-line="28" selection-end-column="82" />
         </state>
       </provider>
     </entry>
@@ -733,6 +705,40 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
           <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="12" column="12" selection-start-line="12" selection-end-line="13" />
+          <folding>
+            <element signature="e#0#51#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/LeepsCRP/Page.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="351">
+          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/LeepsCRP/BuyerMessage.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="9" column="26" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="481">
+          <caret line="112" lean-forward="true" selection-start-line="112" selection-end-line="112" />
+          <folding>
+            <element signature="e#0#134#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

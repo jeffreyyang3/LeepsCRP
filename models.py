@@ -28,7 +28,12 @@ class Constants(BaseConstants):
 class Subsession(BaseSubsession):
     def creating_session(self):
         self.group_randomly()
-        f = open("LeepsCRP/draws/Draws4.csv") # hardcoded file name for now
+
+        fileName = "LeepsCRP/draws/Draws" + str(random.randint(1, 6)) + ".csv"
+        print("file name is: " + fileName)
+
+        f = open(fileName)
+        # f = open("LeepsCRP/draws/Draws4.csv") # hardcoded file name for now
 
         # Uncomment the below line to get test cases for when the price cap <
         # cost
@@ -106,7 +111,6 @@ class Group(BaseGroup):
                                           # should be shown in the history table
 
 
-
 class Player(BasePlayer):
     money = models.FloatField()
     score = models.FloatField()
@@ -135,23 +139,5 @@ class Player(BasePlayer):
     max_accepted_offer = models.IntegerField()
     min_accepted_score = models.FloatField()
 
-    showCurrRound = models.BooleanField()  # indicate whether the current round
-    # should be shown in the history table
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    # indicate whether the current round should be shown in the history table
+    showCurrRound = models.BooleanField()
