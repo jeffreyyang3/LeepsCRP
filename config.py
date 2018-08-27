@@ -9,27 +9,25 @@ import random
 
 
 
-"""
+
 data = [
 	[
 		{"priceBase": 200, "end": 200, "variance": [1, 3, 5, 8, 12, 15], "mode": 4, "buy15pts": 2},
-		{"priceBase": 200, "end": 200, "variance": [1, 3, 5, 8, 12, 15], "mode": 3, "buy15pts": 4},
+		{"priceBase": 200, "end": 200, "variance": [1, 3, 5, 8, 12, 15], "mode": 2, "buy15pts": 4},
 		{"priceBase": 200, "end": 200, "variance": [1, 3, 5, 8, 12, 15], "mode": 1, "buy15pts": 2},
 		{"priceBase": 200, "end": 200, "variance": [1, 3, 5, 8, 12, 15], "mode": 5, "buy15pts": 4},
 
 	]
 ]
+
+
 """
-
-
-
-
 data = [
 	[
 		{"priceBase": 200, "end": 200, "variance": [1, 3, 5, 8, 12, 15], "mode": 1, "buy15pts": 2},
 	]
 ]
-
+"""
 
 
 

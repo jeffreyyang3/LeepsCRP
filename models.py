@@ -29,11 +29,11 @@ class Subsession(BaseSubsession):
     def creating_session(self):
         self.group_randomly()
 
-        fileName = "LeepsCRP/draws/Draws" + str(random.randint(1, 6)) + ".csv"
-        print("file name is: " + fileName)
+        # fileName = "LeepsCRP/draws/Draws" + str(random.randint(1, 6)) + ".csv"
+        # print("file name is: " + fileName)
 
-        f = open(fileName)
-        # f = open("LeepsCRP/draws/Draws4.csv") # hardcoded file name for now
+        # f = open(fileName)
+        f = open("LeepsCRP/draws/Draws4.csv") # hardcoded file name for now
 
         # Uncomment the below line to get test cases for when the price cap <
         # cost

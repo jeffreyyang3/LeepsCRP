@@ -9,8 +9,12 @@
         <input type="radio" name="participate" id="yes_participate" value="True">Yes
         <input type="radio" name="participate" id="no_participate" value="False">No<br>
 
+        {{ form.participate.errors }}
+
         <p>Enter your offer:</p><br>
         <input type="number" name="offer" id="inputted_offer" step="1">
+
+        {{ form.offer.errors }}
 
         <hr/>
 
@@ -20,5 +24,7 @@
         <input type="radio" name="benefits_choice" id ="choice1" value="1">Purchase 15 additional benefits points for x/y ECUs<br>
         <input type="radio" name="benefits_choice" id="choice2" value="2">Purchase 30 additional benefits points for 6 ECUs<br>
         <input type="radio" name="benefits_choice" id="choice3" value="3">Purchase no additional benefits points<br>
+
+        {{ form.benefits_choice.errors }}
     </form>
 {% endblock %}
