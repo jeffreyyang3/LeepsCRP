@@ -1,26 +1,26 @@
-{% extends "global/Page.html" %}
+{% extends "LeepsCRP/Page.html" %}
 {% load otree static %}
 
 {% block title %}
-    <div style="margin-left:-20%">
+    <div id="shiftleft">
         Auction Results
     </div>
 {% endblock %}
 
 {% block content %}
-    <div class="container" style="margin-left:-20%">
+    <div class="container" id="shiftleft">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-8">
                 {% include 'LeepsCRP/BuyerMessage.html' %}
             </div>
 
-            <div class="col-md-6">
+            <div class="col-md-4">
                 {% include 'LeepsCRP/Table1_1.html' %}
             </div>
         </div>
     </div>
 
-    <div style="margin-left:-20%">
+    <div id="shiftleft">
         <button class="otree-btn-next btn btn-primary next-button otree-next-button">Next</button>
     </div>
 

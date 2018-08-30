@@ -29,10 +29,6 @@ class Subsession(BaseSubsession):
     def creating_session(self):
         self.group_randomly()
 
-        # fileName = "LeepsCRP/draws/Draws" + str(random.randint(1, 6)) + ".csv"
-        # print("file name is: " + fileName)
-
-        # f = open(fileName)
         f = open("LeepsCRP/draws/Draws4.csv") # hardcoded file name for now
 
         # Uncomment the below line to get test cases for when the price cap <
@@ -46,6 +42,7 @@ class Subsession(BaseSubsession):
             p.money = Constants.config[0][self.round_number - 1]["end"]
             p.cost = int(drawsData[players_per_group * (self.round_number - 1) +
                                                 (p.id_in_group - 1)]["Cost"])
+            p.price_15pts = Constants.config[0][self.round_number - 1]["buy15pts"]
             print("cost is:", p.cost)
 
             p.benefits = Constants.baseBenefits     # Default to 100
@@ -67,34 +64,40 @@ class Subsession(BaseSubsession):
             # randomTerm = int(-10 + 10 * float(cont))
 
             # Mode Keys
-            #   1: Auction 1 Price Cap 1
-            #   2: Auction 1.1 Price Cap with Participation
-            # 	3: Auction 2 Price Cap 2
-            #   4: Auction 3 Reference Price 1
-            # 	5: Auction 4 Reference Price 2
+            #   1: Price Cap with Participation
+            #   2: Auction 3 Reference Price 1
+            # 	3: Auction 4 Reference Price 2
 
+            """
             if mode == 1:
                 p.priceCap = p.cost + randomTerm + 5
                 p.refPrice = None
                 p.markup = 5
                 p.epsilon_val = randomTerm
+            """
+
+
+            if mode == 1:
+                markups = Constants.config[0][self.round_number - 1]["variance"]
+                p.markup = random.choice(markups)
+
+                p.priceCap = p.cost + randomTerm + p.markup
+                p.epsilon_val = randomTerm
+                p.refPrice = None
+
+                """
+                elif mode == 2:
+                    p.priceCap = p.cost + randomTerm + 15
+                    p.markup = 15
+                    p.epsilon_val = randomTerm
+                    p.refPrice = None
+                """
 
             elif mode == 2:
-                markups = [1, 3, 5, 8, 12, 15]
-                p.priceCap = p.cost + random.choice(markups) + randomTerm
-                p.refPrice = None
-
-            elif mode == 3:
-                p.priceCap = p.cost + randomTerm + 15
-                p.refPrice = None
-                p.markup = 15
-                p.epsilon_val = randomTerm
-
-            elif mode == 4:
                 p.refPrice = p.cost + randomTerm
                 p.priceCap = None
 
-            elif mode == 5:
+            elif mode == 3:
                 p.estimatedCost = p.cost + randomTerm
                 p.priceCap = None
 
@@ -109,7 +112,7 @@ class Group(BaseGroup):
     # numParticipants = models.IntegerField()
     # showCurrRound = models.BooleanField() # indicate whether the current round
                                           # should be shown in the history table
-
+    # price_15pts = models.IntegerField()
 
 class Player(BasePlayer):
     money = models.FloatField()
@@ -141,3 +144,5 @@ class Player(BasePlayer):
 
     # indicate whether the current round should be shown in the history table
     showCurrRound = models.BooleanField()
+
+    price_15pts = models.IntegerField()

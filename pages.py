@@ -14,7 +14,7 @@ class intro(Page):
         return self.round_number == 1
 
 
-# Auction 1.1: Price Cap with Participation
+# Price Cap with Participation
 class Seller1_1(Page):
     form_model = 'player'
     form_fields = ['participate', 'offer', 'benefits_choice']
@@ -29,8 +29,10 @@ class Seller1_1(Page):
 
         return choices
 
+
     def offer_max(self):
         return self.player.priceCap
+
 
     def offer_min(self):
         if self.player.priceCap >= self.player.cost:
@@ -92,8 +94,6 @@ class Seller1_1(Page):
         player = self.player
 
         print("group markup is:", self.player.markup)
-
-        # print("player's showcurrround is: " + str(self.player.showCurrRound))
 
         print(player.cost)
         print(player.epsilon_val)
@@ -269,7 +269,7 @@ class Seller2_2(Page):
         config = Constants.config
         mode = config[0][self.round_number - 1]["mode"]
 
-        return mode == 3
+        return mode == -100
 
 
     def before_next_page(self):
@@ -323,7 +323,7 @@ class WaitForOffers2_2(WaitPage):
         config = Constants.config
         mode = config[0][self.round_number - 1]["mode"]
 
-        return mode == 3
+        return mode == -100
 
 
     def after_all_players_arrive(self):
@@ -414,7 +414,7 @@ class Buyer2_2(Page):
         config = Constants.config
         mode = config[0][self.round_number - 1]["mode"]
 
-        return mode == 3
+        return mode == -100
 
 
 class Results2_2(Page):
@@ -422,7 +422,7 @@ class Results2_2(Page):
         config = Constants.config
         mode = config[0][self.round_number - 1]["mode"]
 
-        return mode == 3
+        return mode == -100
 
 
 # Auction 3: Reference Price 1
@@ -456,7 +456,7 @@ class Seller3_1(Page):
         config = Constants.config
         mode = config[0][self.round_number - 1]["mode"]
 
-        return mode == 4
+        return mode == 2
 
 
     def before_next_page(self):
@@ -503,7 +503,7 @@ class WaitForOffers3_1(WaitPage):
         config = Constants.config
         mode = config[0][self.round_number - 1]["mode"]
 
-        return mode == 4
+        return mode == 2
 
 
     def after_all_players_arrive(self):
@@ -593,7 +593,7 @@ class Buyer3_1(Page):
         config = Constants.config
         mode = config[0][self.round_number - 1]["mode"]
 
-        return mode == 4
+        return mode == 2
 
 
 class Results3_1(Page):
@@ -601,7 +601,7 @@ class Results3_1(Page):
         config = Constants.config
         mode = config[0][self.round_number - 1]["mode"]
 
-        return mode == 4
+        return mode == 2
 
 
 class Seller4_2(Page):
@@ -634,7 +634,7 @@ class Seller4_2(Page):
         config = Constants.config
         mode = config[0][self.round_number - 1]["mode"]
 
-        return mode == 5
+        return mode == 3
 
 
     def before_next_page(self):
@@ -681,7 +681,7 @@ class WaitForOffers4_2(WaitPage):
         config = Constants.config
         mode = config[0][self.round_number - 1]["mode"]
 
-        return mode == 5
+        return mode == 3
 
 
     def after_all_players_arrive(self):
@@ -897,7 +897,7 @@ class Buyer4_2(Page):
         player = self.player
         mode = config[0][self.round_number - 1]["mode"]
 
-        return mode == 5
+        return mode == 3
 
 
 class Results4_2(Page):
@@ -906,10 +906,31 @@ class Results4_2(Page):
         player = self.player
         mode = config[0][self.round_number - 1]["mode"]
 
-        return mode == 5
+        return mode == 3
 
+'''
 page_sequence = [intro,
                  Seller1_1, WaitForOffers, Buyer1_1,
                  Seller2_2, WaitForOffers2_2, Buyer2_2,
                  Seller3_1, WaitForOffers3_1, Buyer3_1,
                  Seller4_2, WaitForOffers4_2, Buyer4_2]
+'''
+
+page_sequence = [intro,
+                 Seller1_1, WaitForOffers, Buyer1_1,
+                 Seller3_1, WaitForOffers3_1, Buyer3_1,
+                 Seller4_2, WaitForOffers4_2, Buyer4_2]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
