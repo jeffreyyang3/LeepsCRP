@@ -5,9 +5,6 @@ from random import *
 import random
 from operator import itemgetter
 
-# Note: Much of the code below can be refactored. However, we should
-# do that only when we're sure that the functionality for each auction format is
-# correct.
 
 class intro(Page):
     def is_displayed(self):
@@ -147,12 +144,6 @@ class WaitForOffers(WaitPage):
         # final_scores_list
         final_scores_list = final_offers_list[:]
 
-        """
-        # Set the numParticipants var for each player in the round
-        for player in group.get_players():
-            player.numParticipants = len(final_scores_list)
-        """
-
         for player_dict in final_scores_list:
             currPlayer = group.get_player_by_id(player_dict["id"])
             currPlayer.score = 150 + currPlayer.benefits_purchased - currPlayer.offer
@@ -227,204 +218,6 @@ class Table1_1(Page):
         return {'player_in_all_rounds': self.player.in_all_rounds()}
 
 
-# Auction 2: Price Cap 2
-class Seller2_2(Page):
-    form_model = 'player'
-    form_fields = ['participate', 'offer', 'benefits_choice']
-
-    def benefits_choice_choices(self):
-        config = Constants.config
-        choice_1 = "Purchase 15 additional benefits points for "+str(config[0][self.round_number - 1]["buy15pts"])+" ECUs"
-        choice_2 = "Purchase 30 additional benefits points for 6 ECUs"
-        choice_3 = "Purchase no additional benefits points"
-        choices = [[1, choice_1], [2, choice_2], [3, choice_3]]
-
-        return choices
-
-
-    def offer_max(self):
-        return self.player.priceCap
-
-
-    def offer_min(self):
-        if self.player.priceCap >= self.player.cost:
-            return self.player.cost
-        else:
-            return self.player.priceCap    
-
-
-    def error_message(self, values):
-        if not values["participate"]:
-            if not values["offer"] == None:
-                return "You must participate in the auction to place an offer."\
-                        + " In order to not participate, you must leave the " \
-                          "offer box blank."
-        else:
-            if values["offer"] == None:
-                return "If you wish to participate in the auction, you must " \
-                       "place an offer."
-
-
-    def is_displayed(self):
-        config = Constants.config
-        mode = config[0][self.round_number - 1]["mode"]
-
-        return mode == -100
-
-
-    def before_next_page(self):
-        config = Constants.config
-        player = self.player
-        group = self.group
-
-        player.benefits_purchased = 0
-
-        print("Mode:", config[0][self.round_number - 1]["mode"])
-
-        # Add purchased benefits to total amount of player's money
-        # Player decided to purchase 10 benefits points for 2/4 ECUs
-        if player.benefits_choice == 1:
-            player.money -= Constants.config[0][self.round_number - 1]["buy15pts"]
-            player.benefits_purchased = 15
-
-        elif player.benefits_choice == 2:
-            player.money -= 6
-            player.benefits_purchased = 30
-
-        player.benefits += player.benefits_purchased
-
-        # Add player's offer to the full string of offers
-        if player.participate:
-            player_offer_string = str(player.id_in_group) + "=" + str(
-                player.offer)
-
-            group.offers += player_offer_string + " "
-
-
-    def vars_for_template(self):
-        player = self.player
-
-        print("group markup is:", self.player.markup)
-
-        print(player.cost)
-        print(player.epsilon_val)
-        print(player.markup)
-
-        player_cap_formula = str(player.cost) + " + (" + str(player.epsilon_val) \
-                             + ") + " + str(player.markup)
-
-        return {"score_formula": "150 + Benefits Purchased - Price Offered",
-                "general_cap_formula": "Cost + ε~U[-5, +5] + Markup",
-                "player_cap_formula": player_cap_formula}
-
-
-class WaitForOffers2_2(WaitPage):
-    def is_displayed(self):
-        config = Constants.config
-        mode = config[0][self.round_number - 1]["mode"]
-
-        return mode == -100
-
-
-    def after_all_players_arrive(self):
-        num_bidders_chosen = Constants.num_bidders_chosen
-        group = self.group
-
-        # Convert offer string into a list
-        offer_list = group.offers.split(" ")
-
-        # Remove last element of array which is an empty string
-        if offer_list[-1] == "":
-            del [offer_list[-1]]
-
-        offer_dict = dict(s.split("=") for s in offer_list)
-
-        # List of dictionaries, each dictionary representing a player who made
-        # an offer
-        final_offers_list = []
-
-        # Create a new dictionary representing key info for each player that
-        # made an offer that will later be added to a list
-        for id, player_offer in offer_dict.items():
-            player_info = {}
-            player_info["id"] = int(id)
-            player_info["offer"] = int(player_offer)
-            final_offers_list.append(player_info)
-
-        # Make a copy of final_offers_list
-        final_scores_list = final_offers_list[:]
-
-        """
-        # Set the numParticipants var for each player in the round
-        for player in group.get_players():
-            player.numParticipants = len(final_scores_list)
-        """
-
-        for player_dict in final_scores_list:
-            currPlayer = group.get_player_by_id(player_dict["id"])
-            currPlayer.score = 150 + currPlayer.benefits_purchased - currPlayer.offer
-            player_dict["score"] = currPlayer.score
-            # currPlayer.numParticipants = len(final_scores_list)
-
-        # Sort list of dictionaries according to each player's score in
-        # increasing order
-        sorted_final_scores_list = sorted(final_offers_list,
-                                          key=itemgetter("score"), reverse=True)
-        print("Sorted scores list is: ")
-        print(sorted_final_scores_list)
-
-        # NOTE: Only lowest num_bidders_chosen scores are taken(instead of 8) right now for
-        # testing purposes
-        if len(sorted_final_scores_list) <= num_bidders_chosen:
-            chosen_scores = sorted_final_scores_list[:]
-        else:
-            chosen_scores = sorted_final_scores_list[:num_bidders_chosen]
-
-        print("Chosen scores are: ")
-        print(chosen_scores)
-
-        max_offer = 0
-        min_score = 100000
-
-
-        for player in chosen_scores:
-            chosenPlayer = group.get_player_by_id(player["id"])
-
-            if chosenPlayer.offer > max_offer:
-                max_offer = chosenPlayer.offer
-
-            if chosenPlayer.score < min_score:
-                min_score = chosenPlayer.score
-
-            chosenPlayer.sold = True
-            chosenPlayer.profit = chosenPlayer.offer - chosenPlayer.cost
-            chosenPlayer.money = chosenPlayer.money + chosenPlayer.profit
-
-        # Set the numParticipants var and max_accepted_offer
-        # for each player in the round
-        for player in group.get_players():
-            player.numParticipants = len(final_scores_list)
-            player.max_accepted_offer = max_offer
-            player.min_accepted_score = round(min_score, 2)
-            player.showCurrRound = True
-
-
-class Buyer2_2(Page):
-    def is_displayed(self):
-        config = Constants.config
-        mode = config[0][self.round_number - 1]["mode"]
-
-        return mode == -100
-
-
-class Results2_2(Page):
-    def is_displayed(self):
-        config = Constants.config
-        mode = config[0][self.round_number - 1]["mode"]
-
-        return mode == -100
-
-
 # Auction 3: Reference Price 1
 class Seller3_1(Page):
     form_model = 'player'
@@ -439,6 +232,9 @@ class Seller3_1(Page):
 
         return choices
 
+    def offer_error_message(self, value):
+        if not (0 <= value <= 200):
+            return "Please enter a valid offer."
 
     def error_message(self, values):
         if not values["participate"]:
@@ -493,8 +289,6 @@ class Seller3_1(Page):
 
 
     def vars_for_template(self):
-        # print("player's showcurrround is: " + str(self.player.showCurrRound))
-
         return {"score_formula": "150 + Benefits Purchased - 50 * " +
                                  "(Price Offered / Reference Price) - Reference Price"}
 
@@ -531,20 +325,6 @@ class WaitForOffers3_1(WaitPage):
             player_info["score"] = float(player_score)
             final_scores_list.append(player_info)
 
-
-        """
-        # Set the numParticipants var for each player in the round
-        for player_dict in final_scores_list:
-            currPlayer = group.get_player_by_id(player_dict["id"])
-            currPlayer.numParticipants = len(final_scores_list)
-        """
-
-        """
-        # Set the numParticipants var for each player in the round
-        for player in group.get_players():
-            player.numParticipants = len(final_scores_list)
-        """
-
         # Sort list of dictionaries according to each dictionary's offer in
         # increasing order
         sorted_final_scores_list = sorted(final_scores_list,
@@ -577,7 +357,6 @@ class WaitForOffers3_1(WaitPage):
             chosenPlayer.sold = True
             chosenPlayer.profit = chosenPlayer.offer - chosenPlayer.cost
             chosenPlayer.money = chosenPlayer.money + chosenPlayer.profit
-
         
         # Set the numParticipants var and max_accepted_offer
         # for each player in the round
@@ -616,6 +395,11 @@ class Seller4_2(Page):
         choices = [[1, choice_1], [2, choice_2], [3, choice_3]]
 
         return choices
+
+
+    def offer_error_message(self, value):
+        if not (0 <= value <= 200):
+            return "Please enter a valid offer."
 
 
     def error_message(self, values):
@@ -671,8 +455,6 @@ class Seller4_2(Page):
 
 
     def vars_for_template(self):
-        # print("player's showcurrround is: " + str(self.player.showCurrRound))
-
         return {"score_formula": "150 + Benefits Purchased - 50 * " +
                                  "(Price Offered / Reference Price) - Reference Price"}
 
@@ -740,12 +522,6 @@ class WaitForOffers4_2(WaitPage):
         max_neighbor_cnt = 2
         # neighbors_counted = 0
 
-        """
-        # Set the numParticipants var for each player in the round
-        for player in group.get_players():
-            player.numParticipants = len(sorted_final_offers_list)
-        """
-
         # This loop produces a ZeroDivisionError if exactly one participant
         for i in range(len(sorted_final_offers_list)):
             neighbor_avg = 0
@@ -754,8 +530,6 @@ class WaitForOffers4_2(WaitPage):
             player_dict = sorted_final_offers_list[i]
             player_id = player_dict["id"]
             currentPlayer = group.get_player_by_id(player_id)
-
-            # currentPlayer.numParticipants = len(sorted_final_offers_list)
 
             # Case 1: First element in the list
             if i == 0:
@@ -881,7 +655,6 @@ class WaitForOffers4_2(WaitPage):
             chosenPlayer.profit = chosenPlayer.offer - chosenPlayer.cost
             chosenPlayer.money = chosenPlayer.money + chosenPlayer.profit
 
-
         # Set the numParticipants var and max_accepted_offer
         # for each player in the round
         for player in group.get_players():
@@ -908,29 +681,8 @@ class Results4_2(Page):
 
         return mode == 3
 
-'''
-page_sequence = [intro,
-                 Seller1_1, WaitForOffers, Buyer1_1,
-                 Seller2_2, WaitForOffers2_2, Buyer2_2,
-                 Seller3_1, WaitForOffers3_1, Buyer3_1,
-                 Seller4_2, WaitForOffers4_2, Buyer4_2]
-'''
 
 page_sequence = [intro,
                  Seller1_1, WaitForOffers, Buyer1_1,
                  Seller3_1, WaitForOffers3_1, Buyer3_1,
                  Seller4_2, WaitForOffers4_2, Buyer4_2]
-
-
-
-
-
-
-
-
-
-
-
-
-
-

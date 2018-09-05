@@ -68,15 +68,6 @@ class Subsession(BaseSubsession):
             #   2: Auction 3 Reference Price 1
             # 	3: Auction 4 Reference Price 2
 
-            """
-            if mode == 1:
-                p.priceCap = p.cost + randomTerm + 5
-                p.refPrice = None
-                p.markup = 5
-                p.epsilon_val = randomTerm
-            """
-
-
             if mode == 1:
                 markups = Constants.config[0][self.round_number - 1]["variance"]
                 p.markup = random.choice(markups)
@@ -84,14 +75,6 @@ class Subsession(BaseSubsession):
                 p.priceCap = p.cost + randomTerm + p.markup
                 p.epsilon_val = randomTerm
                 p.refPrice = None
-
-                """
-                elif mode == 2:
-                    p.priceCap = p.cost + randomTerm + 15
-                    p.markup = 15
-                    p.epsilon_val = randomTerm
-                    p.refPrice = None
-                """
 
             elif mode == 2:
                 p.refPrice = p.cost + randomTerm
@@ -108,11 +91,7 @@ class Group(BaseGroup):
     # String consisting of all offers made by sellers (that will eventually be
     # converted into a list
     offers = models.StringField(initial="")
-    # markup = models.IntegerField
-    # numParticipants = models.IntegerField()
-    # showCurrRound = models.BooleanField() # indicate whether the current round
-                                          # should be shown in the history table
-    # price_15pts = models.IntegerField()
+
 
 class Player(BasePlayer):
     money = models.FloatField()
