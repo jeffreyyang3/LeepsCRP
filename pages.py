@@ -233,8 +233,10 @@ class Seller3_1(Page):
         return choices
 
     def offer_error_message(self, value):
-        if not (0 <= value <= 200):
-            return "Please enter a valid offer."
+        player = self.player
+
+        if not (player.cost <= value <= 200):
+            return "Please enter a valid offer that is greater than " + str(player.cost)
 
     def error_message(self, values):
         if not values["participate"]:
@@ -398,8 +400,10 @@ class Seller4_2(Page):
 
 
     def offer_error_message(self, value):
-        if not (0 <= value <= 200):
-            return "Please enter a valid offer."
+        player = self.player
+
+        if not (player.cost <= value <= 200):
+            return "Please enter a valid offer that is greater than " + str(player.cost)
 
 
     def error_message(self, values):
