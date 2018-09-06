@@ -1,4 +1,4 @@
-{% extends "global/Page.html" %}
+{% extends "LeepsCRP/Page.html" %}
 {% load otree static %}
 
 {% block title %}
@@ -9,20 +9,18 @@
 
 {% block content %}
 
-<div class="container" style="margin-left:-25%">
-    <div class="row">
-        <div class="col-md-8">
-            {% include 'LeepsCRP/BuyerMessage.html' %}
+    <div class="container" id="shiftleft">
+        <div class="row">
+            <div class="col-md-8">
+                {% include 'LeepsCRP/BuyerMessage.html' %}
+            </div>
+
+            <div class="col-md-4">
+                {% include 'LeepsCRP/Table.html' %}
+            </div>
         </div>
 
-        <div class="col-md-4">
-            {% include 'LeepsCRP/Table1_1.html' %}
-        </div>
+        <button class="otree-btn-next btn btn-primary next-button otree-next-button">Next</button>
     </div>
-</div>   
-
-<div style="margin-left:-25%">
-    <button class="otree-btn-next btn btn-primary next-button otree-next-button">Next</button>
-</div>
 
 {% endblock %}

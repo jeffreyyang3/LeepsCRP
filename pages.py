@@ -138,7 +138,6 @@ class WaitForOffers(WaitPage):
             final_offers_list.append(player_info)
         print("Unsorted offers list is: ", final_offers_list)
 
-
         # Calculation/creation of scores list that includes each player's score
         # final_offers_list should be deleted later on, should only have
         # final_scores_list
@@ -232,13 +231,10 @@ class Seller3_1(Page):
 
         return choices
 
-    def offer_error_message(self, value):
-        player = self.player
-
-        if not (player.cost <= value <= 200):
-            return "Please enter a valid offer that is greater than " + str(player.cost)
 
     def error_message(self, values):
+        player = self.player
+
         if not values["participate"]:
             if not values["offer"] == None:
                 return "You must participate in the auction to place an offer."\
@@ -248,6 +244,8 @@ class Seller3_1(Page):
             if values["offer"] == None:
                 return "If you wish to participate in the auction, you must " \
                        "place an offer."
+            elif not(player.cost <= values["offer"] <= 200):
+                return "Please enter a valid offer that is greater than " + str(player.cost)
 
 
     def is_displayed(self):
@@ -399,14 +397,9 @@ class Seller4_2(Page):
         return choices
 
 
-    def offer_error_message(self, value):
+    def error_message(self, values):
         player = self.player
 
-        if not (player.cost <= value <= 200):
-            return "Please enter a valid offer that is greater than " + str(player.cost)
-
-
-    def error_message(self, values):
         if not values["participate"]:
             if not values["offer"] == None:
                 return "You must participate in the auction to place an offer."\
@@ -416,6 +409,8 @@ class Seller4_2(Page):
             if values["offer"] == None:
                 return "If you wish to participate in the auction, you must " \
                        "place an offer."
+            elif not(player.cost <= values["offer"] <= 200):
+                return "Please enter a valid offer that is greater than " + str(player.cost)
 
 
     def is_displayed(self):
@@ -515,16 +510,12 @@ class WaitForOffers4_2(WaitPage):
         print("Sorted offers list is: ")
         print(sorted_final_offers_list)
 
-        # Next task: figure out the assignment of the avg_neighbor_offer for
-        # each player
-
         # NOTE: For testing purposes, neighbor's average offer will be the
         # average offer of the *2* participating bidders that are closest to you
         # in terms of estimated costs
 
         # How many neighbors's offers will be used to calc. average
         max_neighbor_cnt = 2
-        # neighbors_counted = 0
 
         # This loop produces a ZeroDivisionError if exactly one participant
         for i in range(len(sorted_final_offers_list)):
