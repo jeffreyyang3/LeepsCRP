@@ -39,8 +39,6 @@ class Seller1_1(Page):
 
 
     def error_message(self, values):
-        print("offer is: " + str(values["offer"]))
-
         if not values["participate"]:
             if not values["offer"] == None:
                 return "You must participate in the auction to place an offer."\
@@ -67,8 +65,6 @@ class Seller1_1(Page):
         # Determine benefits purchased by player
         player.benefits_purchased = 0
 
-        print("Mode:", config[0][self.round_number - 1]["mode"])
-
         # Add purchased benefits to total amount of player's money
         # Player decided to purchase 10 benefits points for 2/4 ECUs
         if player.benefits_choice == 1:
@@ -89,12 +85,6 @@ class Seller1_1(Page):
 
     def vars_for_template(self):
         player = self.player
-
-        print("group markup is:", self.player.markup)
-
-        print(player.cost)
-        print(player.epsilon_val)
-        print(player.markup)
 
         player_cap_formula = str(player.cost) + " + (" + str(player.epsilon_val) \
                              + ") + " + str(player.markup)
@@ -147,7 +137,6 @@ class WaitForOffers(WaitPage):
             currPlayer = group.get_player_by_id(player_dict["id"])
             currPlayer.score = 150 + currPlayer.benefits_purchased - currPlayer.offer
             player_dict["score"] = currPlayer.score
-            # currPlayer.numParticipants = len(final_scores_list)
 
         # Sort list of dictionaries according to each player's score in
         # increasing order
@@ -168,14 +157,10 @@ class WaitForOffers(WaitPage):
         print("Chosen scores are: ")
         print(chosen_scores)
 
-        max_offer = 0
         min_score = 100000
 
         for player in chosen_scores:
             chosenPlayer = group.get_player_by_id(player["id"])
-
-            if chosenPlayer.offer > max_offer:
-                max_offer = chosenPlayer.offer
 
             if chosenPlayer.score < min_score:
                 min_score = chosenPlayer.score
@@ -184,11 +169,10 @@ class WaitForOffers(WaitPage):
             chosenPlayer.profit = chosenPlayer.offer - chosenPlayer.cost
             chosenPlayer.money = chosenPlayer.money + chosenPlayer.profit
 
-        # Set the numParticipants var and max_accepted_offer
+        # Set the numParticipants var and min_accepted_score
         # for each player in the round
         for player in group.get_players():
             player.numParticipants = len(final_scores_list)
-            player.max_accepted_offer = max_offer
             player.min_accepted_score = round(min_score, 2)
             player.showCurrRound = True
 
@@ -263,9 +247,6 @@ class Seller3_1(Page):
         # Determine benefits purchased by player
         player.benefits_purchased = 0
 
-        print("Mode:", config[0][self.round_number - 1]["mode"])
-        print("Inside 3_1: reference price is: " + str(player.refPrice))
-
         # Add purchased benefits to total amount of player's money
         # Player decided to purchase 10 benefits points for 2/4 ECUs
         if player.benefits_choice == 1:
@@ -280,12 +261,10 @@ class Seller3_1(Page):
 
         # Add player's offer to the full string of offers
         if player.participate:
-            print("Inside 3_1 if: reference price is: " + str(player.refPrice))
             player.score = 150 + player.benefits_purchased - 50 * (player.offer / player.refPrice) - (player.refPrice)
             player_score_string = str(player.id_in_group) + "=" + str(player.score)
 
             group.offers += player_score_string + " "
-            print("player_score_string is:", player_score_string)
 
 
     def vars_for_template(self):
@@ -342,14 +321,10 @@ class WaitForOffers3_1(WaitPage):
         print("Chosen scores are: ")
         print(chosen_scores)
 
-        max_offer = 0
         min_score = 100000
 
         for player in chosen_scores:
             chosenPlayer = group.get_player_by_id(player["id"])
-
-            if chosenPlayer.offer > max_offer:
-                max_offer = chosenPlayer.offer
 
             if chosenPlayer.score < min_score:
                 min_score = chosenPlayer.score
@@ -358,11 +333,10 @@ class WaitForOffers3_1(WaitPage):
             chosenPlayer.profit = chosenPlayer.offer - chosenPlayer.cost
             chosenPlayer.money = chosenPlayer.money + chosenPlayer.profit
         
-        # Set the numParticipants var and max_accepted_offer
+        # Set the numParticipants var and min_accepted_score
         # for each player in the round
         for player in group.get_players():
             player.numParticipants = len(final_scores_list)
-            player.max_accepted_offer = max_offer
             player.min_accepted_score = round(min_score, 2)
             player.showCurrRound = True
 
@@ -428,8 +402,6 @@ class Seller4_2(Page):
         # Determine benefits purchased from player
         player.benefits_purchased = 0
 
-        print("Mode:", config[0][self.round_number - 1]["mode"])
-
         # Add purchased benefits to total amount of player's money
         # Player decided to purchase 10 benefits points for 2/4 ECUs
         if player.benefits_choice == 1:
@@ -444,12 +416,8 @@ class Seller4_2(Page):
 
         # Add player's offer to the full string of offers
         if player.participate:
-            print("Player", player.id_in_group, "participating")
             player_offer_string = str(player.id_in_group) + "=" + str(
                 player.offer)
-
-            print("player_offer_string for player", player.id_in_group, "is", player_offer_string)
-
             group.offers += (player_offer_string + " ")
 
 
@@ -471,8 +439,6 @@ class WaitForOffers4_2(WaitPage):
 
         # Convert offer string into a list
         offer_list = group.offers.split(" ")
-        print('group.offers is:', group.offers)
-        print("offer list is:", offer_list)
 
         # Remove last element of array which is an empty string
         if offer_list[-1] == "":
@@ -481,7 +447,6 @@ class WaitForOffers4_2(WaitPage):
         # In the dictionary, the player's ID is the key and the offer is the
         # value
         offer_dict = dict(s.split("=") for s in offer_list)
-        print("offer_dict is:" + str(offer_dict))
 
         # List of dictionaries, each dictionary representing a player who made
         # an offer
@@ -499,23 +464,19 @@ class WaitForOffers4_2(WaitPage):
 
             final_offers_list.append(player_info)
 
-        # Sort list of dictionaries according to each dictionary's offer in
-        # increasing order
-        print('final offers list is: ')
+        print('Offers list before sorting is:')
         print(final_offers_list)
 
+        # Sort list of dictionaries according to each dictionary's offer in
+        # increasing order
         sorted_final_offers_list = sorted(final_offers_list,
                                           key=itemgetter("est_cost"))
 
-        print("Sorted offers list is: ")
+        print("Offers offers list after sorting is:")
         print(sorted_final_offers_list)
 
-        # NOTE: For testing purposes, neighbor's average offer will be the
-        # average offer of the *2* participating bidders that are closest to you
-        # in terms of estimated costs
-
         # How many neighbors's offers will be used to calc. average
-        max_neighbor_cnt = 2
+        max_neighbor_cnt = 4
 
         # This loop produces a ZeroDivisionError if exactly one participant
         for i in range(len(sorted_final_offers_list)):
@@ -558,8 +519,8 @@ class WaitForOffers4_2(WaitPage):
                     # or right_index is out of bounds. This means the remainder of
                     # the opposite end of the list should be taken into account
 
-                    print("left_neigh_index is:", left_neigh_index)
-                    print("right_neigh_index is:", right_neigh_index)
+                    print("Left neighbor index: ", left_neigh_index)
+                    print("Right neighbor index :", right_neigh_index)
 
                     if left_neigh_index < 0:
                         remaining_neighbors = sorted_final_offers_list[right_neigh_index : (max_neighbor_cnt - neighbors_counted) + i + 1]
@@ -589,8 +550,8 @@ class WaitForOffers4_2(WaitPage):
                     left_neigh_diff = abs(currentPlayer.estimatedCost - left_neighbor.estimatedCost)
                     right_neigh_diff = abs(currentPlayer.estimatedCost - right_neighbor.estimatedCost)
 
-                    print("Left diff is:", left_neigh_diff)
-                    print("Right diff is:", right_neigh_diff)
+                    print("Left diff. is: ", left_neigh_diff)
+                    print("Right diff. is: ", right_neigh_diff)
 
                     # Left neighbor has a closer estimated cost than the right
                     # neighbor
@@ -611,7 +572,7 @@ class WaitForOffers4_2(WaitPage):
             currentPlayer.refPrice = neighbor_avg
             currentPlayer.neighbor_avg_offer = neighbor_avg
 
-            print("Player in pos", i, "in list has avg", neighbor_avg)
+            print("Player in pos ", i, " in list has avg.: ", neighbor_avg)
 
         # Set the scores for each player in the group
         for s in sorted_final_offers_list:
@@ -634,14 +595,10 @@ class WaitForOffers4_2(WaitPage):
 
         print('chosen_scores is:', chosen_scores)
 
-        max_offer = 0
         min_score = 100000
 
         for player in chosen_scores:
             chosenPlayer = group.get_player_by_id(player["id"])
-
-            if chosenPlayer.offer > max_offer:
-                max_offer = chosenPlayer.offer
 
             if chosenPlayer.score < min_score:
                 min_score = chosenPlayer.score
@@ -650,11 +607,10 @@ class WaitForOffers4_2(WaitPage):
             chosenPlayer.profit = chosenPlayer.offer - chosenPlayer.cost
             chosenPlayer.money = chosenPlayer.money + chosenPlayer.profit
 
-        # Set the numParticipants var and max_accepted_offer
+        # Set the numParticipants var and min_accepted_score
         # for each player in the round
         for player in group.get_players():
             player.numParticipants = len(sorted_final_offers_list)
-            player.max_accepted_offer = max_offer
             player.min_accepted_score = round(min_score, 2)
             player.showCurrRound = True
 

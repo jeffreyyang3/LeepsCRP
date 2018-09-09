@@ -14,15 +14,14 @@ CRP_2018
 
 class Constants(BaseConstants):
     name_in_url = 'LeepsCRP'
-    players_per_group = 3
-    num_rounds = 1
+    players_per_group = 16
     config = config_py.export_data()
     num_rounds = len(config[0])
     baseBenefits = 150
 
     # The buyer will purchase from the num_bidders_chosen bidders with the lowest
     # scores
-    num_bidders_chosen = 2
+    num_bidders_chosen = 8
 
 
 class Subsession(BaseSubsession):
@@ -43,7 +42,7 @@ class Subsession(BaseSubsession):
             p.cost = int(drawsData[players_per_group * (self.round_number - 1) +
                                                 (p.id_in_group - 1)]["Cost"])
             p.price_15pts = Constants.config[0][self.round_number - 1]["buy15pts"]
-            print("cost is:", p.cost)
+            print("Cost for player " + str(p.id_in_group) + " is: " + str(p.cost))
 
             p.benefits = Constants.baseBenefits     # Default to 100
 
@@ -73,6 +72,8 @@ class Subsession(BaseSubsession):
                 p.markup = random.choice(markups)
 
                 p.priceCap = p.cost + randomTerm + p.markup
+                print("Price Cap for player " + str(p.id_in_group) + " is: " + str(p.priceCap))
+
                 p.epsilon_val = randomTerm
                 p.refPrice = None
 
@@ -101,10 +102,8 @@ class Player(BasePlayer):
     sold = models.BooleanField()
     offer = models.IntegerField(blank=True)
     profit = models.IntegerField()
-
     markup = models.IntegerField()
     epsilon_val = models.IntegerField()
-
     priceCap = models.IntegerField()
     refPrice = models.IntegerField()
     neighbor_avg_offer = models.FloatField()
@@ -114,14 +113,12 @@ class Player(BasePlayer):
     benefits_purchased = models.IntegerField()
     benefits_choice = models.IntegerField(widget=widgets.RadioSelect)
 
-    # total number of participants in a given round
+    # Total number of participants in a given round
     numParticipants = models.IntegerField()
 
-    # max accepted offer for a given round
-    max_accepted_offer = models.IntegerField()
+    # Min. accepted score for a given round
     min_accepted_score = models.FloatField()
 
-    # indicate whether the current round should be shown in the history table
+    # Indicate whether the current round should be shown in the history table yet
     showCurrRound = models.BooleanField()
-
     price_15pts = models.IntegerField()
