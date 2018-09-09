@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="c5c5bb30-34f2-47e8-af2f-fcabf4ee1245" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -15,21 +13,15 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="config.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/config.py">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="pages.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pages.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="13" lean-forward="true" selection-start-column="13" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Draws4.csv" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/draws/Draws4.csv">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
-              <caret line="11" column="21" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
+            <state relative-caret-position="-5074">
+              <caret line="230" selection-start-line="230" selection-end-line="230" />
+              <folding>
+                <element signature="e#0#51#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -37,8 +29,8 @@
       <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="184">
-              <caret line="74" column="43" lean-forward="true" selection-start-line="74" selection-start-column="43" selection-end-line="74" selection-end-column="43" />
+            <state relative-caret-position="-498">
+              <caret line="79" column="24" selection-start-line="79" selection-start-column="24" selection-end-line="79" selection-end-column="24" />
               <folding>
                 <element signature="e#0#134#0" expanded="true" />
               </folding>
@@ -46,11 +38,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pages.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/pages.py">
+      <file leaf-file-name="config.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="143">
-              <caret line="14" column="22" lean-forward="true" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
+            <state>
+              <caret column="13" selection-start-column="13" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="tests.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/tests.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="169">
+              <caret line="36" column="69" selection-start-line="36" selection-start-column="69" selection-end-line="36" selection-end-column="69" />
               <folding>
                 <element signature="e#0#51#0" expanded="true" />
               </folding>
@@ -69,17 +70,12 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>.error</find>
-      <find>mode ==</find>
-      <find>markup</find>
       <find>epsilon_val =</find>
       <find>mode`</find>
       <find>mode</find>
-      <find>benefits</find>
       <find>beneif</find>
       <find>benefits`</find>
       <find>`</find>
-      <find>seller3_1</find>
       <find>2_2</find>
       <find>offer_error</find>
       <find>error_message</find>
@@ -99,6 +95,11 @@
       <find>neighbors_counted</find>
       <find>mode:</find>
       <find>pricecap</find>
+      <find>mode =</find>
+      <find>benefits_choice</find>
+      <find>seller3_1</find>
+      <find>benefits</find>
+      <find>please enter</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -115,7 +116,6 @@
         <option value="$PROJECT_DIR$/Buyer2_2.html" />
         <option value="$PROJECT_DIR$/Results2_2.html" />
         <option value="$PROJECT_DIR$/Seller4_2.html" />
-        <option value="$PROJECT_DIR$/tests.py" />
         <option value="$USER_HOME$/DeAnza/CIS41A/module3exercise.py" />
         <option value="$PROJECT_DIR$/templates/LeepsCRP/BuyBenefits.html" />
         <option value="$PROJECT_DIR$/templates/LeepsCRP/Results4_2.html" />
@@ -153,8 +153,9 @@
         <option value="$PROJECT_DIR$/templates/LeepsCRP/Buyer4_2.html" />
         <option value="$PROJECT_DIR$/templates/LeepsCRP/Buyer1_1.html" />
         <option value="$PROJECT_DIR$/config.py" />
-        <option value="$PROJECT_DIR$/pages.py" />
         <option value="$PROJECT_DIR$/models.py" />
+        <option value="$PROJECT_DIR$/pages.py" />
+        <option value="$PROJECT_DIR$/tests.py" />
       </list>
     </option>
   </component>
@@ -169,6 +170,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -196,7 +198,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -338,10 +339,12 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="777" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.11796875" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.178125" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32859176" />
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Python Console" order="7" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32859176" />
@@ -355,30 +358,34 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" />
     </layout>
     <layout-to-restore>
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.184375" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32859176" />
-      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Python Console" order="7" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Version Control" order="9" />
+      <window_info anchor="bottom" id="Message" order="0" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Python Console" order="7" />
     </layout-to-restore>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/templates/LeepsCRP/Buyer1_1.html">
@@ -408,13 +415,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="611">
           <caret line="57" column="35" selection-start-line="57" selection-start-column="22" selection-end-line="57" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="14" column="34" selection-start-line="14" selection-start-column="34" selection-end-line="14" selection-end-column="34" />
         </state>
       </provider>
     </entry>
@@ -652,14 +652,14 @@
     <entry file="file://$PROJECT_DIR$/config.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
-          <caret column="13" lean-forward="true" selection-start-column="13" selection-end-column="13" />
+          <caret column="13" selection-start-column="13" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="74" column="43" lean-forward="true" selection-start-line="74" selection-start-column="43" selection-end-line="74" selection-end-column="43" />
+        <state relative-caret-position="-498">
+          <caret line="79" column="24" selection-start-line="79" selection-start-column="24" selection-end-line="79" selection-end-column="24" />
           <folding>
             <element signature="e#0#134#0" expanded="true" />
           </folding>
@@ -668,8 +668,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pages.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="143">
-          <caret line="14" column="22" lean-forward="true" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
+        <state relative-caret-position="-5074">
+          <caret line="230" selection-start-line="230" selection-end-line="230" />
+          <folding>
+            <element signature="e#0#51#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="169">
+          <caret line="36" column="69" selection-start-line="36" selection-start-column="69" selection-end-line="36" selection-end-column="69" />
           <folding>
             <element signature="e#0#51#0" expanded="true" />
           </folding>
