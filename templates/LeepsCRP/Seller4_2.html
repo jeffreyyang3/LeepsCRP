@@ -8,36 +8,36 @@
 {% endblock %}
 
 {% block content %}
-<div class="container" id="shiftleft">
-    <div class="row">
-        <div class="col-md-8">
-            <h5>Auction type: Reference Price</h5>
+    <div class="container zoom" id="shiftleft">
+        <div class="row">
+            <div class="col-md-8">
+                <h5>Auction type: Reference Price</h5>
 
-            <hr/>
+                <hr/>
 
-            <p>
-                Your cost: {{ player.cost }}
+                <p>
+                    Your cost: {{ player.cost }}
+                    <br/>
+                    Reference Price (Estimated Cost): {{ player.estimatedCost }}
+                </p>
+
+                <p>Score Formula: 150 + Benefits Purchased<br>
+                        - 50 * (Price Offered / Reference Price) - Reference Price</p>
+
+                <hr/>
+
+                {% include 'LeepsCRP/Form.html' %}
+
                 <br/>
-                Reference Price (Estimated Cost): {{ player.estimatedCost }}
-            </p>
 
-            <p>Score Formula: 150 + Benefits Purchased<br>
-                    - 50 * (Price Offered / Reference Price) - Reference Price</p>
+            </div>
 
-            <hr/>
-
-            {% include 'LeepsCRP/Form.html' %}
-
-            <br/>
-
+            <div class="col-md-4">
+                {% include 'LeepsCRP/Table.html' %}
+            </div>
         </div>
 
-        <div class="col-md-4">
-            {% include 'LeepsCRP/Table.html' %}
-        </div>
+        <button class="otree-btn-next btn btn-primary next-button otree-next-button">Next</button>
+
     </div>
-
-    <button class="otree-btn-next btn btn-primary next-button otree-next-button">Next</button>
-
-</div>
 {% endblock %}
