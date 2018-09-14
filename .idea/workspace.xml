@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c5c5bb30-34f2-47e8-af2f-fcabf4ee1245" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/LeepsCRP/Buyer1_1.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/LeepsCRP/Buyer1_1.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/LeepsCRP/Buyer3_1.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/LeepsCRP/Buyer3_1.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/LeepsCRP/Buyer4_2.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/LeepsCRP/Buyer4_2.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/LeepsCRP/Page.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/LeepsCRP/Page.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/LeepsCRP/Seller1_1.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/LeepsCRP/Seller1_1.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/LeepsCRP/Seller3_1.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/LeepsCRP/Seller3_1.html" afterDir="false" />
@@ -20,8 +23,8 @@
       <file leaf-file-name="pages.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pages.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5060">
-              <caret line="230" selection-start-line="230" selection-end-line="230" />
+            <state relative-caret-position="264">
+              <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
               <folding>
                 <element signature="e#0#51#0" expanded="true" />
               </folding>
@@ -29,11 +32,41 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Seller1_1.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/models.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="352">
+              <caret line="16" column="25" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
+              <folding>
+                <element signature="e#0#134#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Page.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/LeepsCRP/Page.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="433">
+              <caret line="30" column="19" selection-start-line="30" selection-start-column="19" selection-end-line="30" selection-end-column="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Form.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/LeepsCRP/Form.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="286">
+              <caret line="13" column="13" lean-forward="true" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Seller1_1.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/LeepsCRP/Seller1_1.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="9" column="19" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
+            <state relative-caret-position="413">
+              <caret line="47" column="91" selection-start-line="47" selection-start-column="91" selection-end-line="47" selection-end-column="91" />
               <folding>
                 <element signature="n#style#0;n#p#2;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
               </folding>
@@ -45,58 +78,16 @@
         <entry file="file://$PROJECT_DIR$/templates/LeepsCRP/Seller3_1.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="198">
-              <caret line="9" column="19" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
+              <caret line="40" column="91" selection-start-line="40" selection-start-column="91" selection-end-line="40" selection-end-column="91" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Seller4_2.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Seller4_2.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/LeepsCRP/Seller4_2.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
-              <caret line="11" column="22" selection-start-line="10" selection-start-column="4" selection-end-line="41" selection-end-column="10" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/models.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="22">
-              <caret line="79" column="24" selection-start-line="79" selection-start-column="24" selection-end-line="79" selection-end-column="24" />
-              <folding>
-                <element signature="e#0#134#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="config.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/config.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="13" selection-start-column="13" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="tests.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="154">
-              <caret line="7" selection-start-line="7" selection-end-line="7" />
-              <folding>
-                <element signature="e#0#51#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Page.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/LeepsCRP/Page.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="455">
-              <caret line="30" column="18" selection-start-line="30" selection-start-column="18" selection-end-line="30" selection-end-column="18" />
+            <state relative-caret-position="404">
+              <caret line="39" column="91" selection-start-line="39" selection-start-column="91" selection-end-line="39" selection-end-column="91" />
             </state>
           </provider>
         </entry>
@@ -112,7 +103,7 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>epsilon_val =</find>
+      <find />
       <find>mode`</find>
       <find>mode</find>
       <find>beneif</find>
@@ -127,21 +118,21 @@
       <find>max_offer</find>
       <find>max</find>
       <find>variance</find>
-      <find>group markup</find>
+      <find />
       <find>vars_for_template</find>
       <find>print</find>
-      <find>cost is</find>
-      <find>group marku</find>
+      <find />
+      <find />
       <find>num_rounds</find>
       <find>num_bidders_chosen</find>
       <find>neighbors_counted</find>
       <find>mode:</find>
       <find>pricecap</find>
-      <find>mode =</find>
+      <find />
       <find>benefits_choice</find>
       <find>seller3_1</find>
       <find>benefits</find>
-      <find>please enter</find>
+      <find />
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -187,24 +178,24 @@
         <option value="$PROJECT_DIR$/templates/LeepsCRP/BuyerMessage.html" />
         <option value="$PROJECT_DIR$/templates/LeepsCRP/Form.html" />
         <option value="$PROJECT_DIR$/templates/LeepsCRP/Table.html" />
-        <option value="$PROJECT_DIR$/templates/LeepsCRP/Buyer3_1.html" />
-        <option value="$PROJECT_DIR$/templates/LeepsCRP/Buyer4_2.html" />
-        <option value="$PROJECT_DIR$/templates/LeepsCRP/Buyer1_1.html" />
         <option value="$PROJECT_DIR$/config.py" />
-        <option value="$PROJECT_DIR$/models.py" />
         <option value="$PROJECT_DIR$/pages.py" />
         <option value="$PROJECT_DIR$/tests.py" />
+        <option value="$PROJECT_DIR$/templates/LeepsCRP/Buyer1_1.html" />
+        <option value="$PROJECT_DIR$/templates/LeepsCRP/Buyer3_1.html" />
+        <option value="$PROJECT_DIR$/templates/LeepsCRP/Buyer4_2.html" />
+        <option value="$PROJECT_DIR$/models.py" />
         <option value="$PROJECT_DIR$/templates/LeepsCRP/Page.html" />
-        <option value="$PROJECT_DIR$/templates/LeepsCRP/Seller4_2.html" />
-        <option value="$PROJECT_DIR$/templates/LeepsCRP/Seller3_1.html" />
         <option value="$PROJECT_DIR$/templates/LeepsCRP/Seller1_1.html" />
+        <option value="$PROJECT_DIR$/templates/LeepsCRP/Seller3_1.html" />
+        <option value="$PROJECT_DIR$/templates/LeepsCRP/Seller4_2.html" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="597" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="640" />
     <option name="y" value="23" />
-    <option name="width" value="1280" />
+    <option name="width" value="640" />
     <option name="height" value="777" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -381,10 +372,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1280" height="777" extended-state="6" />
+    <frame x="115" y="23" width="1165" height="777" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.178125" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19570816" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="9" />
@@ -594,24 +585,10 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/LeepsCRP/RefPriceTable.html" />
-    <entry file="file://$PROJECT_DIR$/templates/LeepsCRP/intro.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="616">
-          <caret line="28" column="55" selection-start-line="28" selection-start-column="55" selection-end-line="28" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/LeepsCRP/Buyer2_2.html" />
     <entry file="file://$PROJECT_DIR$/templates/LeepsCRP/Results4_2.html" />
     <entry file="file://$PROJECT_DIR$/templates/LeepsCRP/Results3_1.html" />
     <entry file="file://$PROJECT_DIR$/templates/LeepsCRP/Seller2_2.html" />
-    <entry file="file://$PROJECT_DIR$/templates/LeepsCRP/Form.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/LeepsCRP/Results1_1.html" />
     <entry file="file://$PROJECT_DIR$/templates/LeepsCRP/Table1_1.html" />
     <entry file="file://$PROJECT_DIR$/templates/LeepsCRP/MyPage.html" />
@@ -619,13 +596,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
           <caret line="15" column="18" lean-forward="true" selection-start-line="15" selection-start-column="18" selection-end-line="15" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/LeepsCRP/Buyer3_1.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="13" column="34" lean-forward="true" selection-start-line="13" selection-start-column="34" selection-end-line="13" selection-end-column="34" />
         </state>
       </provider>
     </entry>
@@ -643,20 +613,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/LeepsCRP/Buyer4_2.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="1" column="23" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/LeepsCRP/Buyer1_1.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="4" column="34" selection-start-line="4" selection-start-column="34" selection-end-line="4" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/draws/Draws4.csv">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="242">
@@ -664,13 +620,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pages.py">
+    <entry file="file://$PROJECT_DIR$/config.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5060">
-          <caret line="230" selection-start-line="230" selection-end-line="230" />
-          <folding>
-            <element signature="e#0#51#0" expanded="true" />
-          </folding>
+        <state>
+          <caret column="13" selection-start-column="13" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -684,51 +637,89 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config.py">
+    <entry file="file://$PROJECT_DIR$/templates/LeepsCRP/intro.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="13" selection-start-column="13" selection-end-column="13" />
+        <state relative-caret-position="616">
+          <caret line="28" column="55" selection-start-line="28" selection-start-column="55" selection-end-line="28" selection-end-column="55" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models.py">
+    <entry file="file://$PROJECT_DIR$/pages.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="79" column="24" selection-start-line="79" selection-start-column="24" selection-end-line="79" selection-end-column="24" />
+        <state relative-caret-position="264">
+          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
           <folding>
-            <element signature="e#0#134#0" expanded="true" />
+            <element signature="e#0#51#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/LeepsCRP/Page.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="455">
-          <caret line="30" column="18" selection-start-line="30" selection-start-column="18" selection-end-line="30" selection-end-column="18" />
+        <state relative-caret-position="433">
+          <caret line="30" column="19" selection-start-line="30" selection-start-column="19" selection-end-line="30" selection-end-column="19" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/LeepsCRP/Seller4_2.html">
+    <entry file="file://$PROJECT_DIR$/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="11" column="22" selection-start-line="10" selection-start-column="4" selection-end-line="41" selection-end-column="10" />
+        <state relative-caret-position="352">
+          <caret line="16" column="25" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#134#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/LeepsCRP/Buyer1_1.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="433">
+          <caret line="22" column="91" selection-start-line="22" selection-start-column="91" selection-end-line="22" selection-end-column="91" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/LeepsCRP/Buyer3_1.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="482">
+          <caret line="22" column="91" selection-start-line="22" selection-start-column="91" selection-end-line="22" selection-end-column="91" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/LeepsCRP/Buyer4_2.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="433">
+          <caret line="22" column="91" selection-start-line="22" selection-start-column="91" selection-end-line="22" selection-end-column="91" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/LeepsCRP/Form.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="13" column="13" lean-forward="true" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/LeepsCRP/Seller1_1.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="413">
+          <caret line="47" column="91" selection-start-line="47" selection-start-column="91" selection-end-line="47" selection-end-column="91" />
+          <folding>
+            <element signature="n#style#0;n#p#2;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/LeepsCRP/Seller3_1.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
-          <caret line="9" column="19" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
+          <caret line="40" column="91" selection-start-line="40" selection-start-column="91" selection-end-line="40" selection-end-column="91" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/LeepsCRP/Seller1_1.html">
+    <entry file="file://$PROJECT_DIR$/templates/LeepsCRP/Seller4_2.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="9" column="19" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
-          <folding>
-            <element signature="n#style#0;n#p#2;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="404">
+          <caret line="39" column="91" selection-start-line="39" selection-start-column="91" selection-end-line="39" selection-end-column="91" />
         </state>
       </provider>
     </entry>

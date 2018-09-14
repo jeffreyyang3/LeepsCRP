@@ -14,7 +14,7 @@ CRP_2018
 
 class Constants(BaseConstants):
     name_in_url = 'LeepsCRP'
-    players_per_group = 16
+    players_per_group = 3
     config = config_py.export_data()
     num_rounds = len(config[0])
     baseBenefits = 150
